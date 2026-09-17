@@ -1,0 +1,1763 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Banco de Questões PQS</title>
+<style>
+  :root{ color-scheme: light dark; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  html,body{margin:0}
+  img{max-width:100%}
+  [hidden]{display:none !important}
+</style>
+</head>
+<body>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+:root{
+  --paper:#ECEFF2;
+  --surface:#FFFFFF;
+  --surface-2:#F4F6F8;
+  --ink:#10171D;
+  --ink-2:#4C5B66;
+  --ink-3:#7C8B95;
+  --line:#D5DBE1;
+  --line-2:#BFC8D0;
+  --accent:#0D6A6D;
+  --accent-2:#0A5052;
+  --accent-soft:#DCEBEA;
+  --on-accent:#FFFFFF;
+  --pratica:#9A4F17;
+  --pratica-soft:#F2E6D8;
+  --teorica:#2B5B85;
+  --teorica-soft:#DCE7F1;
+  --sabe:#33683F;
+  --sabe-soft:#DFEBE0;
+  --revisar:#8C3F2E;
+  --revisar-soft:#F4E2DD;
+  --shadow:0 1px 2px rgba(16,23,29,.05), 0 12px 30px -20px rgba(16,23,29,.45);
+  --r:12px;
+  --mono:"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --disp:"Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --serif:"Source Serif 4", Georgia, "Times New Roman", serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0C1216;
+    --surface:#141C22;
+    --surface-2:#1B252C;
+    --ink:#E2E8EC;
+    --ink-2:#A0AEB8;
+    --ink-3:#77858F;
+    --line:#26323A;
+    --line-2:#37454F;
+    --accent:#4FB4AF;
+    --accent-2:#78CCC7;
+    --accent-soft:#11302E;
+    --on-accent:#07211F;
+    --pratica:#DBA066;
+    --pratica-soft:#322415;
+    --teorica:#82B4DE;
+    --teorica-soft:#16283A;
+    --sabe:#7FBE8B;
+    --sabe-soft:#152A1B;
+    --revisar:#DE9483;
+    --revisar-soft:#331C17;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 14px 34px -22px rgba(0,0,0,.9);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0C1216;
+  --surface:#141C22;
+  --surface-2:#1B252C;
+  --ink:#E2E8EC;
+  --ink-2:#A0AEB8;
+  --ink-3:#77858F;
+  --line:#26323A;
+  --line-2:#37454F;
+  --accent:#4FB4AF;
+  --accent-2:#78CCC7;
+  --accent-soft:#11302E;
+  --on-accent:#07211F;
+  --pratica:#DBA066;
+  --pratica-soft:#322415;
+  --teorica:#82B4DE;
+  --teorica-soft:#16283A;
+  --sabe:#7FBE8B;
+  --sabe-soft:#152A1B;
+  --revisar:#DE9483;
+  --revisar-soft:#331C17;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 14px 34px -22px rgba(0,0,0,.9);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--serif); font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- barra superior ---------- */
+.bar{
+  position:sticky; top:env(safe-area-inset-top, 0px); z-index:20;
+  background:color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter:saturate(1.4) blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.bar-in{
+  max-width:820px; margin:0 auto; padding:10px 16px;
+  display:flex; flex-wrap:wrap; gap:8px 10px; align-items:center;
+}
+.brand{
+  font-family:var(--disp); font-weight:700; font-size:14px; letter-spacing:-.01em;
+  margin-right:auto; display:flex; align-items:baseline; gap:8px;
+}
+.brand small{
+  font-family:var(--mono); font-weight:500; font-size:10.5px; letter-spacing:.09em;
+  text-transform:uppercase; color:var(--ink-3);
+}
+.seg{display:flex; background:var(--surface-2); border:1px solid var(--line); border-radius:999px; padding:2px}
+.seg button{
+  font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:.04em;
+  border:0; background:transparent; color:var(--ink-2); cursor:pointer;
+  padding:5px 11px; border-radius:999px; line-height:1.2;
+}
+.seg button[aria-pressed="true"]{background:var(--surface); color:var(--ink); box-shadow:0 1px 2px rgba(0,0,0,.09)}
+.seg button:focus-visible, .ico:focus-visible, select:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+.ico{
+  font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:.04em;
+  display:inline-flex; align-items:center; gap:6px;
+  border:1px solid var(--line); background:var(--surface); color:var(--ink-2);
+  padding:6px 11px; border-radius:999px; cursor:pointer;
+}
+.ico:hover{border-color:var(--line-2); color:var(--ink)}
+select{
+  font-family:var(--mono); font-size:11px; color:var(--ink-2);
+  background:var(--surface); border:1px solid var(--line); border-radius:999px;
+  padding:6px 10px; max-width:100%;
+}
+.progress{height:2px; background:var(--line); position:relative}
+.progress i{position:absolute; inset:0 auto 0 0; background:var(--accent); width:0; transition:width .25s ease}
+
+/* ---------- área principal ---------- */
+main{max-width:820px; margin:0 auto; padding:24px 16px 120px}
+
+.meta{
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  font-family:var(--mono); font-size:11px; letter-spacing:.05em; color:var(--ink-3);
+  margin-bottom:12px;
+}
+.tag{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:3px 9px; border-radius:999px; font-weight:600;
+  font-size:10.5px; letter-spacing:.09em; text-transform:uppercase;
+}
+.tag.pratica{background:var(--pratica-soft); color:var(--pratica)}
+.tag.teorica{background:var(--teorica-soft); color:var(--teorica)}
+.tag.tema{background:var(--surface-2); color:var(--ink-2); border:1px solid var(--line); text-transform:none; letter-spacing:.03em}
+.meta .cont{margin-left:auto; font-variant-numeric:tabular-nums}
+
+.card{
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--r);
+  box-shadow:var(--shadow); overflow:hidden;
+}
+.card-in{padding:26px 24px}
+@media (max-width:480px){ .card-in{padding:20px 17px} }
+
+.intro{
+  font-family:var(--disp); font-weight:600; font-size:14px; color:var(--ink-2);
+  margin:0 0 14px;
+}
+ul.cenario{list-style:none; margin:0 0 20px; padding:0; display:flex; flex-direction:column; gap:10px}
+ul.cenario li{
+  position:relative; padding-left:20px; color:var(--ink); font-size:16.5px; line-height:1.55;
+}
+ul.cenario li::before{
+  content:""; position:absolute; left:0; top:.62em;
+  width:9px; height:1.5px; background:var(--line-2);
+}
+.pergunta{
+  font-family:var(--disp); font-weight:600; font-size:19px; line-height:1.38;
+  letter-spacing:-.011em; text-wrap:balance; margin:0;
+  padding-top:18px; border-top:1px solid var(--line);
+}
+.card.semcenario .pergunta{border-top:0; padding-top:0; font-size:20px}
+
+.acoes{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-top:20px}
+.btn-rev{
+  font-family:var(--disp); font-weight:600; font-size:13.5px;
+  background:var(--accent); color:var(--on-accent); border:0; border-radius:8px;
+  padding:10px 16px; cursor:pointer;
+}
+.btn-rev:hover{background:var(--accent-2)}
+.btn-rev:focus-visible{outline:2px solid var(--ink); outline-offset:2px}
+.marcas{display:flex; gap:6px; margin-left:auto}
+.mark{
+  font-family:var(--mono); font-size:11px; letter-spacing:.03em;
+  border:1px solid var(--line); background:var(--surface-2); color:var(--ink-2);
+  border-radius:999px; padding:6px 11px; cursor:pointer;
+}
+.mark[aria-pressed="true"][data-m="sabe"]{background:var(--sabe-soft); border-color:var(--sabe); color:var(--sabe)}
+.mark[aria-pressed="true"][data-m="revisar"]{background:var(--revisar-soft); border-color:var(--revisar); color:var(--revisar)}
+
+.resposta{
+  margin-top:22px; padding:20px 22px; border-radius:10px;
+  background:var(--surface-2); border:1px solid var(--line);
+  border-left:3px solid var(--accent);
+}
+@media (max-width:480px){ .resposta{padding:16px 15px} }
+.resposta h4{
+  font-family:var(--mono); font-size:10.5px; font-weight:600; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--accent); margin:0 0 12px;
+}
+.resposta p{margin:0 0 12px; font-size:15.5px; line-height:1.62}
+.resposta ul{margin:0 0 12px; padding-left:20px; display:flex; flex-direction:column; gap:7px}
+.resposta li{font-size:15.5px; line-height:1.55}
+.resposta > :last-child{margin-bottom:0}
+.resposta .tema-rev{
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.06em; color:var(--ink-3);
+  margin:16px 0 0; padding-top:12px; border-top:1px solid var(--line);
+}
+.resposta strong{font-weight:600}
+.resposta em{font-style:italic; color:var(--ink-2)}
+
+/* ---------- navegação fixa ---------- */
+.nav{
+  position:fixed; left:0; right:0; bottom:0; z-index:20;
+  background:color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter:saturate(1.4) blur(10px);
+  border-top:1px solid var(--line);
+  padding:10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+}
+.nav-in{max-width:820px; margin:0 auto; display:flex; gap:10px; align-items:center}
+.nav button{
+  font-family:var(--disp); font-weight:600; font-size:13.5px;
+  border:1px solid var(--line); background:var(--surface); color:var(--ink);
+  border-radius:8px; padding:10px 18px; cursor:pointer;
+}
+.nav button:hover:not(:disabled){border-color:var(--line-2)}
+.nav button:disabled{opacity:.4; cursor:default}
+.nav button:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.nav .dica{
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.05em; color:var(--ink-3);
+  margin:0 auto; text-align:center;
+}
+@media (max-width:560px){ .nav .dica{display:none} .nav-in button{flex:1} }
+
+.vazio{
+  text-align:center; padding:60px 20px; color:var(--ink-2); font-size:15px;
+}
+.rodape{
+  max-width:820px; margin:0 auto; padding:22px 16px 0;
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.04em;
+  color:var(--ink-3); line-height:1.7;
+}
+@media (prefers-reduced-motion: reduce){ *{transition:none !important} }
+</style>
+
+<div class="bar">
+  <div class="bar-in">
+    <div class="brand">Banco de Questões <small>PQS · Processos de Software</small></div>
+    <div class="seg" id="segTipo" role="group" aria-label="Filtrar por tipo">
+      <button type="button" data-t="todas" aria-pressed="true">Todas</button>
+      <button type="button" data-t="pratica" aria-pressed="false">Práticas</button>
+      <button type="button" data-t="teorica" aria-pressed="false">Teóricas</button>
+      <button type="button" data-t="revisar" aria-pressed="false">Revisar</button>
+    </div>
+    <select id="selTema" aria-label="Filtrar por tema"></select>
+    <button type="button" class="ico" id="btnShuffle" title="Sortear nova ordem">↺ Sortear</button>
+    <button type="button" class="ico" id="btnTema" title="Alternar tema claro/escuro">◐</button>
+  </div>
+  <div class="progress"><i id="barra"></i></div>
+</div>
+
+<main id="palco"></main>
+
+<div class="rodape" id="rodape"></div>
+
+<div class="nav">
+  <div class="nav-in">
+    <button type="button" id="btnPrev">← Anterior</button>
+    <span class="dica">← → navega · Espaço revela a resposta</span>
+    <button type="button" id="btnNext">Próxima →</button>
+  </div>
+</div>
+
+<script>
+// Banco de questões — Processos de Desenvolvimento de Software
+// Base: resumos das aulas do Prof. Gilleanes Guedes / Prof. João Pablo Silva da Silva
+// (Wazlawick 2013, Sommerville 2011, Pressman)
+
+window.QUESTOES = [
+
+/* ============================ PRÁTICAS ============================ */
+
+{
+  id: "P01", tipo: "pratica", tema: "Reuso e SPL", alvo: "Desenvolvimento orientado a reuso",
+  bullets: [
+    "O cliente tem urgência na conclusão do projeto;",
+    "Todavia os requisitos não possuem uma grande complexidade;",
+    "A empresa já possui uma base de ativos de software e alguns deles possuem alguma semelhança com os requisitos solicitados;",
+    "Além disso, muitos requisitos parecem poder ser atendidos, pelo menos parcialmente, por componentes ou bibliotecas disponíveis externamente;",
+    "Em um primeiro momento, devido à urgência, o cliente parece estar disposto a ser flexível com relação aos requisitos."
+  ],
+  resposta: `
+    <p><strong>Desenvolvimento orientado a reuso.</strong></p>
+    <ul>
+      <li><em>Urgência</em> — o reuso reduz drasticamente a quantidade de software a ser efetivamente desenvolvida, com custos e riscos menores e conclusão muito mais rápida.</li>
+      <li><em>Requisitos de baixa complexidade</em> — quanto menor a complexidade, maior a chance de os componentes disponíveis cobrirem o que se pede.</li>
+      <li><em>Base de ativos + componentes externos</em> — as duas condições exigidas pelo processo estão satisfeitas: ampla base de componentes reutilizáveis e infraestrutura de integração.</li>
+      <li><em>Cliente flexível</em> — é a condição decisiva, pois o estágio 2 do processo é justamente a <strong>modificação dos requisitos</strong>: comparar o pedido com o que os componentes oferecem e alterar os requisitos para refletir o disponível.</li>
+    </ul>
+    <p><strong>Estágios:</strong> análise de componentes → modificação dos requisitos → projeto de sistema com reuso → desenvolvimento e integração.</p>
+    <p><strong>Ressalvas a declarar:</strong> adequar o que o cliente quer ao que os componentes fazem pode gerar um sistema que não atende de fato às necessidades dele (principal defeito do modelo); e há risco de <em>comportamentos emergentes</em> ao integrar componentes de fabricantes diferentes ou COTS mal configurados — funcionalidades não usadas devem ser explicitamente desabilitadas.</p>`
+},
+
+{
+  id: "P02", tipo: "pratica", tema: "Reuso e SPL", alvo: "Desenvolvimento orientado a reuso",
+  bullets: [
+    "A empresa precisa entregar um marketplace completo em três meses;",
+    "Existem bibliotecas e componentes de código livre maduros para catálogo, carrinho, meio de pagamento e busca;",
+    "Da mesma forma, a empresa já possui componentes próprios de autenticação e de emissão de relatórios, usados em projetos anteriores;",
+    "A infraestrutura de integração da empresa já está montada e em uso;",
+    "O cliente declarou preferir um sistema no ar em três meses a um sistema sob medida em um ano."
+  ],
+  resposta: `
+    <p><strong>Desenvolvimento orientado a reuso.</strong></p>
+    <p>O cenário satisfaz literalmente as <strong>duas condições</strong> que o processo exige para funcionar: uma ampla base de componentes reutilizáveis (livres e próprios) e uma infraestrutura de integração já operante.</p>
+    <p>A última afirmação é a chave: ao preferir prazo a sob medida, o cliente autoriza antecipadamente o estágio de <strong>modificação dos requisitos</strong> — os requisitos são comparados ao que os componentes oferecem e alterados para refletir o disponível. Se não for possível alterá-los, volta-se à análise de componentes em busca de alternativas ou decide-se desenvolver componentes novos.</p>
+    <p><strong>Vantagens acionadas:</strong> redução drástica do software a desenvolver, custos e riscos menores, conclusão muito mais rápida — exatamente o que o prazo de três meses exige.</p>
+    <p><strong>Cuidados:</strong> risco de o sistema não atender de fato às necessidades do cliente; risco de comportamentos emergentes na integração de componentes de origens diferentes. Observação do professor: o reuso deve ser aplicado sempre que possível, mas um processo <em>totalmente</em> orientado a reuso nem sempre é a melhor escolha.</p>`
+},
+
+{
+  id: "P03", tipo: "pratica", tema: "Reuso e SPL", alvo: "Linha de produto de software (SPL)",
+  bullets: [
+    "A empresa já entregou quatro sistemas de gestão para clínicas odontológicas diferentes;",
+    "Cerca de 70% das funcionalidades se repetem de um sistema para outro;",
+    "Há previsão de pelo menos mais seis clientes do mesmo segmento nos próximos dois anos;",
+    "Hoje cada novo cliente é atendido copiando o código do projeto anterior e adaptando na mão;",
+    "A diretoria aceita reorganizar equipes, processos, arquitetura e a forma de vender."
+  ],
+  resposta: `
+    <p><strong>Linha de Produto de Software (LPS / SPL).</strong></p>
+    <p>É a evolução estratégica do reuso: uma <strong>família de softwares</strong> que compartilham características comuns, gerenciada para atender a um segmento específico de mercado e construída a partir de um <strong>núcleo comum reaproveitado de forma sistemática</strong>. Aqui o reuso deixa de ser oportunista (o copiar-e-colar atual) e passa a ser incorporado ao próprio processo de desenvolvimento.</p>
+    <p><strong>Por que compensa:</strong> há no mínimo três produtos relacionados na mesma área — o critério mínimo — e na verdade quatro entregues e seis previstos. A partir daí é possível gerenciar versões, otimizar o processo produtivo, e o custo fica abaixo do desenvolvimento convencional.</p>
+    <p><strong>Por que a última afirmação importa:</strong> implantar uma SPL não é decisão apenas técnica. Exige mudanças na gerência do processo, na forma de desenvolver, na organização estrutural e de pessoal, na abordagem de negócio e na concepção arquitetônica dos produtos. Sem esse aval, a adoção fracassa.</p>
+    <p><strong>Três atividades essenciais:</strong> desenvolvimento do núcleo de ativos (com identificação dos <em>pontos de variação</em> e diretrizes de reúso), desenvolvimento de produtos (entradas: descrição do produto, escopo da linha, núcleo de ativos, plano de produção) e gerência (organizacional e técnica).</p>`
+},
+
+{
+  id: "P04", tipo: "pratica", tema: "Reuso e SPL", alvo: "Linha de produto de software (SPL)",
+  bullets: [
+    "Fabricante de máquinas agrícolas produz o firmware de cinco linhas de colheitadeiras;",
+    "As linhas compartilham um núcleo de funcionalidades e diferem em sensores, potência e painéis;",
+    "Estão previstas mais três linhas nos próximos anos;",
+    "Hoje cada linha tem seu repositório próprio e uma correção precisa ser reaplicada manualmente em cinco lugares;",
+    "A empresa está disposta a rever a arquitetura dos produtos e a estrutura das equipes."
+  ],
+  resposta: `
+    <p><strong>Linha de Produto de Software (SPL).</strong></p>
+    <p>O caso é o exemplo canônico: um conjunto de sistemas que compartilham características comuns — uma família de softwares — voltada a um <strong>segmento específico de mercado</strong> e construída sobre um <strong>núcleo comum</strong>, com variações previstas.</p>
+    <p><strong>Critérios de decisão atendidos:</strong> há cinco produtos relacionados na mesma área (mínimo é três), com previsão de mais três; os produtos permitem ativos comuns; e é possível gerenciar versões e otimizar o processo produtivo, deixando o custo abaixo do desenvolvimento convencional.</p>
+    <p>A correção reaplicada cinco vezes é o sintoma exato que o <strong>núcleo de ativos</strong> resolve: construir o conjunto de elementos reutilizáveis, identificar os <strong>pontos de variação</strong> (sensores, potência, painéis — o que muda de um reúso para outro) e produzir diretrizes sobre como reusar cada ativo.</p>
+    <p><strong>Não confundir com o desenvolvimento orientado a reuso:</strong> ali monta-se um sistema a partir de componentes de terceiros, adaptando requisitos ao disponível; aqui o reuso é planejado, próprio e sistemático, incorporado ao processo e sustentado por gerência organizacional e técnica.</p>`
+},
+
+{
+  id: "P05", tipo: "pratica", tema: "Cascata e variações", alvo: "Desenvolvimento formal de sistemas",
+  bullets: [
+    "O software controla a dosagem de radiação emitida por um equipamento de radioterapia;",
+    "Uma falha de cálculo pode causar a morte do paciente;",
+    "O órgão regulador exige demonstração formal de correção, e não apenas evidência de execução de testes;",
+    "Os requisitos derivam de normas técnicas, são estáveis e não mudarão durante o projeto;",
+    "A empresa dispõe de profissionais com formação matemática avançada, e prazo e orçamento são generosos."
+  ],
+  resposta: `
+    <p><strong>Desenvolvimento formal de sistemas.</strong></p>
+    <p>Possui semelhanças com o Cascata, mas se baseia na <strong>transformação matemática formal da especificação em programas executáveis</strong>. Duas diferenças centrais em relação ao Cascata:</p>
+    <ul>
+      <li>A especificação de requisitos é redefinida como uma <strong>especificação formal matemática detalhada</strong>;</li>
+      <li>Projeto, implementação e teste são substituídos por um <strong>processo de desenvolvimento transformacional</strong> — uma série de transformações matemáticas aplicadas sobre a especificação até chegar ao software.</li>
+    </ul>
+    <p><strong>Por que este cenário o viabiliza:</strong> criticidade extrema, exigência regulatória de prova de correção (e não de teste), requisitos estáveis derivados de norma — condição que o Cascata exige e que aqui está satisfeita — mais equipe capacitada e folga de prazo e orçamento.</p>
+    <p><strong>Por que é raro:</strong> exige conhecimento matemático avançado e há poucos profissionais capazes de aplicá-lo. Por isso o enunciado precisa afirmar explicitamente que a empresa tem essa equipe; sem ela, a resposta correta seria o modelo em W ou em V.</p>`
+},
+
+{
+  id: "P06", tipo: "pratica", tema: "Cascata e variações", alvo: "Desenvolvimento formal de sistemas",
+  bullets: [
+    "Sistema de intertravamento de portas e sinalização de um trem metropolitano;",
+    "Uma falha pode provocar acidente com vítimas;",
+    "A autoridade de transporte exige demonstração matemática de que o comportamento implementado corresponde ao especificado;",
+    "Os requisitos derivam de norma ferroviária e são imutáveis;",
+    "A empresa mantém um grupo especializado em métodos formais e o contrato prevê prazo estendido."
+  ],
+  resposta: `
+    <p><strong>Desenvolvimento formal de sistemas.</strong></p>
+    <p>A exigência de <strong>demonstrar matematicamente a correspondência entre especificado e implementado</strong> é o que separa este modelo de todos os outros: nenhum processo baseado em testes prova correção — testes evidenciam a ausência de falhas observadas, não a correção do programa.</p>
+    <p>No modelo, a especificação de requisitos vira uma <strong>especificação formal matemática detalhada</strong>, e as atividades de projeto, implementação e teste dão lugar a um <strong>processo transformacional</strong> de refinamentos matemáticos sucessivos até o executável.</p>
+    <p><strong>Condições que o cenário garante</strong> e sem as quais ele seria indefensável: requisitos imutáveis (o modelo herda do Cascata a exigência de requisitos fechados no início), equipe com domínio de métodos formais (o gargalo real do modelo) e prazo compatível.</p>
+    <p><strong>Descartes:</strong> o modelo em W daria ótima cobertura de teste, mas não satisfaz a exigência de prova; o espiral não se justifica porque não há incerteza de requisitos, apenas criticidade.</p>`
+},
+
+{
+  id: "P07", tipo: "pratica", tema: "Espiral e riscos", alvo: "Modelo em espiral",
+  bullets: [
+    "O sistema é de grande porte e usará uma tecnologia que a empresa nunca empregou;",
+    "Não se sabe sequer se o que o cliente pede é tecnicamente viável;",
+    "Os requisitos são pouco conhecidos, inclusive pelo próprio cliente;",
+    "O orçamento é alto e o patrocinador aceita abandonar o projeto caso a viabilidade não se confirme;",
+    "A empresa dispõe de gerência sênior muito experiente."
+  ],
+  resposta: `
+    <p><strong>Modelo em espiral.</strong></p>
+    <p>Embora dividido em vários ciclos, continua sendo prescritivo. Seu foco central é <strong>analisar e mitigar riscos</strong>, e ele <strong>não define um único processo de desenvolvimento</strong>: a cada ciclo escolhe-se o processo mais adequado aos requisitos identificados.</p>
+    <p><strong>Ciclos típicos:</strong> 1º estudo de viabilidade (vale a pena desenvolver? gera protótipo inicial, ideia de operação, plano de requisitos e plano de ciclo de vida) → 2º engenharia de requisitos → 3º projeto → 4º projeto detalhado, codificação, testes, integração, aceitação e implantação.</p>
+    <p><strong>Quatro etapas de cada ciclo:</strong> definição de objetivos; avaliação e redução de riscos; desenvolvimento e validação; planejamento — que decide seguir para o próximo laço, concluir ou <strong>abandonar</strong> o software. É essa quarta etapa que o enunciado exige ao dizer que o patrocinador aceita abortar.</p>
+    <p><strong>Encaixe:</strong> riscos identificados nas primeiras iterações, quando tempo e recursos são amplos e o custo é menor; inviabilidades técnicas, de orçamento ou de prazo descobertas cedo; adequado a projetos complexos, de alto risco de falha e requisitos pouco conhecidos. E a condição indispensável está presente: gerência muito experiente e eficaz, pois a movimentação entre fases e iterações é complexa.</p>`
+},
+
+{
+  id: "P08", tipo: "pratica", tema: "Espiral e riscos", alvo: "Modelo em espiral",
+  bullets: [
+    "Projeto de pesquisa e desenvolvimento com verba liberada por etapas;",
+    "A cada etapa concluída um comitê decide se libera a verba da etapa seguinte;",
+    "Tanto os requisitos quanto a tecnologia a ser usada são pouco conhecidos no início;",
+    "Nada impede que cada etapa seja desenvolvida com uma abordagem diferente da anterior;",
+    "A empresa tem gerentes experientes e aceita que o prazo total seja difícil de estimar."
+  ],
+  resposta: `
+    <p><strong>Modelo em espiral.</strong></p>
+    <p>Dois traços do enunciado praticamente definem o modelo:</p>
+    <ul>
+      <li><strong>Decisão de continuidade a cada etapa</strong> — é exatamente a quarta etapa de cada ciclo, o <em>planejamento</em>: revisão do projeto e decisão de seguir para o próximo laço, concluir ou abandonar o software. Nenhum outro modelo estudado institucionaliza a decisão de abandonar.</li>
+      <li><strong>Abordagem podendo variar por etapa</strong> — o espiral não define um único processo de desenvolvimento; na etapa de <em>desenvolvimento e validação</em> escolhe-se o modelo mais adequado ao tipo de software e aos seus requisitos não funcionais.</li>
+    </ul>
+    <p><strong>Vantagens acionadas:</strong> riscos identificados logo nas primeiras iterações; à medida que os custos crescem, os riscos tendem a diminuir; inviabilidades descobertas cedo; fases bem definidas permitindo acompanhamento objetivo pelo comitê.</p>
+    <p><strong>Desvantagens explicitamente aceitas no enunciado:</strong> não há indicação clara da quantidade de trabalho esperada por ciclo e o tempo de desenvolvimento é difícil de prever, sobretudo no início; e exige gerência muito experiente.</p>`
+},
+
+{
+  id: "P09", tipo: "pratica", tema: "Espiral e riscos", alvo: "Cascata com redução de risco",
+  bullets: [
+    "Órgão público; o contrato prevê fases sequenciais com artefatos e marcos formais, e não pode ser alterado;",
+    "Os usuários têm grande dificuldade de descrever o trabalho que realizam;",
+    "Há histórico de requisitos mal interpretados descobertos apenas na implantação;",
+    "É permitido acrescentar atividades antes do levantamento de requisitos, desde que a estrutura sequencial seja mantida;",
+    "Há orçamento para um estudo prévio antes do início formal do desenvolvimento."
+  ],
+  resposta: `
+    <p><strong>Cascata com redução de risco.</strong></p>
+    <p>É a variação que <strong>aplica o conceito da espiral ao modelo em cascata</strong>: insere-se uma <strong>fase de redução de riscos antes do início do processo</strong> — tipicamente antes do levantamento e análise de requisitos, mas possível antes de qualquer fase. O objetivo é tornar os requisitos mais estáveis e bem definidos desde o começo.</p>
+    <p>É a única resposta que respeita as duas restrições do enunciado ao mesmo tempo: mantém a estrutura sequencial com marcos formais exigida pelo contrato e ainda assim ataca a causa real das falhas.</p>
+    <p><strong>Técnicas empregadas (lista não exaustiva):</strong> protótipos de interface com o usuário; storyboards com imagens descrevendo cenários de uso; entrevistas com usuários e clientes tantas quantas forem necessárias; <strong>filmagem dos usuários</strong> para entender como o trabalho realmente ocorre; tempestade de ideias; grupo focal e outras técnicas de elicitação.</p>
+    <p><strong>Fundamento:</strong> o problema da linguagem — "não falamos a mesma língua, falamos dialetos semelhantes": termos mudam de significado entre áreas, regiões e faixas etárias, e isso gera erros graves de interpretação descobertos tarde demais.</p>`
+},
+
+{
+  id: "P10", tipo: "pratica", tema: "Espiral e riscos", alvo: "Cascata com redução de risco",
+  bullets: [
+    "Sistema para o chão de fábrica de uma indústria metalúrgica;",
+    "O procedimento executado pelos operadores difere bastante do que está escrito no manual da empresa;",
+    "O contrato exige fases sequenciais documentadas e aprovação de artefato ao fim de cada fase;",
+    "A empresa quer estabilizar os requisitos antes de iniciar o levantamento formal;",
+    "Não é possível adotar entregas parciais nem ciclos iterativos."
+  ],
+  resposta: `
+    <p><strong>Cascata com redução de risco.</strong></p>
+    <p>A afirmação de que o procedimento real difere do manual é o gatilho direto de uma das técnicas do modelo: a <strong>filmagem dos usuários, para entender como o trabalho realmente ocorre</strong>. Nenhuma entrevista ou leitura de manual revelaria essa diferença.</p>
+    <p>O modelo insere uma <strong>fase de redução de riscos antes do início do processo</strong> — no caso, antes do levantamento e análise de requisitos — para tornar os requisitos mais estáveis e bem definidos, sem alterar a natureza sequencial do cascata.</p>
+    <p><strong>Por que os demais ficam de fora:</strong> as duas últimas afirmações eliminam entregas em estágios, entrega evolucionária, prototipação evolucionária e Processo Unificado, todos dependentes de ciclos ou entregas parciais; o espiral é iterativo por construção e também não cabe no contrato; o cascata puro ou duplo manteria o defeito original — erros de especificação aparecendo só na implantação, quando o custo de correção é altíssimo.</p>`
+},
+
+{
+  id: "P11", tipo: "pratica", tema: "V&V (modelos V e W)", alvo: "Modelo em W",
+  bullets: [
+    "Sistema bancário de médio porte, com requisitos bem definidos e estáveis por força de regulação;",
+    "O contrato exige documentação e rastreabilidade entre requisitos e casos de teste;",
+    "A empresa quer detectar defeitos o mais cedo possível, porque hoje a maior parte deles só aparece na homologação;",
+    "Há uma equipe de teste independente disponível desde o início do projeto;",
+    "A diretoria também quer um critério objetivo para recusar requisitos mal definidos."
+  ],
+  resposta: `
+    <p><strong>Modelo em W</strong> — considerado pelo professor o melhor dos modelos prescritivos.</p>
+    <p>É uma evolução do modelo em V: os testes são <strong>preparados durante as próprias fases de construção</strong>, e não depois. Durante a fase de requisitos preparam-se os <strong>testes de sistema</strong>; durante o projeto arquitetural, os <strong>testes de integração</strong>; durante o projeto detalhado, os <strong>testes de unidade</strong>. Só então vêm a codificação e a execução dos testes (unidade → integração → sistema), cada rodada podendo gerar depuração e retorno à codificação.</p>
+    <p><strong>Cada afirmação encontra uma vantagem do modelo:</strong></p>
+    <ul>
+      <li>Detectar defeitos cedo → testes planejados durante a construção, e não como etapa final; especialistas em teste envolvidos desde o início.</li>
+      <li>Equipe de teste disponível desde o início → é a condição que o W exige e o V não aproveita.</li>
+      <li>Critério objetivo para recusar requisitos → <strong>só se aceitam conceitos testáveis</strong>: se não é possível imaginar um teste para um requisito, ele não foi definido corretamente. O mesmo vale para arquitetura e projeto.</li>
+    </ul>
+    <p>Como bônus, o modelo reduz a complexidade do projeto: ao pensar em como testar, percebe-se o que está complexo demais e trabalha-se para simplificar.</p>
+    <p><strong>Por que não o V:</strong> ele atende à rastreabilidade, mas nele os requisitos só são efetivamente verificados e validados quando o software já está pronto — exatamente o histórico que se quer corrigir.</p>`
+},
+
+{
+  id: "P12", tipo: "pratica", tema: "V&V (modelos V e W)", alvo: "Modelo em W",
+  bullets: [
+    "Operadora de telecomunicações; os requisitos são estáveis e vêm de regulamentação do setor;",
+    "A empresa contratou especialistas em teste que estarão disponíveis desde a fase de requisitos;",
+    "O custo de corrigir defeitos encontrados tarde tem sido o maior item do orçamento de manutenção;",
+    "A diretoria quer também reduzir a complexidade dos projetos, que têm crescido sem controle;",
+    "Documentação de qualidade é exigida pelo regulador."
+  ],
+  resposta: `
+    <p><strong>Modelo em W.</strong></p>
+    <p>No W, os testes são projetados junto com os artefatos que os originam — requisitos geram testes de sistema, projeto arquitetural gera testes de integração, projeto detalhado gera testes de unidade — e só depois vêm codificação e execução dos testes.</p>
+    <p><strong>As quatro vantagens do modelo aparecem uma a uma no enunciado:</strong></p>
+    <ul>
+      <li>Testes planejados durante a construção, e não como etapa final;</li>
+      <li>Especialistas em teste envolvidos desde o início, o que antecipa a detecção de erros — e ataca o custo de correção tardia;</li>
+      <li>Só se aceitam conceitos testáveis, o que força boa definição de requisitos, arquitetura e projeto;</li>
+      <li><strong>Redução da complexidade do projeto</strong>: ao pensar em como testar, percebe-se o que está complexo demais e se trabalha para simplificar — é a resposta direta ao quarto item.</li>
+    </ul>
+    <p>A exigência de documentação de qualidade não é obstáculo: ela já é pressuposto do V e do W, pois sem documentação precisa não é possível derivar testes precisos.</p>`
+},
+
+{
+  id: "P13", tipo: "pratica", tema: "V&V (modelos V e W)", alvo: "Modelo em V",
+  bullets: [
+    "Sistema embarcado automotivo submetido a norma técnica;",
+    "A norma exige que cada nível de projeto tenha um nível de teste correspondente e documentado;",
+    "Os requisitos estão congelados por contrato e qualquer mudança exige aditivo;",
+    "O cliente não participa do dia a dia do desenvolvimento;",
+    "A empresa não dispõe de especialistas em teste no início do projeto — eles só são alocados após a codificação."
+  ],
+  resposta: `
+    <p><strong>Modelo em V.</strong></p>
+    <p>Organiza o desenvolvimento em forma de "V", com forte ênfase em verificação e validação, associando a cada fase construtiva uma fase de teste correspondente — que é literalmente o que a norma exige:</p>
+    <ul>
+      <li>Requisitos ↔ <strong>teste de sistema</strong></li>
+      <li>Projeto arquitetural ↔ <strong>teste de integração</strong></li>
+      <li>Projeto detalhado ↔ <strong>teste de unidade</strong></li>
+      <li>Implementação — sem fase de teste correspondente própria</li>
+    </ul>
+    <p><strong>Vantagem:</strong> ênfase forte em verificação e validação.</p>
+    <p><strong>Desvantagens aceitas neste contexto:</strong> os requisitos só são efetivamente verificados e validados quando o software já está pronto (tolerável, já que o cliente não acompanha e os requisitos vêm de norma); mudanças de requisitos continuam custando caro (mitigado pelo congelamento contratual); exige muita documentação e de qualidade, sem a qual não é possível derivar testes precisos.</p>
+    <p><strong>Por que não o W, que seria superior:</strong> o W depende de especialistas em teste envolvidos desde o início para preparar os testes durante as fases de construção — condição que a última afirmação nega explicitamente.</p>`
+},
+
+{
+  id: "P14", tipo: "pratica", tema: "V&V (modelos V e W)", alvo: "Modelo em V",
+  bullets: [
+    "Software médico de classe regulada, submetido a certificação;",
+    "O certificador exige matriz de rastreabilidade ligando requisitos, projeto arquitetural e projeto detalhado a seus respectivos níveis de teste;",
+    "Os requisitos vêm de norma, são estáveis, e não se prevê alteração durante o projeto;",
+    "O certificador só aceita evidência de execução de testes após a construção concluída;",
+    "A empresa produz documentação extensa como parte do próprio processo regulatório."
+  ],
+  resposta: `
+    <p><strong>Modelo em V.</strong></p>
+    <p>A matriz de rastreabilidade exigida é a própria estrutura do V: <strong>requisitos ↔ teste de sistema, projeto arquitetural ↔ teste de integração, projeto detalhado ↔ teste de unidade</strong>. O modelo entrega essa correspondência por construção.</p>
+    <p><strong>Vantagem:</strong> ênfase forte em verificação e validação — o que a certificação cobra.</p>
+    <p><strong>Desvantagens que o cenário torna inofensivas:</strong></p>
+    <ul>
+      <li>"Os requisitos só são efetivamente verificados e validados quando o software já está pronto" — é exatamente o que o certificador impõe ao aceitar evidência apenas após a construção;</li>
+      <li>"Mudanças de requisitos continuam custando caro" — neutralizado por requisitos normativos e estáveis;</li>
+      <li>"Exige muita documentação, e de qualidade" — a empresa já a produz por obrigação regulatória, e sem ela não seria possível derivar testes precisos.</li>
+    </ul>
+    <p><strong>Contraste:</strong> o W anteciparia a <em>preparação</em> dos testes para dentro das fases de construção, mas o enunciado não oferece a equipe de teste desde o início nem qualquer ganho reconhecido pelo certificador em fazê-lo.</p>`
+},
+
+{
+  id: "P15", tipo: "pratica", tema: "Cascata e variações", alvo: "Cascata com subprojetos",
+  bullets: [
+    "Sistema grande e claramente modularizável;",
+    "A empresa tem quatro equipes disponíveis ao mesmo tempo;",
+    "Os requisitos não funcionais já são conhecidos, de modo que a arquitetura pode ser definida logo no início;",
+    "Existem dependências entre os módulos, mas são poucas e estão mapeadas;",
+    "O prazo é apertado, a gerência é forte e o cliente aceita receber funcionalidades conforme ficam prontas."
+  ],
+  resposta: `
+    <p><strong>Cascata com subprojetos.</strong></p>
+    <p>Trabalha com <strong>ciclos paralelos</strong> e é praticamente o antecessor dos processos iterativos e incrementais.</p>
+    <p><strong>Fluxo:</strong> concepção do software (viabilidade + levantamento de requisitos) → análise de requisitos, com possibilidade de retorno à concepção → projeto arquitetônico → <strong>divisão em vários subprojetos desenvolvidos em paralelo</strong> → integração → operação.</p>
+    <p><strong>Vantagens acionadas pelo enunciado:</strong> subprojetos menores, mais rápidos e fáceis de gerenciar; explora melhor a modularidade; progresso mais visível; permite entregas parciais de funcionalidades conforme ficam prontas.</p>
+    <p><strong>As condições do enunciado são precisamente os requisitos do modelo:</strong> ele exige um projeto arquitetônico muito bem feito (garantido pelos requisitos não funcionais já conhecidos); demanda grande capacidade de gerência para evitar inconsistências entre subsistemas (gerência forte); e sofre quando há interdependências entre subsistemas, que podem atrasar ou impedir o paralelismo (aqui são poucas e mapeadas). Sem essas três, a integração final se torna problemática.</p>`
+},
+
+{
+  id: "P16", tipo: "pratica", tema: "Cascata e variações", alvo: "Cascata com subprojetos",
+  bullets: [
+    "Sistema hospitalar com módulos bem separados: internação, farmácia, laboratório e faturamento;",
+    "A arquitetura foi herdada de um projeto semelhante já concluído e é considerada adequada;",
+    "A empresa tem equipes ociosas que poderiam trabalhar simultaneamente;",
+    "O cliente aceita receber módulos prontos antes do sistema completo;",
+    "A gerência de projetos da empresa é madura e acostumada a coordenar várias frentes."
+  ],
+  resposta: `
+    <p><strong>Cascata com subprojetos.</strong></p>
+    <p>Depois de concepção, análise de requisitos e projeto arquitetônico, o trabalho é <strong>dividido em vários subprojetos desenvolvidos em paralelo</strong>, seguidos de integração e operação. Os quatro módulos do enunciado são os subprojetos naturais.</p>
+    <p><strong>Vantagens:</strong> subprojetos menores, mais rápidos e fáceis de gerenciar; melhor exploração da modularidade; progresso mais visível; entregas parciais de funcionalidades conforme ficam prontas.</p>
+    <p><strong>Desvantagens neutralizadas pelo cenário:</strong> a exigência de um projeto arquitetônico muito bem feito está atendida pela arquitetura herdada e validada; a necessidade de grande capacidade de gerência, para evitar inconsistências entre subsistemas, está atendida pela gerência madura; resta vigiar as interdependências entre módulos, que podem atrasar ou impedir o paralelismo e tornar a integração final problemática.</p>
+    <p><strong>Distinção pedida em prova:</strong> não é entregas em estágios — ali os ciclos são <em>sequenciais</em> e cada ciclo entrega um incremento; aqui os subprojetos correm <em>simultaneamente</em>, o que só faz sentido porque há equipes ociosas.</p>`
+},
+
+{
+  id: "P17", tipo: "pratica", tema: "Cascata e variações", alvo: "Cascata entrelaçado (sashimi)",
+  bullets: [
+    "Equipe pequena, experiente e trabalhando no mesmo espaço físico;",
+    "Há conversa constante entre quem levanta requisitos, quem projeta e quem codifica;",
+    "A empresa quer reduzir a quantidade de documentação produzida;",
+    "A arquitetura é crítica para o sistema e precisa ser tratada como etapa própria;",
+    "O prazo é curto e a gerência não exige marcos rígidos nem artefato aprovado por fase."
+  ],
+  resposta: `
+    <p><strong>Cascata entrelaçado (modelo "sashimi")</strong> — assim chamado porque o diagrama de fases sobrepostas lembra um prato japonês.</p>
+    <p><strong>Não é preciso encerrar totalmente uma fase para iniciar a seguinte</strong>: as fases se sobrepõem e podem correr em paralelo — concepção → análise e especificação de requisitos → projeto de arquitetura → projeto detalhado → codificação e depuração → testes de sistema.</p>
+    <p><strong>Contribuição do modelo:</strong> o <strong>projeto de arquitetura</strong> como fase intermediária entre análise e projeto detalhado. A arquitetura define o esqueleto do software, apoia-se fortemente nos requisitos não funcionais e é pouco flexível a mudanças — alterá-la depois gera custos altíssimos, podendo obrigar a recomeçar o projeto. É o que atende à quarta afirmação.</p>
+    <p><strong>Vantagens acionadas:</strong> uma fase só se conclui depois de consideradas questões da fase seguinte, o que gera ganho de conhecimento; as equipes de fases diferentes conversam mais, reduzindo a necessidade de documentação — só possível com equipe pequena e co-localizada.</p>
+    <p><strong>Desvantagens aceitas:</strong> início e término das fases ficam pouco explícitos, dificultando estabelecer marcos e definir os artefatos entregues por fase — tolerável porque a gerência não os exige; e o paralelismo pode gerar falhas de comunicação, aceitação de hipóteses erradas e ineficiência.</p>`
+},
+
+{
+  id: "P18", tipo: "pratica", tema: "Cascata e variações", alvo: "Cascata entrelaçado (sashimi)",
+  bullets: [
+    "A empresa precisa adiantar o cronograma e avalia começar o projeto de arquitetura enquanto a especificação de requisitos ainda é finalizada;",
+    "Analistas, arquitetos e programadores trabalham lado a lado e se consultam o tempo todo;",
+    "O cliente não exige aprovação formal de documentos ao final de cada fase;",
+    "A empresa considera positivo que decisões de uma fase sejam influenciadas por questões da fase seguinte;",
+    "Não é viável entregar funcionalidades parciais ao cliente, pois o sistema só tem valor completo."
+  ],
+  resposta: `
+    <p><strong>Cascata entrelaçado (sashimi).</strong></p>
+    <p>A primeira afirmação descreve literalmente o modelo: <strong>não é preciso encerrar totalmente uma fase para iniciar a seguinte</strong> — as fases se sobrepõem e podem correr em paralelo, na sequência concepção → análise e especificação de requisitos → projeto de arquitetura → projeto detalhado → codificação e depuração → testes de sistema.</p>
+    <p>A quarta afirmação é a vantagem central do modelo enunciada de outra forma: <strong>uma fase só se conclui depois de consideradas questões da fase seguinte, o que gera ganho de conhecimento</strong>. A segunda afirmação habilita a outra vantagem: equipes de fases diferentes conversam mais, reduzindo a necessidade de documentação.</p>
+    <p>A terceira afirmação neutraliza a principal desvantagem — início e término das fases pouco explícitos, dificultando marcos e definição de artefatos por fase.</p>
+    <p><strong>Por que a última afirmação importa:</strong> ela elimina entregas em estágios, entrega evolucionária, cascata com subprojetos e Processo Unificado, todos baseados em entrega parcial de funcionalidade. O ganho de tempo aqui vem da <em>sobreposição de fases</em>, não da entrega antecipada.</p>`
+},
+
+{
+  id: "P19", tipo: "pratica", tema: "Cascata e variações", alvo: "Modelo em cascata (clássico)",
+  bullets: [
+    "Reimplementação de um sistema legado em nova plataforma, com comportamento idêntico ao atual;",
+    "O sistema atual está completamente documentado e em produção há quinze anos;",
+    "Nenhum requisito novo será aceito durante o projeto;",
+    "O cliente não tem disponibilidade para participar do desenvolvimento nem para avaliar versões intermediárias;",
+    "Contrato de escopo e preço fechados, com entrega única ao final."
+  ],
+  resposta: `
+    <p><strong>Modelo em cascata (clássico).</strong></p>
+    <p><strong>Fases (versão de Wazlawick):</strong> levantamento de requisitos do sistema → levantamento de requisitos de software → análise de requisitos → projeto → codificação → testes → operação/implantação. As três primeiras equivalem à atual engenharia de requisitos; a análise busca ambiguidades, incompletudes e conflitos.</p>
+    <p><strong>Por que é defensável aqui:</strong> a principal objeção ao cascata é <em>exigir que todos os requisitos sejam declarados em detalhe logo no início</em>, o que geralmente é impossível porque clientes e stakeholders têm necessidades vagas e nem conseguem conceber tudo o que o software poderia fazer. Nesse cenário a objeção está neutralizada: os requisitos já existem, documentados e validados por quinze anos de operação. As demais afirmações eliminam qualquer modelo baseado em participação do cliente ou entrega parcial.</p>
+    <p><strong>Riscos que permanecem e devem ser citados:</strong> erros de especificação só aparecem na implantação, quando o custo de correção é altíssimo; algumas atividades poderiam ser paralelizadas, mas o modelo não permite; e o software só é implantado ao final de todo o ciclo.</p>`
+},
+
+{
+  id: "P20", tipo: "pratica", tema: "Cascata e variações", alvo: "Modelo em cascata (clássico)",
+  bullets: [
+    "Sistema de folha de pagamento cujas regras vêm integralmente de legislação e convenção coletiva publicadas;",
+    "Nenhum requisito depende de interpretação ou preferência do cliente;",
+    "A auditoria interna exige que o documento de cada fase seja aprovado antes do início da fase seguinte;",
+    "O cliente não vê utilidade em receber partes do sistema antes do todo, pois a folha só fecha completa;",
+    "A equipe é numerosa e rotativa, de modo que a documentação formal é o principal meio de transmissão de conhecimento."
+  ],
+  resposta: `
+    <p><strong>Modelo em cascata (clássico).</strong></p>
+    <p>O modelo se caracteriza por <strong>fases rígidas, muita documentação e obrigatoriedade de concluir totalmente uma fase antes de iniciar a próxima</strong> — que é exatamente o que a auditoria exige na terceira afirmação.</p>
+    <p><strong>Por que as objeções usuais não se aplicam:</strong></p>
+    <ul>
+      <li>"Exige que todos os requisitos sejam declarados em detalhe logo no início" — possível aqui, pois derivam de legislação publicada e não de necessidades vagas do cliente;</li>
+      <li>"O software só é implantado ao final de todo o ciclo" — irrelevante, já que a folha só tem valor completa;</li>
+      <li>"Muita documentação" — aqui é vantagem, pois é o meio de transmissão de conhecimento numa equipe rotativa.</li>
+    </ul>
+    <p><strong>Riscos remanescentes:</strong> erros de especificação aparecendo apenas na implantação, com custo altíssimo de correção, e impossibilidade de paralelizar atividades. Se a empresa quiser mitigar o primeiro sem abrir mão da estrutura, a variação natural é a cascata dupla.</p>`
+},
+
+{
+  id: "P21", tipo: "pratica", tema: "Cascata e variações", alvo: "Cascata dupla",
+  bullets: [
+    "Projeto contratualmente obrigado a seguir fases sequenciais, sem entregas parciais;",
+    "Os requisitos são razoavelmente conhecidos, mas o domínio é jurídico e há termos que geram interpretações divergentes;",
+    "O histórico da empresa mostra erros detectados na análise que tiveram origem no levantamento, e erros de projeto com origem na análise;",
+    "A equipe precisa de um mecanismo formal para voltar à fase anterior e corrigir a origem do erro;",
+    "O cliente não aceita protótipos nem estudos prévios antes do início do desenvolvimento."
+  ],
+  resposta: `
+    <p><strong>Cascata dupla.</strong></p>
+    <p>É a evolução quase imediata do cascata clássico: <strong>permite retornar à fase anterior quando um erro é descoberto</strong> — da análise para o levantamento, do projeto para a análise, e assim por diante. Na prática, muitas vezes é preciso voltar várias fases: dos testes ao projeto, do projeto ao levantamento.</p>
+    <p>A quarta afirmação pede literalmente esse mecanismo, e a terceira descreve os retornos que o modelo prevê.</p>
+    <p><strong>Por que não a cascata com redução de risco:</strong> ela exigiria uma fase prévia de estudo com protótipos, storyboards, entrevistas repetidas ou filmagem dos usuários — e a última afirmação a proíbe.</p>
+    <p><strong>O que o modelo melhora e o que não resolve:</strong> melhora a detecção precoce de erros, mas <strong>não resolve o problema de fundo</strong> — o software final continua sendo entregue só no fim. É também aqui que aparece o <em>problema da linguagem</em>: "não falamos a mesma língua, falamos dialetos semelhantes"; termos mudam de significado entre áreas, regiões e faixas etárias — precisamente o caso do vocabulário jurídico da segunda afirmação.</p>`
+},
+
+{
+  id: "P22", tipo: "pratica", tema: "Cascata e variações", alvo: "Cascata dupla",
+  bullets: [
+    "Empresa de pequeno porte, projeto sequencial, sem condições de manter equipes paralelas;",
+    "Os requisitos foram levantados com o cliente e estão razoavelmente estáveis;",
+    "Não há exigência de rastreabilidade formal entre requisitos e níveis de teste;",
+    "A equipe quer apenas poder corrigir a fase de origem quando um erro for descoberto em fase posterior;",
+    "O cliente não participa do desenvolvimento e receberá o sistema em entrega única."
+  ],
+  resposta: `
+    <p><strong>Cascata dupla.</strong></p>
+    <p>O enunciado é construído por eliminação e sobra exatamente um modelo:</p>
+    <ul>
+      <li>Sem equipes paralelas → elimina cascata com subprojetos;</li>
+      <li>Sem exigência de rastreabilidade entre requisitos e níveis de teste → não justifica V nem W;</li>
+      <li>Sem participação do cliente e com entrega única → elimina entregas em estágios, entrega evolucionária, prototipação evolucionária, exploratório e Processo Unificado;</li>
+      <li>Requisitos razoavelmente estáveis, sem incerteza técnica → não justifica espiral nem cascata com redução de risco;</li>
+      <li>Necessidade de voltar à fase de origem do erro → é precisamente o que o cascata dupla acrescenta ao cascata clássico.</li>
+    </ul>
+    <p><strong>Limite a declarar:</strong> o modelo melhora a detecção precoce de erros, mas o software final continua sendo entregue só no fim, e erros de especificação ainda podem aparecer na implantação com custo alto de correção.</p>`
+},
+
+{
+  id: "P23", tipo: "pratica", tema: "Evolucionário e prototipação", alvo: "Desenvolvimento evolucionário exploratório",
+  bullets: [
+    "Sistema pequeno, sem contrato formal e sem exigência de documentação;",
+    "O cliente está disponível diariamente e trabalha lado a lado com a equipe;",
+    "Parte do sistema é bem compreendida desde já; o restante vai surgindo conforme o cliente usa o que foi entregue;",
+    "O cliente propõe novas características a cada semana, a partir do que experimenta;",
+    "O prazo é curto e a vida útil prevista do sistema também."
+  ],
+  resposta: `
+    <p><strong>Desenvolvimento evolucionário, na variação exploratória.</strong></p>
+    <p>O modelo parte de uma <strong>descrição em esboço</strong> do software e executa especificação, desenvolvimento e validação <strong>de forma concorrente</strong>, produzindo uma versão inicial, várias intermediárias e, por fim, a versão final; cada implementação é exposta ao usuário e aprimorada conforme o retorno.</p>
+    <p>A variação <strong>exploratória</strong> é a que o enunciado descreve: trabalha intensamente com o cliente, <strong>começa pelas partes do sistema mais bem compreendidas</strong> e evolui com <strong>novas características propostas pelo cliente</strong>, até entregar o sistema final. As afirmações 2, 3 e 4 são essa definição, item por item.</p>
+    <p><strong>Pontos positivos:</strong> atende às necessidades do cliente de forma mais imediata que o cascata; gera menos documentação e permite especificação gradual; é precursor dos modelos ágeis e iterativo-incrementais.</p>
+    <p><strong>Por que é aceitável aqui:</strong> os três problemas do modelo — progresso pouco visível, pouca documentação e estrutura degradada — pesam pouco em um sistema pequeno, sem contrato, de prazo curto e vida útil curta. Para sistemas pequenos, e com bem mais risco médios, a abordagem é alternativa; para grande porte e longo tempo de vida é inviável. Risco permanente: degenerar no clássico "desenvolver e corrigir".</p>`
+},
+
+{
+  id: "P24", tipo: "pratica", tema: "Evolucionário e prototipação", alvo: "Desenvolvimento evolucionário exploratório",
+  bullets: [
+    "Ferramenta interna de pequeno porte para a própria equipe de marketing da empresa;",
+    "O cliente é o colega da mesa ao lado, disponível o tempo todo;",
+    "Decidiu-se implementar primeiro as funcionalidades que já estão claras, deixando as demais para surgir com o uso;",
+    "Não há contrato, prazo formal, nem qualquer exigência de documentação;",
+    "A ferramenta será descontinuada quando a empresa migrar de plataforma, dentro de cerca de um ano."
+  ],
+  resposta: `
+    <p><strong>Desenvolvimento evolucionário exploratório.</strong></p>
+    <p>A terceira afirmação é a marca registrada da variação: o exploratório <strong>começa pelas partes do sistema mais bem compreendidas</strong> e evolui com novas características propostas pelo cliente, até entregar o sistema final — em oposição à variação com <em>protótipos descartáveis</em>, que ataca justamente os requisitos <strong>mal</strong> entendidos.</p>
+    <p>Especificação, desenvolvimento e validação ocorrem de forma concorrente, a partir de uma descrição em esboço, com cada versão exposta ao usuário e aprimorada conforme o retorno — viável porque o usuário é o colega ao lado.</p>
+    <p><strong>Por que os problemas do modelo não inviabilizam o caso:</strong></p>
+    <ul>
+      <li><em>Progresso pouco visível</em> — não há contrato nem cobrança de cronograma;</li>
+      <li><em>Pouca documentação</em> — as versões ficam registradas só no código, mas não haverá evolução de longo prazo;</li>
+      <li><em>Estrutura degradada</em> — o software seria entregue já desgastado, encarecendo manutenções; irrelevante para algo que será descontinuado em um ano.</li>
+    </ul>
+    <p>Trocando qualquer uma dessas três afirmações — porte maior, vida útil longa, contrato —, a resposta correta deixaria de ser esta.</p>`
+},
+
+{
+  id: "P25", tipo: "pratica", tema: "Evolucionário e prototipação", alvo: "Evolucionário com protótipos descartáveis",
+  bullets: [
+    "Sistema de médio porte com cerca de 80% dos requisitos bem compreendidos e fechados;",
+    "Três ou quatro requisitos são mal compreendidos e geram divergência entre os stakeholders;",
+    "A arquitetura precisa permanecer estável desde cedo;",
+    "A equipe não admite que código improvisado entre no produto final;",
+    "Há tempo e disposição dos stakeholders para avaliar experimentos antes de fechar esses requisitos."
+  ],
+  resposta: `
+    <p><strong>Desenvolvimento evolucionário na variação com protótipos descartáveis.</strong></p>
+    <p>Nessa variação, geram-se muitos protótipos com o objetivo de <strong>compreender os requisitos</strong>, experimentando justamente aqueles <strong>mal entendidos</strong>; os protótipos são <strong>apresentados aos stakeholders e ajustados conforme os pareceres</strong>. As afirmações 2 e 5 são essa definição.</p>
+    <p><strong>Por que "descartáveis" e não "evolucionária":</strong> as afirmações 3 e 4 proíbem que o protótipo vire produto. Na <em>prototipação evolucionária</em> (cornerstone) o protótipo passa a fazer parte do sistema final; aqui isso corromperia a arquitetura e reproduziria o problema da <strong>estrutura degradada</strong> — alterações constantes sem refatoração adequada, com software entregue já desgastado.</p>
+    <p><strong>Por que não o exploratório:</strong> ele começa pelas partes <em>mais bem compreendidas</em> e evolui com novas características propostas pelo cliente; aqui o problema é o oposto — um subconjunto pequeno e mal entendido, com os outros 80% já fechados.</p>
+    <p><strong>Alternativa defensável:</strong> cascata com redução de risco, se o contrato exigir estrutura sequencial — a fase prévia de redução de risco usaria protótipos de interface e storyboards com o mesmo propósito.</p>`
+},
+
+{
+  id: "P26", tipo: "pratica", tema: "Evolucionário e prototipação", alvo: "Evolucionário com protótipos descartáveis",
+  bullets: [
+    "O módulo de cálculo de comissões gera divergência aberta entre a diretoria comercial e a financeira;",
+    "Todos os demais requisitos do sistema já estão fechados e validados;",
+    "A empresa quer testar hipóteses com os dois grupos antes de decidir a regra definitiva;",
+    "Nada do que for construído para esse teste deve ser aproveitado no produto;",
+    "O cronograma do restante do sistema não pode ser afetado por essa indefinição."
+  ],
+  resposta: `
+    <p><strong>Desenvolvimento evolucionário com protótipos descartáveis</strong>, aplicado apenas ao módulo problemático.</p>
+    <p>A variação existe exatamente para isso: gerar protótipos <strong>com o objetivo de compreender os requisitos</strong>, experimentando os que estão mal entendidos, apresentá-los aos stakeholders e ajustá-los conforme os pareceres. A quarta afirmação — nada do que for construído deve ser aproveitado — é o que torna os protótipos <em>descartáveis</em> por definição.</p>
+    <p><strong>Por que não a prototipação evolucionária:</strong> nela os protótipos são desenvolvidos com seriedade, planejamento e cuidado justamente porque <strong>passam a fazer parte do sistema final</strong> — o oposto do que o enunciado determina.</p>
+    <p><strong>Por que a quinta afirmação não muda a resposta:</strong> o protótipo descartável isola a indefinição em uma frente paralela de investigação; o restante do sistema, já fechado e validado, segue seu curso. É a diferença entre usar prototipação como <em>técnica de elicitação</em> e adotá-la como processo de desenvolvimento do produto inteiro.</p>`
+},
+
+{
+  id: "P27", tipo: "pratica", tema: "Evolucionário e prototipação", alvo: "Prototipação evolucionária",
+  bullets: [
+    "Sistema pequeno de agendamento para uma clínica;",
+    "O cliente domina o próprio trabalho, mas não consegue expressá-lo em forma de requisito;",
+    "As conversas só rendem quando ele vê telas e reage a elas;",
+    "A equipe também não conhece o domínio;",
+    "A empresa aceita que a versão aprovada pelo cliente se torne o produto entregue, e o prazo é folgado."
+  ],
+  resposta: `
+    <p><strong>Prototipação evolucionária</strong>, baseada na <em>prototipação cornerstone</em>: protótipos desenvolvidos <strong>com seriedade, planejamento e cuidado, que passam a fazer parte do sistema final</strong> — é o que a quinta afirmação autoriza.</p>
+    <p><strong>Fluxo:</strong> concepção inicial → projeto e implementação do protótipo → teste; se não for aceitável, refina-se em novo ciclo; se for aceitável, o software é finalizado e liberado. A equipe trabalha com o cliente principalmente sobre os <strong>aspectos visíveis do sistema</strong> (a interface) — exatamente o que destrava a comunicação na terceira afirmação.</p>
+    <p><strong>Quando é vantajosa — e as duas condições aparecem no enunciado:</strong> cliente com dificuldade de comunicar seus requisitos (situação bastante frequente) e desconhecimento dos requisitos tanto pela equipe quanto pelo cliente.</p>
+    <p><strong>Cuidados e desvantagens:</strong> é difícil prever o tempo de desenvolvimento e saber se o processo avança a contento (por isso o prazo folgado é essencial); é difícil identificar quando cada fase realmente terminou; pode degenerar no modelo "codificar e consertar"; e é preciso analisar os requisitos e produzir um projeto realista <strong>antes</strong> de iniciar a codificação.</p>`
+},
+
+{
+  id: "P28", tipo: "pratica", tema: "Evolucionário e prototipação", alvo: "Prototipação evolucionária",
+  bullets: [
+    "Sistema pequeno para uma ONG, com orçamento e escopo modestos;",
+    "A coordenadora muda de opinião a cada tela nova que vê, e é assim que os requisitos vão se esclarecendo;",
+    "Nem ela nem a equipe sabem descrever o sistema desejado no início;",
+    "A ONG concorda que o protótipo aprovado seja o próprio sistema entregue, para economizar;",
+    "Não há data-limite rígida e a discussão se concentra nas telas, não nas regras internas."
+  ],
+  resposta: `
+    <p><strong>Prototipação evolucionária.</strong></p>
+    <p>O modelo é a evolução do desenvolvimento evolucionário e se apoia na <strong>prototipação cornerstone</strong>: protótipos feitos com seriedade, planejamento e cuidado, <strong>que passam a fazer parte do sistema final</strong>. A quarta afirmação torna essa a única leitura possível — descarta a variação com protótipos descartáveis.</p>
+    <p><strong>Fluxo:</strong> concepção inicial → projeto e implementação do protótipo → teste; se não aceitável, refina-se em novo ciclo; se aceitável, finaliza-se e libera-se o software. A equipe trabalha com o cliente <strong>principalmente sobre os aspectos visíveis do sistema</strong> — que é onde a quinta afirmação diz que a discussão acontece.</p>
+    <p><strong>Duas condições de vantagem, ambas presentes:</strong> cliente com dificuldade de comunicar seus requisitos; nem equipe nem cliente conhecem bem os requisitos.</p>
+    <p><strong>Cuidados:</strong> tempo difícil de prever e dificuldade de saber se o processo avança (mitigado pela ausência de data-limite); dificuldade de identificar o fim de cada fase; risco de degenerar em "codificar e consertar"; e a obrigação de analisar os requisitos e produzir um projeto realista antes de codificar — sem isso, o protótipo que vira produto nasce com estrutura degradada.</p>`
+},
+
+{
+  id: "P29", tipo: "pratica", tema: "Entregas e cronograma", alvo: "Entregas em estágios",
+  bullets: [
+    "ERP para uma rede de lojas, com requisitos bem compreendidos e estáveis;",
+    "O cliente quer começar a operar o módulo de vendas antes de o restante ficar pronto;",
+    "A equipe consegue mapear as dependências entre os módulos e ordenar o desenvolvimento por elas;",
+    "A gerência quer marcos claros e acompanhamento da evolução por entrega;",
+    "Não há prazo final rígido: o projeto termina quando os requisitos terminarem."
+  ],
+  resposta: `
+    <p><strong>Entregas em estágios.</strong> Entrega funcionalidades ao cliente ao final de cada iteração e é considerado precursor dos modelos iterativos e incrementais e também dos ágeis.</p>
+    <p><strong>Fluxo:</strong> concepção inicial (entender requisitos e avaliar viabilidade) → análise de requisitos → projeto arquitetural → ciclos iterativos de projeto detalhado → codificação e depuração → teste → entrega. Ao fim de cada ciclo verifica-se se o projeto acabou; se não, incrementa-se o contador e um novo ciclo começa a partir do projeto detalhado. O projeto arquitetural é saída da análise de requisitos, pois é ali que se identificam os requisitos não funcionais que mais influenciam a arquitetura.</p>
+    <p><strong>Vantagens acionadas:</strong> a cada ciclo a equipe planeja e sabe o que vai entregar; cliente e gerentes acompanham melhor a evolução; o cliente já pode usar o software antes do fim; com estágios bem planejados, as funcionalidades mais importantes chegam cedo, reduzindo a pressão sobre o cronograma.</p>
+    <p><strong>Dependências do modelo, todas satisfeitas:</strong> planejamento <em>técnico</em> (mapear dependências entre módulos, para desenvolver primeiro aquilo de que os outros dependem) e <em>gerencial</em> (garantir que cada entrega agregue valor real), além de requisitos bem compreendidos.</p>
+    <p><strong>O que separa do modelo orientado a cronograma:</strong> a quinta afirmação. Sem prazo rígido, a guarda do laço é "ainda há requisitos?" e não "ainda há tempo?".</p>`
+},
+
+{
+  id: "P30", tipo: "pratica", tema: "Entregas e cronograma", alvo: "Entregas em estágios",
+  bullets: [
+    "Sistema acadêmico para uma universidade, substituindo processos já regulamentados e bem documentados;",
+    "A reitoria quer usar o módulo de matrícula já no semestre seguinte, antes do sistema completo;",
+    "Os demais módulos podem ser entregues ao longo dos semestres seguintes, sem data-limite absoluta;",
+    "A equipe consegue ordenar os módulos segundo suas dependências técnicas;",
+    "Cada entrega precisa agregar valor de uso imediato para a instituição."
+  ],
+  resposta: `
+    <p><strong>Entregas em estágios.</strong></p>
+    <p>As duas últimas afirmações descrevem exatamente os <strong>dois níveis de planejamento</strong> de que o modelo depende inteiramente:</p>
+    <ul>
+      <li><strong>Técnico</strong> — mapear dependências entre módulos, para desenvolver primeiro aquilo de que os outros dependem;</li>
+      <li><strong>Gerencial</strong> — garantir que cada entrega agregue valor real ao cliente.</li>
+    </ul>
+    <p>A exigência restante do modelo — <strong>requisitos bem compreendidos</strong> — é atendida pela primeira afirmação: os processos já são regulamentados e documentados.</p>
+    <p><strong>Fluxo:</strong> concepção inicial → análise de requisitos → projeto arquitetural → ciclos de projeto detalhado, codificação e depuração, teste e entrega, repetindo até que não haja mais requisitos.</p>
+    <p><strong>Vantagens:</strong> a cada ciclo a equipe planeja e sabe o que vai entregar; cliente e gerentes acompanham a evolução; o cliente usa o software antes do fim do projeto; as funcionalidades mais importantes chegam cedo, reduzindo a pressão sobre o cronograma.</p>
+    <p><strong>Descarte-chave:</strong> não é o modelo orientado a cronograma, pois a terceira afirmação nega a existência de prazo final rígido — e é o prazo rígido, não a entrega em ciclos, que caracteriza aquele modelo.</p>`
+},
+
+{
+  id: "P31", tipo: "pratica", tema: "Entregas e cronograma", alvo: "Modelo orientado a cronograma",
+  bullets: [
+    "O sistema apoiará um evento com data fixa e inadiável;",
+    "Se não estiver pronto naquela data, o software perde completamente a utilidade;",
+    "A lista de requisitos é extensa e sabidamente maior do que o prazo comporta;",
+    "O cliente concorda em classificar os requisitos em essenciais, desejáveis e opcionais;",
+    "A equipe é fixa e não pode ser ampliada."
+  ],
+  resposta: `
+    <p><strong>Modelo orientado a cronograma.</strong></p>
+    <p>Segue o mesmo desenho das entregas em estágios (concepção → análise de requisitos → projeto arquitetural → ciclos), mas os ciclos são organizados em torno da <strong>priorização de requisitos</strong>: essenciais, desejáveis e opcionais — podendo-se usar uma técnica como o <strong>MoSCoW</strong>. A quarta afirmação é essa priorização.</p>
+    <p><strong>A diferença decisiva está na condição de parada do laço:</strong> em vez de perguntar "ainda há requisitos?", pergunta-se <strong>"ainda há tempo?"</strong>. Existe um prazo final rígido e só será entregue o que couber nele — daí a necessidade de tratar primeiro o que é essencial. As afirmações 1, 2 e 3 estabelecem exatamente essa configuração.</p>
+    <p><strong>Vantagem:</strong> com cronograma rígido, garante que as funcionalidades essenciais estarão prontas; o cliente recebe um produto viável, ainda que incompleto.</p>
+    <p><strong>Desvantagem (perda aceita):</strong> se nem tudo for entregue, houve tempo gasto analisando requisitos que não viraram software. É considerada perda aceitável — esses requisitos podem ser retomados em uma segunda versão.</p>`
+},
+
+{
+  id: "P32", tipo: "pratica", tema: "Entregas e cronograma", alvo: "Modelo orientado a cronograma",
+  bullets: [
+    "Sistema de apuração para uma eleição sindical cuja data está fixada em estatuto;",
+    "Um dia de atraso inviabiliza o uso do sistema;",
+    "As funcionalidades desejadas pelo cliente excedem claramente o tempo disponível;",
+    "O cliente aceita receber um produto incompleto, desde que o essencial funcione na data;",
+    "Os requisitos que não couberem poderão ser retomados em uma versão posterior."
+  ],
+  resposta: `
+    <p><strong>Modelo orientado a cronograma.</strong></p>
+    <p>Os ciclos são organizados em torno da <strong>priorização de requisitos</strong> — essenciais, desejáveis e opcionais, tipicamente com MoSCoW — e a <strong>condição de parada do laço é "ainda há tempo?"</strong>, não "ainda há requisitos?". Existe um prazo final rígido e só será entregue o que couber nele.</p>
+    <p>A quarta afirmação enuncia a <strong>vantagem</strong> do modelo: com cronograma rígido, garante-se que as funcionalidades essenciais estarão prontas e o cliente recebe um produto viável, ainda que incompleto. A quinta enuncia a <strong>desvantagem aceita</strong>: o tempo gasto analisando requisitos que não viraram software é uma perda considerada aceitável, pois esses requisitos podem ser retomados em uma segunda versão.</p>
+    <p><strong>O que distingue das entregas em estágios:</strong> os dois modelos têm o mesmo fluxo e ambos entregam por ciclo; a única diferença estrutural é a guarda do laço. Sem prazo inadiável, a resposta seria entregas em estágios.</p>`
+},
+
+{
+  id: "P33", tipo: "pratica", tema: "Entregas e cronograma", alvo: "Entrega evolucionária",
+  bullets: [
+    "O cliente quer opinar e sugerir mudanças a cada versão entregue;",
+    "A empresa precisa manter previsibilidade de cronograma e de orçamento;",
+    "Os requisitos são apenas parcialmente conhecidos no início;",
+    "Já existe um plano de entregas acordado com o cliente;",
+    "Nem todas as sugestões poderão ser absorvidas: algumas serão encaixadas no planejamento existente."
+  ],
+  resposta: `
+    <p><strong>Entrega evolucionária</strong> — combinação entre a <em>prototipação evolucionária</em> e as <em>entregas em estágios</em>. A equipe desenvolve uma versão, apresenta ao cliente e produz novas versões a partir dos pareceres recebidos.</p>
+    <p><strong>O equilíbrio entre os dois lados é o que define o comportamento do processo:</strong></p>
+    <ul>
+      <li>Quanto mais o processo tenta acomodar <strong>todas</strong> as modificações sugeridas, mais ele se aproxima da prototipação evolucionária — e mais perde previsibilidade;</li>
+      <li>Quanto mais as entregas permanecem <strong>planejadas</strong> e as sugestões são encaixadas nesse planejamento, mais ele se aproxima das entregas em estágios — e mais perde flexibilidade.</li>
+    </ul>
+    <p>As afirmações 4 e 5 posicionam este projeto do lado das entregas em estágios, e a afirmação 1 impede que ele seja apenas entregas em estágios. <strong>O objetivo do modelo é justamente ter a flexibilidade da prototipação sem perder o planejamento da entrega em estágios</strong> — a tensão exata entre as afirmações 1 e 2.</p>`
+},
+
+{
+  id: "P34", tipo: "pratica", tema: "Entregas e cronograma", alvo: "Entrega evolucionária",
+  bullets: [
+    "Software de gestão desenvolvido para um cliente âncora que financia o produto;",
+    "A cada versão entregue o cliente envia pareceres detalhados e quer influenciar o rumo do produto;",
+    "A empresa mantém um cronograma de entregas acordado com o setor financeiro e não pode abandoná-lo;",
+    "Os requisitos evoluem conforme o cliente usa cada versão;",
+    "A empresa está disposta a acomodar parte das sugestões, ajustando o planejamento, mas não a substituí-lo."
+  ],
+  resposta: `
+    <p><strong>Entrega evolucionária.</strong></p>
+    <p>É a combinação entre prototipação evolucionária e entregas em estágios: a equipe desenvolve uma versão, apresenta ao cliente e produz novas versões a partir dos pareceres recebidos — a segunda e a quarta afirmações.</p>
+    <p><strong>Como o modelo se posiciona:</strong> quanto mais se tenta acomodar todas as modificações sugeridas, mais o processo se aproxima da prototipação evolucionária; quanto mais as entregas permanecem planejadas e as sugestões são encaixadas nesse planejamento, mais ele se aproxima das entregas em estágios. A quinta afirmação — acomodar parte, ajustando o planejamento sem substituí-lo — descreve o ponto de equilíbrio buscado.</p>
+    <p><strong>Por que não os extremos:</strong> a <em>prototipação evolucionária</em> pura tem tempo de desenvolvimento difícil de prever e é incompatível com o cronograma acordado com o financeiro; as <em>entregas em estágios</em> puras exigem requisitos bem compreendidos e não absorvem a evolução descrita na quarta afirmação.</p>`
+},
+
+{
+  id: "P35", tipo: "pratica", tema: "Reuso e SPL", alvo: "Modelo orientado a ferramentas",
+  bullets: [
+    "Sistema administrativo majoritariamente composto de cadastros, consultas e relatórios padronizados;",
+    "Os requisitos são simples e repetitivos, e nenhum exige algoritmo incomum;",
+    "O prazo é muito curto;",
+    "A empresa domina ferramentas de prototipação e de geração de código a partir de especificações de alto nível;",
+    "Aceita-se que o sistema fique restrito ao que essas ferramentas conseguem produzir."
+  ],
+  resposta: `
+    <p><strong>Modelo orientado a ferramentas.</strong></p>
+    <p>Apoia-se fortemente em <strong>ferramentas de prototipação e geração de código</strong>, permitindo produzir software rapidamente a partir de <strong>especificações de alto nível</strong>.</p>
+    <p><strong>Vantagem:</strong> velocidade de produção — que é o que o prazo curto exige. Pode ainda ser combinado com outros processos, em especial com o modelo espiral, que já trabalha bastante com protótipos.</p>
+    <p><strong>Desvantagem:</strong> é limitado pelo que as ferramentas oferecem. Os requisitos só são atendidos se as ferramentas permitirem, e <strong>quanto maior a complexidade dos requisitos, menor a cobertura possível</strong>.</p>
+    <p><strong>Por que o limite não pesa neste caso:</strong> requisitos simples, repetitivos e sem algoritmos incomuns caem justamente na faixa em que as ferramentas cobrem quase tudo — e a quinta afirmação aceita explicitamente a restrição. Trocando a segunda afirmação por "regras de negócio complexas e específicas", a resposta deixaria de ser esta.</p>`
+},
+
+{
+  id: "P36", tipo: "pratica", tema: "Reuso e SPL", alvo: "Modelo orientado a ferramentas",
+  bullets: [
+    "Portal de formulários eletrônicos para uma secretaria municipal;",
+    "São 40 formulários com validação, protocolo e relatório em formato padrão, sem exceções;",
+    "O prazo é curto e o orçamento é pequeno;",
+    "A empresa possui uma ferramenta que gera telas, persistência e relatórios a partir da especificação;",
+    "A secretaria aceita o padrão visual e funcional oferecido pela ferramenta."
+  ],
+  resposta: `
+    <p><strong>Modelo orientado a ferramentas.</strong></p>
+    <p>O modelo permite <strong>produzir software rapidamente a partir de especificações de alto nível</strong>, apoiando-se em ferramentas de prototipação e geração de código — exatamente o que a quarta afirmação descreve.</p>
+    <p><strong>Vantagem:</strong> velocidade de produção, que responde ao prazo curto e ao orçamento pequeno.</p>
+    <p><strong>Desvantagem e por que ela é aceitável aqui:</strong> o modelo é limitado pelo que as ferramentas oferecem — os requisitos só são atendidos se as ferramentas permitirem, e quanto maior a complexidade, menor a cobertura. A segunda afirmação ("sem exceções") e a quinta (aceitação do padrão da ferramenta) eliminam esse risco.</p>
+    <p><strong>Não confundir com desenvolvimento orientado a reuso:</strong> lá o sistema é montado a partir de <em>componentes prontos</em>, e o preço é a modificação dos requisitos para refletir o disponível; aqui o código é <em>gerado</em> a partir de uma especificação de alto nível, e o preço é ficar restrito às capacidades da ferramenta.</p>`
+},
+
+{
+  id: "P37", tipo: "pratica", tema: "Iterativo e incremental / UP", alvo: "Processo Unificado",
+  bullets: [
+    "Sistema de grande porte e longa vida útil prevista;",
+    "Os requisitos podem ser agrupados e alocados a ciclos distintos, sem forte interdependência;",
+    "Alguns casos de uso são claramente mais complexos e instáveis que os demais;",
+    "O cliente está disponível para participar ao longo de todo o desenvolvimento e a equipe modela em UML;",
+    "A arquitetura precisa atender requisitos não funcionais exigentes de desempenho e segurança, e ser consolidada cedo."
+  ],
+  resposta: `
+    <p><strong>Processo Unificado (UP)</strong> — um dos melhores exemplos de processo iterativo e incremental, criado em conjunto com a UML.</p>
+    <p><strong>As quatro características centrais correspondem uma a uma ao enunciado:</strong></p>
+    <ul>
+      <li><strong>Iterativo e incremental</strong> — desenvolvimento em ciclos; a cada iteração incorporam-se à arquitetura as funcionalidades dos casos de uso daquele ciclo. Cada ciclo acrescenta algo: conhecimento sobre requisitos e arquitetura, modelos, código novo ou melhorado. A integração contínua reduz riscos e melhora o aprendizado da equipe.</li>
+      <li><strong>Dirigido por casos de uso</strong> — a equipe modela em UML; os casos de uso definem todas as funcionalidades, identificam requisitos funcionais e atores, auxiliam na definição e validação da arquitetura e no planejamento das iterações, e embasam casos de teste e documentação.</li>
+      <li><strong>Centrado na arquitetura</strong> — a arquitetura é o esqueleto do software e é pouco passível a mudanças; o UP enfatiza uma arquitetura sólida e consolidada que atenda aos requisitos não funcionais.</li>
+      <li><strong>Focado em riscos</strong> — os casos de uso mais críticos, arriscados, complexos ou instáveis são enfocados nos primeiros ciclos, quando o custo de resolver o risco ainda é baixo. Atenção: "risco" aqui inclui também <strong>valor de negócio</strong>.</li>
+    </ul>
+    <p><strong>Condição de viabilidade atendida pela segunda afirmação:</strong> a abordagem só é viável se for possível dividir os requisitos em grupos e alocar cada grupo a um ciclo; muitas interdependências inviabilizariam a divisão.</p>
+    <p><strong>Fases:</strong> Concepção → Elaboração → Construção → Transição.</p>`
+},
+
+{
+  id: "P38", tipo: "pratica", tema: "Iterativo e incremental / UP", alvo: "Processo Unificado",
+  bullets: [
+    "Sistema logístico de grande porte, com anos de operação previstos e manutenção contínua;",
+    "Três dos quarenta casos de uso concentram quase todo o risco técnico do projeto;",
+    "Outros oito são simples, mas sem eles o cliente não consegue operar;",
+    "Os requisitos podem ser organizados em conjuntos independentes e priorizados por valor e por risco;",
+    "O cliente pode participar do projeto do início ao fim e a empresa quer a arquitetura resolvida antes do grosso da implementação."
+  ],
+  resposta: `
+    <p><strong>Processo Unificado.</strong></p>
+    <p>Duas afirmações praticamente o nomeiam. A quarta é a regra de alocação de requisitos aos ciclos nos processos iterativos e incrementais: agrupamento por <strong>importância para o cliente</strong> (valor que agrega ao negócio) e <strong>risco associado</strong> (complexidade subestimada e instabilidade) — e é também a <em>condição de viabilidade</em> da abordagem, que exige poder dividir os requisitos em grupos.</p>
+    <p>A quinta traduz duas das quatro características: <strong>centrado na arquitetura</strong> e <strong>focado em riscos</strong> — os casos de uso mais críticos vão para os primeiros ciclos, quando o custo de resolver o risco é baixo e ainda há tempo de adaptação.</p>
+    <p><strong>Como o trabalho se distribui:</strong> na <em>concepção</em>, de 10 a 20% dos casos de uso — os mais complexos e arriscados, isto é, os três da segunda afirmação — são escritos em detalhe, enquanto a maioria fica em formato resumido; produzem-se lista de riscos, protótipos, investigações de viabilidade e proposta de arquitetura em alto nível. Na <em>elaboração</em>, fase mais importante, resolvem-se esses três e também os oito indispensáveis, pois no UP "risco" inclui <strong>valor de negócio</strong>; a arquitetura central é programada, testada e consolidada. Na <em>construção</em>, os demais, de complexidade média a baixa. Na <em>transição</em>, implantação, testes de aceitação, treinamento e conversão de dados.</p>`
+},
+
+/* ============================ TEÓRICAS ============================ */
+
+{
+  id: "T01", tipo: "teorica", tema: "V&V (modelos V e W)", bullets: [],
+  pergunta: "Quais as vantagens do modelo de desenvolvimento em V? E as desvantagens?",
+  resposta: `
+    <p><strong>Vantagem:</strong> ênfase forte em <strong>verificação e validação</strong>. O modelo organiza o desenvolvimento em forma de “V”, associando a cada fase construtiva uma fase de teste correspondente:</p>
+    <ul>
+      <li>Requisitos ↔ teste de sistema</li>
+      <li>Projeto arquitetural ↔ teste de integração</li>
+      <li>Projeto detalhado ↔ teste de unidade</li>
+      <li>Implementação — sem correspondência própria</li>
+    </ul>
+    <p><strong>Desvantagens:</strong></p>
+    <ul>
+      <li>Os requisitos só são efetivamente verificados e validados quando o software já está pronto.</li>
+      <li>Mudanças de requisitos continuam custando caro.</li>
+      <li>Exige muita documentação — e de qualidade, sem a qual não é possível derivar testes precisos.</li>
+    </ul>`
+},
+
+{
+  id: "T02", tipo: "teorica", tema: "V&V (modelos V e W)", bullets: [],
+  pergunta: "Qual a diferença entre o modelo em V e o modelo em W, e por que o modelo em W é considerado o melhor dos prescritivos?",
+  resposta: `
+    <p><strong>Diferença:</strong> no modelo em V os testes são executados <em>depois</em> da construção, em níveis correspondentes às fases; no <strong>modelo em W os testes são preparados durante as próprias fases de construção</strong>, e não depois.</p>
+    <ul>
+      <li>Durante a fase de requisitos → preparam-se os testes de sistema.</li>
+      <li>Durante o projeto arquitetural → preparam-se os testes de integração.</li>
+      <li>Durante o projeto detalhado → preparam-se os testes de unidade.</li>
+    </ul>
+    <p>Depois vêm a codificação e a execução dos testes (unidade → integração → sistema), cada rodada podendo gerar depuração e retorno à fase de codificação e mudança.</p>
+    <p><strong>Por que é considerado o melhor dos prescritivos:</strong></p>
+    <ul>
+      <li>Testes planejados durante a construção, e não como etapa final.</li>
+      <li><strong>Só se aceitam conceitos testáveis</strong>: se não é possível imaginar um teste para um requisito, é sinal de que ele não foi definido corretamente — o mesmo vale para arquitetura e projeto.</li>
+      <li>Especialistas em teste envolvidos desde o início, o que antecipa a detecção de erros.</li>
+      <li>Reduz a complexidade do projeto: ao pensar em como testar, percebe-se o que está complexo demais e trabalha-se para simplificar.</li>
+    </ul>`
+},
+
+{
+  id: "T03", tipo: "teorica", tema: "Fundamentos", bullets: [],
+  pergunta: "O que é um processo de software? Apresente as definições dos autores estudados e o que elas têm em comum.",
+  resposta: `
+    <ul>
+      <li><strong>Pressman:</strong> a metodologia que organiza as atividades, ações e tarefas necessárias para desenvolver software de alta qualidade. (Em outra formulação: abordagem adaptável que permite às pessoas selecionar o conjunto apropriado de ações e tarefas, visando entregar software no prazo e com qualidade suficiente.)</li>
+      <li><strong>Sommerville:</strong> um conjunto de atividades relacionadas que leva à produção de um produto de software.</li>
+      <li><strong>Wazlawick:</strong> conjunto de regras que define como o projeto deve ser executado.</li>
+      <li><strong>Terceira definição apresentada em aula:</strong> conjunto de atividades interdependentes, com responsáveis definidos e com entradas e saídas bem estabelecidas.</li>
+    </ul>
+    <p><strong>Convergência:</strong> processo é a forma <strong>organizada e repetível</strong> de construir software — não uma sequência improvisada de passos.</p>`
+},
+
+{
+  id: "T04", tipo: "teorica", tema: "Fundamentos", bullets: [],
+  pergunta: "Diferencie projeto de software, processo de software e modelo de processo.",
+  resposta: `
+    <p><strong>Projeto de software</strong> — para Wazlawick, algo que ocorre em tempo determinado e consiste na execução concreta de um conjunto de atividades que visam criar um produto específico. Para Sommerville, a descrição da estrutura do software a ser implementado, dos modelos e estruturas de dados, das interfaces entre componentes e às vezes dos algoritmos. Para Pressman, a aplicação de princípios, conceitos e práticas que levam ao desenvolvimento de um sistema de alta qualidade.</p>
+    <p><strong>Processo de software</strong> — o conjunto de regras/atividades que define <em>como</em> o projeto deve ser executado (Wazlawick); conjunto de atividades relacionadas que levam à produção de um produto de software (Sommerville).</p>
+    <p><strong>Modelo de processo</strong> — a <strong>abstração</strong> de um processo de software: uma definição geral que será <strong>instanciada</strong> pelas equipes e empresas que a adotarem. Wazlawick: conjunto de regras mais abstratas que especificam a forma geral dos processos. Sommerville: representação simplificada de um processo; cada modelo expressa uma perspectiva particular e fornece informação parcial. Pressman: conjunto de atividades metodológicas e de apoio, ações e tarefas, podendo cada modelo ser descrito por um fluxo de processo diferente.</p>
+    <p><strong>Em uma linha:</strong> o modelo é o molde abstrato, o processo é a regra adotada pela organização, e o projeto é a execução concreta em tempo determinado.</p>`
+},
+
+{
+  id: "T05", tipo: "teorica", tema: "Fundamentos", bullets: [],
+  pergunta: "Como os processos são classificados quanto à divulgação e quanto à formalização?",
+  resposta: `
+    <p><strong>Quanto à divulgação:</strong></p>
+    <ul>
+      <li><strong>Público</strong> — foi documentado, publicado e disponibilizado; qualquer pessoa ou organização pode adotá-lo. É com esse tipo que a disciplina trabalha.</li>
+      <li><strong>Privado</strong> — processo interno e particular de uma organização, não divulgado, de uso exclusivo dela.</li>
+    </ul>
+    <p><strong>Quanto à formalização:</strong></p>
+    <ul>
+      <li><strong>Implícito</strong> — a equipe desenvolve com base apenas na experiência e no hábito, sem passos definidos (por exemplo: uma entrevista geral com o cliente e já partir para o código). É uma alternativa, mas não a mais profissional.</li>
+      <li><strong>Explícito</strong> — etapas e procedimentos claramente definidos, ensinados, compartilhados e institucionalizados; usados por todos os membros da equipe nas situações em que se mostram adequados.</li>
+    </ul>`
+},
+
+{
+  id: "T06", tipo: "teorica", tema: "Fundamentos", bullets: [],
+  pergunta: "O que é um artefato? Dê exemplos e explique por que a definição não se limita a código.",
+  resposta: `
+    <p><strong>Artefato é qualquer produto gerado durante o processo</strong> — não apenas código executável.</p>
+    <p><strong>Exemplos:</strong> documento de especificação de requisitos, modelos UML (de requisitos ou de projeto), modelo de classes conceitual e de domínio, casos de teste, casos de aceitação, módulos funcionais do software.</p>
+    <p>Na arquitetura do processo, os <strong>produtos (artefatos)</strong> são gerados por tarefas executadas por um papel; podem ser <strong>intermediários ou finais</strong> (o software funcionando), <strong>novos ou refinados/melhorados</strong>.</p>
+    <p><strong>Por que a definição importa:</strong> processos utilizam recursos, estão sujeitos a restrições e geram artefatos intermediários e finais. Nos processos iterativos e incrementais, o incremento de um ciclo pode ser justamente um artefato novo — uma especificação, um modelo, casos de teste — e não necessariamente código, embora precise agregar valor.</p>`
+},
+
+{
+  id: "T07", tipo: "teorica", tema: "Fundamentos", bullets: [],
+  pergunta: "Descreva a arquitetura básica de um processo: seus elementos principais e complementares.",
+  resposta: `
+    <p>A arquitetura de um processo é formada por <strong>três elementos principais — papéis, tarefas e produtos</strong> — apoiados por três elementos complementares: <strong>orientações, modelos e ferramentas</strong>.</p>
+    <p><strong>Elementos principais:</strong></p>
+    <ul>
+      <li><strong>Papéis (atores)</strong> — representam grupos ou classes de pessoas responsáveis por executar tarefas. Papel não é a pessoa: as pessoas são <em>instâncias</em> dos papéis, e uma mesma pessoa pode assumir mais de um papel. Ex.: engenheiro/analista de requisitos, projetista, programador, testador.</li>
+      <li><strong>Tarefas</strong> — ações que produzem um resultado que atende total ou parcialmente a um objetivo; determinam o que cada papel deve executar para gerar ou modificar um produto. Possuem entradas e saídas; o sequenciamento define quando cada papel atua. Ex.: validar requisitos, estabelecer a arquitetura, desenvolver modelos, projetar a solução, integrar componentes.</li>
+      <li><strong>Produtos (artefatos)</strong> — gerados por tarefas executadas por um papel; intermediários ou finais, novos ou refinados.</li>
+    </ul>
+    <p><strong>Elementos complementares:</strong></p>
+    <ul>
+      <li><strong>Modelos</strong> — essencialmente diagramas que auxiliam na compreensão do problema ou na definição da solução, além de padronizar os artefatos produzidos.</li>
+      <li><strong>Ferramentas</strong> — softwares que apoiam o processo (ferramentas CASE, ferramentas de teste, a própria linguagem de programação).</li>
+      <li><strong>Orientações</strong> — diretrizes, normas e regras que guardam experiência anterior e ajudam na tomada de decisão durante a execução das tarefas.</li>
+    </ul>`
+},
+
+{
+  id: "T08", tipo: "teorica", tema: "Fundamentos", bullets: [],
+  pergunta: "Quais são os quatro tipos de fluxo de processo? Descreva cada um e dê um exemplo.",
+  resposta: `
+    <p>As etapas de referência são comunicação, planejamento, modelagem, construção e entrega.</p>
+    <ul>
+      <li><strong>Linear</strong> — cada etapa é executada em sequência: conclui-se uma e passa-se à seguinte, até o fim. Comum em processos prescritivos, mais rígidos e com etapas mais definidas. <em>Ex.: modelo em cascata e suas variações.</em></li>
+      <li><strong>Iterativo</strong> — não é linear: possui vários ciclos e iterações. Pode-se voltar de uma etapa à anterior (da modelagem à comunicação, por exemplo) e repetir o ciclo várias vezes, concluindo apenas parte do trabalho em cada iteração. <em>Ex.: Processo Unificado.</em></li>
+      <li><strong>Evolucionário</strong> — parte do princípio de que o software não termina na entrega: ele sofrerá manutenções e evoluções, gerando novas versões. Após a entrega, retorna-se à comunicação para a próxima versão. Não impede o trabalho em ciclos iterativos. <em>Ex.: desenvolvimento por versões sucessivas.</em></li>
+      <li><strong>Paralelo</strong> — etapas podem ocorrer simultaneamente; por exemplo, modelagem acontecendo durante a comunicação e o planejamento, antes de seguir para construção e entrega. <em>Ex.: modelagem concorrente à engenharia de requisitos.</em></li>
+    </ul>`
+},
+
+{
+  id: "T09", tipo: "teorica", tema: "Fundamentos", bullets: [],
+  pergunta: "Quais são os três grandes tipos de modelos de processo e o que distingue cada um?",
+  resposta: `
+    <ul>
+      <li><strong>Prescritivos</strong> — fases, atividades e instruções rígidas e detalhadas. <strong>Ciclo único:</strong> cada etapa deve ser concluída para se passar à seguinte, e o software costuma ser entregue só ao final. Existem variações que vão de muito rígidas a razoavelmente flexíveis.</li>
+      <li><strong>Iterativos e incrementais</strong> — vários subciclos; cada um foca um subconjunto de requisitos e acrescenta novas funcionalidades (ou melhora as existentes) que já agregam valor ao cliente.</li>
+      <li><strong>Ágeis</strong> — também iterativos e incrementais, porém mais flexíveis e pragmáticos: enfatizam menos a definição de atividades e mais os fatores humanos e a interação com as partes interessadas.</li>
+    </ul>`
+},
+
+{
+  id: "T10", tipo: "teorica", tema: "Fundamentos", bullets: [],
+  pergunta: "Para que servem os processos de software e por que eles existem?",
+  resposta: `
+    <p><strong>Para que servem:</strong> desenvolver software novo, do zero; manter — alterar ou evoluir softwares já existentes; e customizar ou adaptar software desenvolvido por terceiros.</p>
+    <p><strong>Por que existem:</strong></p>
+    <ul>
+      <li>Desenvolve-se software para resolver, total ou parcialmente, problemas do mundo real por meio de computadores. Como essa é uma tarefa complexa, vale a premissa central: <strong>é preciso compreender corretamente o problema antes de pensar na solução</strong>. Sem entender o problema, não é possível produzir uma solução correta para ele.</li>
+      <li>O processo nasce do <strong>aprendizado histórico</strong>: empresas e profissionais acumulam casos de sucesso e de fracasso; estudar ambos permite identificar os procedimentos e fatores que levam ao êxito (para repeti-los) e os que levam ao fracasso (para evitá-los). As etapas bem-sucedidas são documentadas justamente para poderem ser replicadas.</li>
+    </ul>
+    <p><strong>Equilíbrio:</strong> um processo fraco ou genérico demais se reflete em um produto final fraco; a ênfase excessiva em detalhismo acarreta perda de produtividade e de objetividade.</p>`
+},
+
+{
+  id: "T11", tipo: "teorica", tema: "Cascata e variações", bullets: [],
+  pergunta: "O que é o modelo “codificar e consertar” e quais problemas ele apresenta?",
+  resposta: `
+    <p>É a forma tradicional (e ainda comum) de desenvolver, em que <strong>não há processo definido</strong>. O desenvolvedor parte de um entendimento preliminar das necessidades do cliente e vai direto ao código — sem engenharia de requisitos e sem projeto. Implementa, testa ele mesmo, apresenta ao cliente e, se não for aprovado, volta a corrigir, repetindo o ciclo até uma versão “razoavelmente satisfatória”.</p>
+    <p><strong>Problemas:</strong></p>
+    <ul>
+      <li>Baseia-se em entendimento superficial dos requisitos — a engenharia de requisitos é a fase mais importante, pois define o que precisa ser feito; começar sem ela é “receita para o fracasso”.</li>
+      <li>Alto risco de requisitos mal compreendidos ou simplesmente não identificados.</li>
+      <li>O código sofre desgaste por manutenção: tantas correções sucessivas fazem o software ser entregue já “remendado” e difícil de manter.</li>
+    </ul>
+    <p><strong>Alerta:</strong> muitos profissionais que se dizem ágeis, na prática, usam apenas “codificar e consertar”. É um <strong>anti-modelo</strong>, e no quadro de evolução dos processos seu avanço é “nenhum”.</p>`
+},
+
+{
+  id: "T12", tipo: "teorica", tema: "Cascata e variações", bullets: [],
+  pergunta: "Quais são as fases do modelo em cascata e quais seus principais defeitos?",
+  resposta: `
+    <p><strong>Fases (versão de Wazlawick):</strong> levantamento de requisitos do sistema → levantamento de requisitos de software → análise de requisitos → projeto → codificação → testes → operação/implantação. As três primeiras equivalem à atual engenharia de requisitos; a análise busca ambiguidades, incompletudes e conflitos nos requisitos.</p>
+    <p>Proposto nos anos 1970, é um dos primeiros processos formalizados: fases rígidas, muita documentação e obrigatoriedade de concluir totalmente uma fase antes de iniciar a próxima.</p>
+    <p><strong>Principais defeitos:</strong></p>
+    <ul>
+      <li>Exige que <strong>todos os requisitos sejam declarados em detalhe logo no início</strong> — o que frequentemente é impossível: clientes e stakeholders têm necessidades vagas e nem sequer conseguem conceber tudo o que o software poderia fazer. Cabe muitas vezes ao engenheiro de requisitos atuar como consultor e sugerir funcionalidades.</li>
+      <li><strong>Erros de especificação só aparecem na implantação</strong>, quando o custo de correção é altíssimo.</li>
+      <li>Algumas atividades poderiam ser paralelizadas, mas o modelo não permite.</li>
+      <li>O software só é implantado ao final de todo o ciclo.</li>
+    </ul>`
+},
+
+{
+  id: "T13", tipo: "teorica", tema: "Cascata e variações", bullets: [],
+  pergunta: "O que é a cascata dupla e quais melhorias Royce propôs ao modelo em cascata?",
+  resposta: `
+    <p><strong>Cascata dupla:</strong> evolução quase imediata do cascata clássico — permite <strong>retornar à fase anterior quando um erro é descoberto</strong> (da análise para o levantamento, do projeto para a análise etc.). Na prática, muitas vezes é preciso voltar várias fases: dos testes ao projeto, do projeto ao levantamento de requisitos. Melhorou a detecção precoce de erros, mas <strong>não resolveu o problema</strong>: o software final continua sendo entregue só no fim.</p>
+    <p>É aqui que aparece o <strong>problema da linguagem</strong>: “não falamos a mesma língua, falamos dialetos semelhantes” — termos mudam de significado entre áreas, regiões e faixas etárias, e isso gera erros graves de interpretação de requisitos, descobertos tarde demais.</p>
+    <p><strong>Melhorias propostas por Royce:</strong></p>
+    <ul>
+      <li>Inserir uma fase de <strong>design</strong> entre o levantamento e a análise de requisitos, para acomodar limitações físicas do sistema.</li>
+      <li>Produzir documentação de qualidade e aplicar <strong>inspeções</strong> sobre os documentos gerados.</li>
+      <li>Entregar ao cliente a <strong>segunda versão</strong> do software, tratando a primeira como experimento (boa ideia, porém cara em tempo).</li>
+      <li>Aplicar testes sistemáticos por <strong>especialistas independentes</strong> dos desenvolvedores, capacitados em planejar, controlar e monitorar testes.</li>
+      <li><strong>Forte envolvimento do cliente</strong> e das partes interessadas — proposta hoje adotada pelos métodos ágeis.</li>
+    </ul>`
+},
+
+{
+  id: "T14", tipo: "teorica", tema: "Cascata e variações", bullets: [],
+  pergunta: "Descreva o modelo cascata entrelaçado (sashimi): suas fases, sua contribuição, vantagens e desvantagens.",
+  resposta: `
+    <p>Chamado assim porque o diagrama de fases sobrepostas lembra um prato japonês. <strong>Não é preciso encerrar totalmente uma fase para iniciar a seguinte</strong> — as fases se sobrepõem e podem correr em paralelo.</p>
+    <p><strong>Fases:</strong> concepção → análise e especificação de requisitos → projeto de arquitetura → projeto detalhado → codificação e depuração → testes de sistema.</p>
+    <p><strong>Contribuição importante:</strong> o <strong>projeto de arquitetura como fase intermediária</strong> entre análise e projeto detalhado. A arquitetura define o esqueleto do software, apoia-se fortemente nos requisitos não funcionais e é pouco flexível a mudanças — alterá-la depois gera custos altíssimos, podendo até obrigar a recomeçar o projeto.</p>
+    <p><strong>Vantagens:</strong> uma fase só se conclui depois de consideradas questões da fase seguinte, o que gera ganho de conhecimento; as equipes de fases diferentes conversam mais, reduzindo a necessidade de documentação.</p>
+    <p><strong>Desvantagens:</strong> início e término das fases ficam pouco explícitos, dificultando estabelecer marcos e definir os artefatos entregues por fase; o paralelismo pode gerar falhas de comunicação, aceitação de hipóteses erradas e ineficiência.</p>`
+},
+
+{
+  id: "T15", tipo: "teorica", tema: "Cascata e variações", bullets: [],
+  pergunta: "Descreva o modelo cascata com subprojetos: fluxo, vantagens e desvantagens. Por que ele é considerado uma ponte para os processos iterativos e incrementais?",
+  resposta: `
+    <p><strong>Fluxo:</strong> concepção do software (viabilidade + levantamento de requisitos) → análise de requisitos (com possibilidade de retorno à concepção) → projeto arquitetônico → <strong>divisão em vários subprojetos desenvolvidos em paralelo</strong> → integração → operação.</p>
+    <p><strong>Vantagens:</strong> subprojetos menores, mais rápidos e fáceis de gerenciar; explora melhor a modularidade; progresso mais visível; permite entregas parciais de funcionalidades conforme ficam prontas.</p>
+    <p><strong>Desvantagens:</strong> interdependências entre subsistemas podem atrasar ou impedir o paralelismo; exige um projeto arquitetônico muito bem feito (válido para qualquer processo, mas aqui explícito); demanda grande capacidade de gerência para evitar inconsistências entre subsistemas; a integração final pode ser problemática se as dependências não forem bem geridas.</p>
+    <p><strong>Ponte para os iterativos e incrementais:</strong> trabalha com <strong>ciclos paralelos</strong> e permite <strong>entregas parciais</strong> — é praticamente um antecessor dos processos iterativos e incrementais, ainda que dentro de uma moldura prescritiva.</p>`
+},
+
+{
+  id: "T16", tipo: "teorica", tema: "Espiral e riscos", bullets: [],
+  pergunta: "Descreva o modelo em espiral: seus ciclos típicos e as quatro etapas de cada ciclo.",
+  resposta: `
+    <p>Embora dividido em vários ciclos, <strong>continua sendo um modelo prescritivo</strong>. Seu foco central é <strong>analisar e mitigar riscos</strong>, e ele <strong>não define um único processo de desenvolvimento</strong>: a cada ciclo escolhe-se o processo mais adequado aos requisitos identificados.</p>
+    <p><strong>Ciclos típicos:</strong></p>
+    <ul>
+      <li><strong>1º</strong> — estudo de viabilidade: vale a pena desenvolver o software? Gera protótipo inicial, ideia de operação, plano de requisitos e plano de ciclo de vida.</li>
+      <li><strong>2º</strong> — engenharia de requisitos: levantamento e análise, requisitos de validação, novos protótipos e simulações, plano de desenvolvimento.</li>
+      <li><strong>3º</strong> — projeto: modelos do produto, projeto de verificação e validação, plano de testes e de integração.</li>
+      <li><strong>4º</strong> — projeto detalhado, codificação, testes de unidade, integração e aceitação, implantação e planejamento da próxima evolução.</li>
+    </ul>
+    <p><strong>As quatro etapas de cada ciclo:</strong></p>
+    <ul>
+      <li><strong>Definição de objetivos</strong> — objetivos específicos da fase, restrições de processo e produto, plano de gerenciamento detalhado, identificação de riscos e estratégias alternativas.</li>
+      <li><strong>Avaliação e redução de riscos</strong> — análise detalhada de cada risco, providências para reduzi-lo e planos de contingência para mitigar impactos.</li>
+      <li><strong>Desenvolvimento e validação</strong> — escolha do modelo de desenvolvimento mais adequado ao tipo de software e aos seus requisitos não funcionais.</li>
+      <li><strong>Planejamento</strong> — revisão do projeto e decisão de seguir para o próximo laço, concluir ou <strong>abandonar</strong> o software.</li>
+    </ul>`
+},
+
+{
+  id: "T17", tipo: "teorica", tema: "Espiral e riscos", bullets: [],
+  pergunta: "Quais as vantagens e desvantagens do modelo em espiral? Em que tipo de projeto ele não é recomendado?",
+  resposta: `
+    <p><strong>Vantagens:</strong></p>
+    <ul>
+      <li>Identifica riscos logo nas primeiras iterações, quando tempo e recursos ainda são amplos e o custo é menor.</li>
+      <li>À medida que os custos crescem, os riscos tendem a diminuir.</li>
+      <li>Inviabilidades técnicas, de orçamento ou de prazo são descobertas cedo.</li>
+      <li>Fases bem definidas permitem acompanhamento objetivo.</li>
+      <li>Adequado a projetos complexos, de alto risco de falha e com requisitos pouco conhecidos.</li>
+    </ul>
+    <p><strong>Desvantagens:</strong></p>
+    <ul>
+      <li>Não há indicação clara da quantidade de trabalho esperada por ciclo; o tempo de desenvolvimento é difícil de prever, sobretudo no início.</li>
+      <li>Exige gerência muito experiente e eficaz, pois a movimentação entre fases e iterações é complexa.</li>
+      <li><strong>Não recomendado para projetos de pequeno e médio porte com requisitos bem conhecidos</strong> — ali o custo da análise de riscos não se paga.</li>
+    </ul>`
+},
+
+{
+  id: "T18", tipo: "teorica", tema: "Espiral e riscos", bullets: [],
+  pergunta: "O que é a cascata com redução de risco e que técnicas ela emprega?",
+  resposta: `
+    <p>É uma variação que <strong>aplica o conceito da espiral ao modelo em cascata</strong>. Insere-se uma <strong>fase de redução de riscos antes do início do processo</strong> — tipicamente antes do levantamento e análise de requisitos, mas possível antes de qualquer fase (análise, projeto, codificação ou testes). O objetivo é tornar os requisitos <strong>mais estáveis e bem definidos desde o começo</strong>.</p>
+    <p><strong>Técnicas citadas (lista não exaustiva):</strong></p>
+    <ul>
+      <li>Protótipos de interface com o usuário;</li>
+      <li>Storyboards com imagens descrevendo cenários de uso;</li>
+      <li>Entrevistas com usuários e clientes, tantas quantas forem necessárias;</li>
+      <li>Filmagem dos usuários, para entender como o trabalho realmente ocorre;</li>
+      <li>Tempestade de ideias, grupo focal e outras técnicas de elicitação.</li>
+    </ul>`
+},
+
+{
+  id: "T19", tipo: "teorica", tema: "Evolucionário e prototipação", bullets: [],
+  pergunta: "O que é o desenvolvimento evolucionário/incremental, quais suas variações e quais seus pontos positivos?",
+  resposta: `
+    <p>Parte de uma <strong>descrição em esboço</strong> do software e executa <strong>especificação, desenvolvimento e validação de forma concorrente</strong>, produzindo uma versão inicial, várias versões intermediárias e, por fim, a versão final. Cada implementação é exposta ao usuário e aprimorada conforme o retorno recebido. O risco é degenerar no clássico “desenvolver e corrigir”.</p>
+    <p><strong>Variações:</strong></p>
+    <ul>
+      <li><strong>Exploratório</strong> — trabalha intensamente com o cliente; começa pelas partes do sistema mais bem compreendidas e evolui com novas características propostas pelo cliente, até entregar o sistema final.</li>
+      <li><strong>Com protótipos descartáveis</strong> — gera muitos protótipos com o objetivo de <em>compreender os requisitos</em>, experimentando justamente aqueles mal entendidos; os protótipos são apresentados aos stakeholders e ajustados conforme os pareceres.</li>
+    </ul>
+    <p><strong>Pontos positivos:</strong> atende às necessidades do cliente de forma mais imediata que o modelo em cascata; gera menos documentação e permite especificação gradual; e é um <strong>precursor dos modelos ágeis e iterativo-incrementais</strong> — à medida que os usuários compreendem melhor o problema, novos requisitos surgem e os antigos se ajustam.</p>`
+},
+
+{
+  id: "T20", tipo: "teorica", tema: "Evolucionário e prototipação", bullets: [],
+  pergunta: "Quais são os três problemas principais do desenvolvimento evolucionário e qual seu limite de aplicação conforme o porte do sistema?",
+  resposta: `
+    <p><strong>Três problemas principais:</strong></p>
+    <ul>
+      <li><strong>Progresso pouco visível</strong> — é muito difícil medir o avanço real, o que dificulta a gerência.</li>
+      <li><strong>Pouca documentação</strong> — as versões ficam registradas apenas no código ou em protótipos, sem apoio documental para evoluções futuras.</li>
+      <li><strong>Estrutura degradada</strong> — alterações constantes sem refatoração adequada corrompem a estrutura; o software pode ser entregue já desgastado, tornando manutenções mais difíceis e caras.</li>
+    </ul>
+    <p><strong>Limites por porte:</strong> para sistemas <strong>pequenos</strong> — e, com bem mais risco, <strong>médios</strong> — pode ser alternativa, sobretudo quando o prazo é curto. Para sistemas de <strong>grande porte e longo tempo de vida</strong>, a abordagem é considerada <strong>inviável</strong>.</p>`
+},
+
+{
+  id: "T21", tipo: "teorica", tema: "Evolucionário e prototipação", bullets: [],
+  pergunta: "O que é a prototipação evolucionária? Qual seu fluxo, quando é vantajosa e quais seus cuidados?",
+  resposta: `
+    <p>É a evolução do desenvolvimento evolucionário, baseada na <strong>prototipação cornerstone</strong>: protótipos desenvolvidos <strong>com seriedade, planejamento e cuidado, que passam a fazer parte do sistema final</strong>.</p>
+    <p><strong>Fluxo:</strong> concepção inicial → projeto e implementação do protótipo → teste; se não for aceitável, refina-se em novo ciclo; se for aceitável, o software é finalizado e liberado. A equipe trabalha com o cliente principalmente sobre os <strong>aspectos visíveis do sistema</strong> (a interface).</p>
+    <p><strong>Quando é vantajosa:</strong></p>
+    <ul>
+      <li>Cliente com dificuldade de comunicar seus requisitos — situação bastante frequente.</li>
+      <li>Nem a equipe nem o cliente conhecem bem os requisitos.</li>
+    </ul>
+    <p><strong>Cuidados e desvantagens:</strong></p>
+    <ul>
+      <li>Difícil prever o tempo de desenvolvimento e saber se o processo avança a contento.</li>
+      <li>Difícil identificar quando cada fase realmente terminou.</li>
+      <li>Pode degenerar no modelo “codificar e consertar”.</li>
+      <li>É preciso analisar os requisitos e produzir um projeto realista <strong>antes</strong> de iniciar a codificação.</li>
+    </ul>`
+},
+
+{
+  id: "T22", tipo: "teorica", tema: "Entregas e cronograma", bullets: [],
+  pergunta: "Descreva o modelo de entregas em estágios: fluxo, vantagens e desvantagens.",
+  resposta: `
+    <p>Modelo que <strong>entrega funcionalidades ao cliente ao final de cada iteração</strong>. É considerado precursor dos modelos iterativos e incrementais e também dos ágeis.</p>
+    <p><strong>Fluxo:</strong> concepção inicial (entender requisitos e avaliar viabilidade) → análise de requisitos → projeto arquitetural → ciclos iterativos de projeto detalhado → codificação e depuração → teste → entrega. Ao fim de cada ciclo verifica-se se o projeto acabou; se não, incrementa-se o contador e um novo ciclo começa a partir do projeto detalhado. O projeto arquitetural é saída da análise de requisitos, pois é ali que se identificam os requisitos não funcionais que mais influenciam a arquitetura.</p>
+    <p><strong>Vantagens:</strong> a cada ciclo a equipe planeja e sabe o que vai entregar; cliente e gerentes acompanham melhor a evolução do sistema; o cliente já pode usar o software antes do fim do projeto; com estágios bem planejados, as funcionalidades mais importantes chegam cedo, o que reduz a pressão sobre o cronograma.</p>
+    <p><strong>Desvantagens:</strong> depende inteiramente de bom planejamento em dois níveis — <strong>técnico</strong> (mapear dependências entre módulos, para desenvolver primeiro aquilo de que os outros dependem) e <strong>gerencial</strong> (garantir que cada entrega agregue valor real ao cliente). Exige requisitos bem compreendidos.</p>`
+},
+
+{
+  id: "T23", tipo: "teorica", tema: "Entregas e cronograma", bullets: [],
+  pergunta: "Qual a diferença entre o modelo orientado a cronograma e as entregas em estágios? Qual sua vantagem e qual perda ele assume?",
+  resposta: `
+    <p>Os dois têm o mesmo desenho geral (concepção → requisitos → projeto arquitetural → ciclos), mas no orientado a cronograma os ciclos são organizados em torno da <strong>priorização de requisitos</strong>: essenciais, desejáveis e opcionais — podendo-se usar uma técnica como o <strong>MoSCoW</strong>.</p>
+    <p><strong>A diferença decisiva está na condição de parada do laço:</strong> em vez de perguntar “ainda há requisitos?”, pergunta-se <strong>“ainda há tempo?”</strong>. Existe um prazo final rígido, e só será entregue o que couber nele — daí a necessidade de tratar primeiro o que é essencial.</p>
+    <p><strong>Vantagem:</strong> com cronograma rígido, garante que as funcionalidades essenciais estarão prontas — o cliente recebe um produto viável, ainda que incompleto.</p>
+    <p><strong>Desvantagem:</strong> se nem tudo for entregue, houve tempo gasto analisando requisitos que não viraram software. É uma perda considerada <strong>aceitável</strong>: esses requisitos podem ser retomados em uma segunda versão.</p>`
+},
+
+{
+  id: "T24", tipo: "teorica", tema: "Entregas e cronograma", bullets: [],
+  pergunta: "O que é a entrega evolucionária e o que determina seu comportamento?",
+  resposta: `
+    <p>É a <strong>combinação entre a prototipação evolucionária e as entregas em estágios</strong>. A equipe desenvolve uma versão, apresenta ao cliente e produz novas versões a partir dos pareceres recebidos.</p>
+    <p><strong>O equilíbrio entre os dois lados é o que define o comportamento do processo:</strong></p>
+    <ul>
+      <li>Quanto mais o processo tenta acomodar <strong>todas</strong> as modificações sugeridas, mais ele se aproxima da <strong>prototipação evolucionária</strong>.</li>
+      <li>Quanto mais as entregas permanecem <strong>planejadas</strong> e as sugestões são encaixadas nesse planejamento, mais ele se aproxima das <strong>entregas em estágios</strong>.</li>
+    </ul>
+    <p><strong>Objetivo:</strong> ter a flexibilidade da prototipação sem perder o planejamento da entrega em estágios.</p>`
+},
+
+{
+  id: "T25", tipo: "teorica", tema: "Reuso e SPL", bullets: [],
+  pergunta: "O que é o modelo orientado a ferramentas? Qual sua vantagem e qual sua limitação?",
+  resposta: `
+    <p>Apoia-se fortemente em <strong>ferramentas de prototipação e geração de código</strong>, permitindo produzir software rapidamente a partir de <strong>especificações de alto nível</strong>.</p>
+    <p><strong>Vantagem:</strong> velocidade de produção. Pode ser combinado com outros processos — por exemplo, com o modelo espiral, que já trabalha bastante com protótipos.</p>
+    <p><strong>Desvantagem:</strong> é <strong>limitado pelo que as ferramentas oferecem</strong>. Os requisitos só são atendidos se as ferramentas permitirem; quanto maior a complexidade dos requisitos, menor a cobertura possível.</p>`
+},
+
+{
+  id: "T26", tipo: "teorica", tema: "Reuso e SPL", bullets: [],
+  pergunta: "O que é o desenvolvimento formal de sistemas e quais suas duas diferenças centrais em relação ao cascata?",
+  resposta: `
+    <p>Possui semelhanças com o Cascata, mas se baseia na <strong>transformação matemática formal da especificação em programas executáveis</strong>.</p>
+    <p><strong>Duas diferenças centrais:</strong></p>
+    <ul>
+      <li>A especificação de requisitos é redefinida como uma <strong>especificação formal matemática detalhada</strong>.</li>
+      <li>As atividades de projeto, implementação e teste são substituídas por um <strong>processo de desenvolvimento transformacional</strong> — uma série de transformações matemáticas aplicadas sobre a especificação até chegar ao software.</li>
+    </ul>
+    <p><strong>Por que é pouco utilizado na prática:</strong> exige conhecimento matemático avançado, e há poucos profissionais capazes de aplicá-lo.</p>`
+},
+
+{
+  id: "T27", tipo: "teorica", tema: "Reuso e SPL", bullets: [],
+  pergunta: "Descreva o desenvolvimento orientado a reuso: condições necessárias, estágios, vantagens e desvantagens.",
+  resposta: `
+    <p>Abordagem que se tornou popular porque hoje existe muito código pronto disponível: bibliotecas, componentes e módulos de código livre na internet, além de software comercial vendido por empresas especializadas. É comum o termo <strong>COTS</strong> (<em>Commercial Off-The-Shelf</em>, “software de prateleira”) — produtos genéricos, ricos em funcionalidades, cujas capacidades precisam ser habilitadas ou desabilitadas conforme o uso.</p>
+    <p><strong>Duas condições necessárias:</strong> uma <strong>ampla base de componentes reutilizáveis</strong> e uma <strong>infraestrutura de integração</strong>.</p>
+    <p><strong>Estágios:</strong></p>
+    <ul>
+      <li><strong>1. Análise de componentes</strong> — a partir dos requisitos, busca-se componentes reutilizáveis. Raramente há correspondência exata: normalmente eles cobrem apenas parte da funcionalidade desejada.</li>
+      <li><strong>2. Modificação dos requisitos</strong> — os requisitos são comparados com o que os componentes oferecem e alterados para refletir o disponível. Se não for possível alterá-los, volta-se à análise de componentes em busca de alternativas — ou decide-se desenvolver componentes novos.</li>
+      <li><strong>3. Projeto de sistema com reuso</strong> — projeta-se (ou reutiliza-se) a arquitetura, organizada para acomodar os componentes escolhidos. Partes novas podem precisar ser projetadas.</li>
+      <li><strong>4. Desenvolvimento e integração</strong> — desenvolve-se o que não pôde ser comprado, baixado ou reaproveitado, e integram-se todos os componentes.</li>
+    </ul>
+    <p><strong>Vantagens:</strong> reduz drasticamente a quantidade de software a ser efetivamente desenvolvida; custos e riscos menores; conclusão muito mais rápida.</p>
+    <p><strong>Desvantagens:</strong> a <strong>modificação dos requisitos</strong> é o principal defeito — adequar o que o cliente quer ao que os componentes fazem pode resultar em um sistema que não atende de fato às suas necessidades. Há ainda o risco de <strong>comportamentos emergentes</strong>: ao integrar componentes de fabricantes diferentes, ou COTS mal configurados, o sistema pode exibir funcionalidades inesperadas, capacidades desnecessárias ou erros em momentos imprevisíveis. Funcionalidades não usadas devem ser explicitamente desabilitadas.</p>
+    <p><strong>Observação:</strong> o reuso deve ser aplicado sempre que possível, mas um processo <em>totalmente</em> orientado a reuso nem sempre é a melhor escolha.</p>`
+},
+
+{
+  id: "T28", tipo: "teorica", tema: "Reuso e SPL", bullets: [],
+  pergunta: "O que é uma Linha de Produto de Software (SPL)? Quando compensa, quando não compensa e que mudanças sua adoção exige?",
+  resposta: `
+    <p>É a <strong>evolução estratégica do reuso</strong>: um conjunto de sistemas que compartilham características comuns — uma <strong>família de softwares</strong> — gerenciada para atender às necessidades de um segmento específico de mercado e construída a partir de um <strong>núcleo comum reaproveitado de forma sistemática</strong>. Aqui o reuso deixa de ser oportunista e passa a ser incorporado ao próprio processo de desenvolvimento.</p>
+    <p><strong>Não compensa quando:</strong> existe apenas um produto único; os produtos não têm relacionamento entre si e não permitem ativos comuns; o número de produtos é pequeno.</p>
+    <p><strong>Compensa quando:</strong> há no mínimo <strong>três produtos relacionados na mesma área</strong> — preferencialmente mais. A partir daí é possível gerenciar versões, otimizar o processo produtivo, e o custo fica abaixo do desenvolvimento convencional.</p>
+    <p><strong>Mudanças que a adoção exige</strong> (não é decisão apenas técnica): na gerência do processo, na forma de desenvolver, na organização estrutural e de pessoal, na abordagem de negócio da empresa e na concepção arquitetônica dos produtos.</p>`
+},
+
+{
+  id: "T29", tipo: "teorica", tema: "Reuso e SPL", bullets: [],
+  pergunta: "Quais são as três atividades essenciais de uma Linha de Produto de Software?",
+  resposta: `
+    <ul>
+      <li><strong>Desenvolvimento do núcleo de ativos</strong> — construir o conjunto de elementos reutilizáveis da linha; identificar os <strong>pontos de variação</strong> (o que muda de um reúso para outro) e produzir instruções/diretrizes sobre como reusar cada ativo.</li>
+      <li><strong>Desenvolvimento de produtos</strong> — <em>entradas:</em> descrição do novo produto, escopo da linha (que decide se ele cabe nela), núcleo de ativos e plano de produção. <em>Saídas:</em> o produto, o parecer sobre o processo produtivo (lições aprendidas), possíveis novos ativos reaproveitáveis e novas restrições.</li>
+      <li><strong>Gerência</strong> — <em>organizacional:</em> identificar a estratégia de negócio e as oportunidades da linha e de novos produtos. <em>Técnica:</em> acompanhar o desenvolvimento, verificar se os padrões estão sendo seguidos e buscar melhorias no processo.</li>
+    </ul>
+    <p><em>(Northrop, 2008, apud Wazlawick, 2013.)</em></p>`
+},
+
+{
+  id: "T30", tipo: "teorica", tema: "Iterativo e incremental / UP", bullets: [],
+  pergunta: "O que caracteriza um processo iterativo e incremental? Diferencie “iterativo” de “incremental”.",
+  resposta: `
+    <p>Caracterizam-se por serem compostos de <strong>vários ciclos de desenvolvimento</strong>. Isso os diferencia dos processos prescritivos tradicionais, que possuem um <strong>único ciclo</strong>, exigem que cada etapa esteja totalmente concluída para se passar à seguinte e só entregam o software ao final de todo o ciclo.</p>
+    <ul>
+      <li><strong>Iterativo</strong> — o desenvolvimento ocorre em vários passos (ciclos) similares, ou seja, possui várias iterações.</li>
+      <li><strong>Incremental</strong> — em cada ciclo <strong>algum valor é acrescentado ao produto</strong>: uma nova funcionalidade, uma melhoria ou refatoração de funcionalidades existentes, ou novos artefatos (especificações, requisitos, modelos de software, casos de teste).</li>
+    </ul>
+    <p><strong>Efeito colateral positivo:</strong> como o cliente vê o produto crescer ciclo a ciclo, a abordagem incentiva a participação das <strong>partes interessadas</strong> — qualquer pessoa que tenha interesse no desenvolvimento do software. Isso reduz erros de requisitos: interpretações erradas, ambiguidades, conflitos e outras anomalias.</p>`
+},
+
+{
+  id: "T31", tipo: "teorica", tema: "Iterativo e incremental / UP", bullets: [],
+  pergunta: "Como os requisitos são distribuídos entre os ciclos em um processo iterativo e incremental? Qual a condição de viabilidade da abordagem?",
+  resposta: `
+    <p>A cada ciclo se considera um conjunto de requisitos, agrupados por <strong>ordem de priorização</strong> segundo dois critérios:</p>
+    <ul>
+      <li><strong>Importância para o cliente</strong> — o valor que o requisito agrega ao negócio;</li>
+      <li><strong>Risco associado</strong> — complexidade que pode ter sido subestimada e instabilidade (requisitos sujeitos a muitas mudanças).</li>
+    </ul>
+    <p>Ao final de cada ciclo é produzido um <strong>novo incremento</strong> contendo extensões, refinamentos, novas funcionalidades ou novos artefatos em relação à versão anterior do sistema.</p>
+    <p><strong>Condição de viabilidade:</strong> a abordagem <strong>só é viável se realmente for possível dividir os requisitos em diversos grupos e alocar cada grupo a um ciclo de desenvolvimento</strong>. Quando os requisitos possuem muitas interdependências entre si, essa divisão pode não ser possível.</p>`
+},
+
+{
+  id: "T32", tipo: "teorica", tema: "Iterativo e incremental / UP", bullets: [],
+  pergunta: "Quais são as quatro fases do Processo Unificado e o objetivo de cada uma?",
+  resposta: `
+    <p>O UP é organizado em quatro fases, e cada fase é composta de diversos ciclos — <strong>com exceção da concepção</strong>, que normalmente se conclui em um único ciclo (embora nada impeça que seja dividida em mais de um).</p>
+    <ul>
+      <li><strong>Concepção</strong> — identifica os requisitos de negócio e determina a <strong>viabilidade</strong> do desenvolvimento: se vale a pena desenvolver o software considerando restrições de orçamento, cronograma, expertise da equipe e recursos de hardware e software. Os requisitos são analisados de forma <strong>abrangente, mas não em profundidade</strong>.</li>
+      <li><strong>Elaboração</strong> — provavelmente a fase mais importante do UP: nela são desenvolvidos os requisitos mais arriscados e mais importantes, e grande parte da complexidade do software é resolvida. A arquitetura é consolidada em definitivo.</li>
+      <li><strong>Construção</strong> — costuma ter mais ciclos e produzir mais código, mas trata de requisitos de dificuldade média a fácil; é “mais uma fase de trabalho do que uma fase difícil”. Ao final, um produto completo e utilizável deve estar desenvolvido, testado e pronto para uso.</li>
+      <li><strong>Transição</strong> — o software é implantado no cliente. Ainda há alguma análise, projeto e implementação, mas em menor grau; é a fase de treinamentos, testes de aceitação e conversões de dados.</li>
+    </ul>`
+},
+
+{
+  id: "T33", tipo: "teorica", tema: "Iterativo e incremental / UP", bullets: [],
+  pergunta: "Quais são as quatro características centrais do Processo Unificado? Explique cada uma.",
+  resposta: `
+    <ul>
+      <li><strong>Iterativo e incremental</strong> — o desenvolvimento é baseado em ciclos iterativos e, a cada iteração, incorporam-se à arquitetura as funcionalidades relativas aos casos de uso daquele ciclo. Cada ciclo acrescenta algo: conhecimento sobre requisitos e arquitetura, modelos (de projeto, de classes, de interação) e desenvolvimento ou melhoria de código. Em cada iteração, todas as disciplinas relativas àquela fase devem ser executadas no grau exigido pela fase. A <strong>integração contínua</strong> reduz riscos, facilita os testes e melhora o aprendizado da equipe.</li>
+      <li><strong>Dirigido por casos de uso</strong> — os casos de uso definem todas as funcionalidades do software: identificam os requisitos funcionais e quem pode utilizá-los (os atores). Além disso, auxiliam na definição e validação da arquitetura, no planejamento das iterações, e servem de base para os casos de teste e para a documentação.</li>
+      <li><strong>Centrado na arquitetura</strong> — a arquitetura é a estrutura, o “esqueleto” do software, e é pouco passível a mudanças; alterá-la pode afetar muito o projeto. O UP enfatiza uma arquitetura sólida e consolidada que atenda aos requisitos não funcionais. À medida que os casos de uso são identificados, detalhados e implementados, são integrados incrementalmente à arquitetura, em geral inseridos em componentes, módulos ou pacotes.</li>
+      <li><strong>Focado em riscos</strong> — os casos de uso mais críticos, arriscados, complexos ou instáveis são enfocados nos primeiros ciclos. A razão é econômica e de prazo: no início, o custo para resolver a ocorrência de um risco ainda é baixo e ainda há tempo para se adaptar a situações não ideais. <strong>Atenção:</strong> nesse processo, “risco” inclui também <strong>valor de negócio</strong> — na elaboração podem ser implementadas funcionalidades pouco complexas, mas que agregam muito valor ao cliente.</li>
+    </ul>`
+},
+
+{
+  id: "T34", tipo: "teorica", tema: "Iterativo e incremental / UP", bullets: [],
+  pergunta: "Quais são as disciplinas do Processo Unificado e como sua ênfase varia entre as fases?",
+  resposta: `
+    <p><strong>Disciplinas:</strong> modelagem de negócio, requisitos, análise e projeto, implementação, teste, implantação, gerenciamento de configuração e mudança, gerenciamento de projeto e ambiente.</p>
+    <ul>
+      <li><strong>Concepção</strong> — ênfase muito forte em modelagem de negócio e requisitos (elicitação ampla, para determinar escopo e complexidade). Começa a haver análise e projeto: os requisitos mais arriscados são detalhados com mais profundidade para apoiar a decisão de viabilidade. Quase nenhuma implementação, poucos testes, nenhuma implantação, um pouco de gerenciamento de configuração e mudança.</li>
+      <li><strong>Elaboração</strong> — ainda há bastante modelagem de negócio e levantamento de requisitos, embora ambos diminuam ao longo dos ciclos. Muita análise e projeto e muita implementação — não tanta quanto na construção, mas a mais importante e arriscada. Já há alguma implantação e alguns testes. O gerenciamento de configuração e mudança aumenta.</li>
+      <li><strong>Construção</strong> — modelagem de negócio bem menor e elicitação bem reduzida. Análise e projeto reduz um pouco, mas segue importante. A implementação é muito alta, os testes aumentam e a implantação se torna bem maior. O gerenciamento de configuração e mudança cresce (várias versões em andamento).</li>
+      <li><strong>Transição</strong> — quase não há mais modelagem de negócio nem elicitação; análise e projeto quase finalizada. Resta alguma implementação, referente a pequenas adaptações. Os testes diminuem bastante e a implantação é bastante grande, incluindo as conversões de dados. Ainda há bastante gerenciamento de configuração e mudança.</li>
+    </ul>
+    <p><strong>Constantes em todo o processo:</strong> o <strong>gerenciamento de projeto</strong> (alocação correta dos ciclos, cumprimento de cronograma e orçamento, qualidade e gerenciamento de riscos) e o <strong>ambiente</strong> (configuração das ferramentas para que a equipe trabalhe bem).</p>`
+},
+
+{
+  id: "T35", tipo: "teorica", tema: "Iterativo e incremental / UP", bullets: [],
+  pergunta: "Quais são as principais atividades da fase de concepção do Processo Unificado?",
+  resposta: `
+    <p>A concepção costuma ser rápida e normalmente tem um único ciclo. Determina a viabilidade do desenvolvimento, identifica os principais riscos e o escopo básico do software. Os requisitos são analisados de forma <strong>abrangente, mas não em profundidade</strong>.</p>
+    <ul>
+      <li>Produzir um seminário curto de requisitos;</li>
+      <li>Identificar a maioria dos atores e casos de uso; a maioria dos casos de uso é escrita em <strong>formato resumido</strong>, e de <strong>10 a 20%</strong> — os percebidos como mais complexos e arriscados — são escritos em detalhe, para melhorar a compreensão do escopo e da complexidade;</li>
+      <li>Identificar os requisitos mais importantes e mais arriscados e produzir uma <strong>lista de riscos</strong>, já pensando em formas de resolvê-los ou evitá-los;</li>
+      <li>Construir <strong>protótipos</strong>, que ajudam a compreender o problema, facilitam a comunicação com o cliente (evitando ambiguidades e resolvendo conflitos) e demonstram conceitos técnicos;</li>
+      <li>Fazer investigações de <strong>viabilidade técnica</strong> de requisitos específicos;</li>
+      <li>Recomendar quais componentes podem ser <strong>reutilizados ou comprados</strong> e quais devem ser construídos — o reuso acelera o desenvolvimento e reduz riscos, desde que exija pouca adaptação;</li>
+      <li>Produzir uma proposta de <strong>arquitetura em alto nível</strong> para atender aos requisitos não funcionais (escalabilidade, confiabilidade, proteção, segurança, desempenho, usabilidade);</li>
+      <li>Elaborar o plano da primeira iteração e gerar a <strong>lista de ferramentas candidatas</strong> (CASE, de interface humano-computador, SGBD e linguagem de programação).</li>
+    </ul>`
+},
+
+{
+  id: "T36", tipo: "teorica", tema: "Iterativo e incremental / UP", bullets: [],
+  pergunta: "Por que a elaboração é considerada a fase mais importante do Processo Unificado? O que acontece nela?",
+  resposta: `
+    <p>É onde realmente começam as iterações — em geral duas ou mais, de duas a seis semanas cada. Nessa fase:</p>
+    <ul>
+      <li>A <strong>maioria dos requisitos é descoberta e estabilizada</strong>, e os problemas encontrados neles são solucionados;</li>
+      <li>O <strong>domínio do problema</strong> é analisado com bem mais profundidade;</li>
+      <li>A <strong>arquitetura central e de risco alto é programada e testada</strong>, e a arquitetura é consolidada em definitivo;</li>
+      <li>Os principais <strong>riscos</strong> são identificados e mitigados ou eliminados, criando-se também planos de contingência;</li>
+      <li>A priorização dos casos de uso mais complexos permite eliminar ou ao menos diminuir o impacto da ocorrência de riscos.</li>
+    </ul>
+    <p>O UP trabalha com a perspectiva de que <strong>mudanças ocorrerão</strong> e busca reduzir seu impacto no projeto — e é na elaboração que essa redução acontece, porque é ali que se resolve grande parte da complexidade do software.</p>`
+},
+
+{
+  id: "T37", tipo: "teorica", tema: "Iterativo e incremental / UP", bullets: [],
+  pergunta: "Descreva a técnica MoSCoW de priorização de requisitos.",
+  resposta: `
+    <ul>
+      <li><strong>Essenciais (must)</strong> — sem eles o software não é útil ao cliente; devem ser implementados obrigatoriamente e primeiro. <strong>Definem o mínimo produto viável (MVP).</strong></li>
+      <li><strong>Desejáveis (should)</strong> — agregam valor, mas não são obrigatórios; podem ficar para uma segunda versão caso o cronograma não permita.</li>
+      <li><strong>Opcionais (could)</strong> — poderiam ser desenvolvidos, mas agregariam pouco valor; são os primeiros a serem deixados para novas versões.</li>
+      <li><strong>Fora do escopo (won't)</strong> — não devem ser implementados porque estão fora do objetivo do software. Identificá-los é útil para <strong>não criar falsas expectativas no cliente</strong>, deixando claro desde o início que fazem parte de um projeto separado.</li>
+    </ul>
+    <p><strong>Onde aparece:</strong> no UP, para ordenar os casos de uso entre os ciclos; e no modelo orientado a cronograma, para decidir o que cabe no prazo rígido.</p>`
+},
+
+{
+  id: "T38", tipo: "teorica", tema: "Iterativo e incremental / UP", bullets: [],
+  pergunta: "O que acontece nas fases de construção e de transição do Processo Unificado?",
+  resposta: `
+    <p><strong>Construção:</strong> trabalha os requisitos que ainda faltam — de complexidade média a baixa, que normalmente <strong>não impactam a arquitetura</strong>. Tem, em geral, mais ciclos que a elaboração, mas é mais uma fase de trabalho do que uma fase difícil. O esforço de análise e projeto é bem menor, e a maior parte do trabalho se refere à <strong>implementação e ao teste</strong> dos componentes da arquitetura relacionados a esses casos de uso. Busca garantir que o software atenda às necessidades dos usuários e se encaixe no contexto da organização. Ao final, um <strong>produto completo e utilizável</strong> deve estar desenvolvido, testado e pronto para uso pelo usuário final.</p>
+    <p><strong>Transição:</strong></p>
+    <ul>
+      <li>O software é implantado no seu ambiente final;</li>
+      <li>São realizados <strong>testes de aceitação</strong> com as partes interessadas;</li>
+      <li>Os usuários são <strong>treinados</strong>;</li>
+      <li>Podem ser necessárias pequenas adaptações;</li>
+      <li>São feitas <strong>conversões de dados</strong> de sistemas anteriores (sistemas legados).</li>
+    </ul>`
+},
+
+{
+  id: "T39", tipo: "teorica", tema: "Cascata e variações", bullets: [],
+  pergunta: "Monte o quadro de evolução dos processos prescritivos, indicando o avanço que cada modelo trouxe.",
+  resposta: `
+    <ul>
+      <li><strong>Codificar e consertar</strong> — nenhum avanço; anti-modelo, sem requisitos nem projeto.</li>
+      <li><strong>Cascata clássico</strong> — primeira formalização em fases sequenciais e documentadas.</li>
+      <li><strong>Cascata dupla</strong> — permite retorno à fase anterior ao detectar erros.</li>
+      <li><strong>Cascata entrelaçado (sashimi)</strong> — sobreposição de fases e introdução do projeto de arquitetura; menos documentação.</li>
+      <li><strong>Modelo em V</strong> — cada fase de construção associada a um nível de teste (V&amp;V).</li>
+      <li><strong>Modelo em W</strong> — testes projetados junto com os artefatos; só conceitos testáveis são aceitos.</li>
+      <li><strong>Cascata com subprojetos</strong> — paralelismo e entregas parciais; ponte para os processos iterativos e incrementais.</li>
+    </ul>
+    <p><strong>Segunda leva (Parte III):</strong> entregas em estágios (ciclos com entrega a cada estágio) → orientado a cronograma (mesmos ciclos, guiados por prioridade e limitados pelo prazo) → entrega evolucionária (flexibilidade da prototipação + planejamento das entregas) → orientado a ferramentas (rápido, limitado pelas ferramentas) → desenvolvimento formal (especificação matemática transformada em código) → orientado a reuso (montar o sistema a partir de componentes existentes) → linhas de produto (reuso sistemático a partir de um núcleo de ativos).</p>`
+},
+
+{
+  id: "T40", tipo: "teorica", tema: "Fundamentos", bullets: [],
+  pergunta: "Quais são as características gerais de um processo de software?",
+  resposta: `
+    <ul>
+      <li>Utiliza <strong>recursos</strong>, está sujeito a <strong>restrições</strong> e gera <strong>artefatos</strong> intermediários e finais.</li>
+      <li>Artefato é qualquer produto gerado durante o processo — não apenas código executável. Inclui documento de especificação de requisitos, modelos UML (de requisitos ou de projeto), casos de teste e casos de aceitação.</li>
+      <li>Pode ser composto por <strong>subprocessos</strong> relacionados, organizados em hierarquia.</li>
+      <li>As atividades têm <strong>critérios de entrada e saída</strong> bem definidos e uma organização lógica.</li>
+      <li>Há <strong>diretrizes</strong> que justificam cada atividade, além de restrições e controles aplicados a atividades, recursos ou produtos.</li>
+    </ul>`
+}
+
+];
+
+</script>
+<script>
+(function(){
+  "use strict";
+  var Q = window.QUESTOES || [];
+  var CHAVE = "pqs-processos-v1";
+
+  var estado = { tipo:"todas", tema:"todos", i:0, ordem:[], revelada:false, marcas:{} };
+
+  function ler(){
+    try{
+      var raw = localStorage.getItem(CHAVE);
+      if(raw){
+        var o = JSON.parse(raw);
+        if(o && typeof o === "object"){
+          estado.marcas = o.marcas || {};
+          if(o.tipo) estado.tipo = o.tipo;
+          if(o.tema) estado.tema = o.tema;
+        }
+      }
+    }catch(e){ /* armazenamento indisponível */ }
+  }
+  function salvar(){
+    try{
+      localStorage.setItem(CHAVE, JSON.stringify({marcas:estado.marcas, tipo:estado.tipo, tema:estado.tema}));
+    }catch(e){ /* sem persistência: a sessão continua funcionando */ }
+  }
+
+  function embaralhar(a){
+    for(var k=a.length-1;k>0;k--){
+      var j = Math.floor(Math.random()*(k+1));
+      var t = a[k]; a[k] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+
+  function filtrar(){
+    return Q.filter(function(q){
+      if(estado.tipo === "revisar"){ if(estado.marcas[q.id] !== "revisar") return false; }
+      else if(estado.tipo !== "todas" && q.tipo !== estado.tipo) return false;
+      if(estado.tema !== "todos" && q.tema !== estado.tema) return false;
+      return true;
+    });
+  }
+
+  function montarOrdem(preservarId){
+    var lista = filtrar();
+    estado.ordem = embaralhar(lista.map(function(q){ return q.id; }));
+    var pos = preservarId ? estado.ordem.indexOf(preservarId) : -1;
+    estado.i = pos >= 0 ? pos : 0;
+    estado.revelada = false;
+  }
+
+  function porId(id){
+    for(var k=0;k<Q.length;k++){ if(Q[k].id === id) return Q[k]; }
+    return null;
+  }
+
+  var palco = document.getElementById("palco");
+  var barra = document.getElementById("barra");
+  var rodape = document.getElementById("rodape");
+
+  function render(){
+    var total = estado.ordem.length;
+    document.getElementById("btnPrev").disabled = (estado.i <= 0 || total === 0);
+    document.getElementById("btnNext").disabled = (estado.i >= total-1 || total === 0);
+    barra.style.width = total ? (((estado.i+1)/total)*100).toFixed(2) + "%" : "0%";
+
+    if(!total){
+      palco.innerHTML = '<div class="vazio">Nenhuma questão com estes filtros.<br>Troque o tipo ou o tema na barra acima.</div>';
+      rodape.textContent = "";
+      return;
+    }
+
+    var q = porId(estado.ordem[estado.i]);
+    if(!q){ palco.innerHTML = ""; return; }
+
+    var temCenario = q.bullets && q.bullets.length;
+    var marca = estado.marcas[q.id] || "";
+
+    var html = '';
+    html += '<div class="meta">';
+    html += '<span class="tag ' + q.tipo + '">' + (q.tipo === "pratica" ? "Prática" : "Teórica") + '</span>';
+    html += '<span class="cont">' + q.id + ' · ' + (estado.i+1) + ' / ' + total + '</span>';
+    html += '</div>';
+
+    html += '<article class="card' + (temCenario ? '' : ' semcenario') + '"><div class="card-in">';
+    if(temCenario){
+      html += '<p class="intro">Considere as afirmações a respeito de um projeto de software:</p><ul class="cenario">';
+      for(var k=0;k<q.bullets.length;k++){ html += '<li>' + q.bullets[k] + '</li>'; }
+      html += '</ul>';
+    }
+    var perg = q.pergunta || "Qual o processo mais adequado a este projeto e por quê?";
+    html += '<p class="pergunta">' + perg + '</p>';
+
+    html += '<div class="acoes">';
+    html += '<button type="button" class="btn-rev" id="btnRevelar">' + (estado.revelada ? "Ocultar resposta" : "Mostrar resposta") + '</button>';
+    html += '<div class="marcas">';
+    html += '<button type="button" class="mark" data-m="sabe" aria-pressed="' + (marca==="sabe") + '">Sei</button>';
+    html += '<button type="button" class="mark" data-m="revisar" aria-pressed="' + (marca==="revisar") + '">Revisar</button>';
+    html += '</div></div>';
+
+    if(estado.revelada){
+      html += '<div class="resposta"><h4>Resposta esperada</h4>' + q.resposta
+           + '<p class="tema-rev">Tema: ' + q.tema + '</p></div>';
+    }
+    html += '</div></article>';
+    palco.innerHTML = html;
+
+    document.getElementById("btnRevelar").addEventListener("click", function(){
+      estado.revelada = !estado.revelada; render();
+    });
+    Array.prototype.forEach.call(palco.querySelectorAll(".mark"), function(b){
+      b.addEventListener("click", function(){
+        var m = b.getAttribute("data-m");
+        estado.marcas[q.id] = (estado.marcas[q.id] === m) ? "" : m;
+        salvar(); render(); contar();
+      });
+    });
+    contar();
+  }
+
+  function contar(){
+    var nP = 0, nT = 0, nR = 0, nS = 0;
+    Q.forEach(function(q){
+      if(q.tipo === "pratica") nP++; else nT++;
+      if(estado.marcas[q.id] === "revisar") nR++;
+      if(estado.marcas[q.id] === "sabe") nS++;
+    });
+    rodape.innerHTML = nP + " práticas · " + nT + " teóricas · " + Q.length + " no total<br>"
+      + "marcadas: " + nS + " como sabidas, " + nR + " para revisar<br>"
+      + "Base: resumos das aulas de Processos de Desenvolvimento de Software (Wazlawick, Sommerville, Pressman).";
+  }
+
+  /* ---------- controles ---------- */
+  var segTipo = document.getElementById("segTipo");
+  segTipo.addEventListener("click", function(ev){
+    var b = ev.target.closest("button"); if(!b) return;
+    estado.tipo = b.getAttribute("data-t");
+    Array.prototype.forEach.call(segTipo.querySelectorAll("button"), function(x){
+      x.setAttribute("aria-pressed", String(x === b));
+    });
+    salvar(); montarOrdem(); render();
+  });
+
+  var selTema = document.getElementById("selTema");
+  (function(){
+    var temas = [];
+    Q.forEach(function(q){ if(temas.indexOf(q.tema) === -1) temas.push(q.tema); });
+    temas.sort();
+    var opts = '<option value="todos">Todos os temas</option>';
+    temas.forEach(function(t){ opts += '<option value="' + t + '">' + t + '</option>'; });
+    selTema.innerHTML = opts;
+  })();
+  selTema.addEventListener("change", function(){
+    estado.tema = selTema.value; salvar(); montarOrdem(); render();
+  });
+
+  document.getElementById("btnShuffle").addEventListener("click", function(){
+    montarOrdem(); render();
+  });
+
+  document.getElementById("btnTema").addEventListener("click", function(){
+    var atual = document.documentElement.getAttribute("data-theme");
+    var escuro = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    var proximo;
+    if(atual === "dark") proximo = "light";
+    else if(atual === "light") proximo = "dark";
+    else proximo = escuro ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", proximo);
+  });
+
+  function ir(d){
+    var novo = estado.i + d;
+    if(novo < 0 || novo >= estado.ordem.length) return;
+    estado.i = novo; estado.revelada = false; render();
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+  document.getElementById("btnPrev").addEventListener("click", function(){ ir(-1); });
+  document.getElementById("btnNext").addEventListener("click", function(){ ir(1); });
+
+  document.addEventListener("keydown", function(ev){
+    var alvo = ev.target;
+    if(alvo && (alvo.tagName === "SELECT" || alvo.tagName === "INPUT" || alvo.tagName === "TEXTAREA")) return;
+    if(ev.key === "ArrowRight"){ ev.preventDefault(); ir(1); }
+    else if(ev.key === "ArrowLeft"){ ev.preventDefault(); ir(-1); }
+    else if(ev.key === " " || ev.key === "Spacebar"){
+      ev.preventDefault();
+      estado.revelada = !estado.revelada; render();
+    }
+  });
+
+  /* ---------- início ---------- */
+  ler();
+  Array.prototype.forEach.call(segTipo.querySelectorAll("button"), function(x){
+    x.setAttribute("aria-pressed", String(x.getAttribute("data-t") === estado.tipo));
+  });
+  selTema.value = estado.tema;
+  montarOrdem();
+  render();
+})();
+</script>
+
+</body>
+</html>
