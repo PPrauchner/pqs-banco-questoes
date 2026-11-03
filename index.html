@@ -292,12 +292,39 @@ ul.cenario li::before{
 // Base: resumos das aulas do Prof. Gilleanes Guedes / Prof. João Pablo Silva da Silva
 // (Wazlawick 2013, Sommerville 2011, Pressman)
 
+// Unidades na ordem do curso. Cada Unidade mapeia para uma única Prova, e seus
+// temas (um por Aula, na ordem das videoaulas) são os únicos válidos para as
+// questões dela. Nas aulas que apresentam um Processo-alvo, "alvo" diz qual é:
+// as práticas desse alvo ficam nessa aula. "praticasPorAlvo" é quantas práticas
+// cada Processo-alvo da Unidade tem. Checagem: node scripts/checar-dados.js
+window.UNIDADES = [
+  { nome: "Fundamentos", prova: "Prova 1", praticasPorAlvo: 2, temas: [
+    { nome: "Fundamentos — conceitos de processo de software" }
+  ]},
+  { nome: "Prescritivos", prova: "Prova 1", praticasPorAlvo: 2, temas: [
+    { nome: "Prescritivos I — cascata e modelos V e W" },
+    { nome: "Prescritivos II — espiral e evolucionários" },
+    { nome: "Prescritivos III — entregas, formal e reuso" },
+    { nome: "Iterativos e incrementais — UP" }
+  ]},
+  { nome: "Ágeis", prova: "Prova 2", praticasPorAlvo: 4, temas: [
+    { nome: "Ágeis I — introdução e Manifesto" },
+    { nome: "Ágeis II — FDD", alvo: "FDD" },
+    { nome: "Ágeis III — DSDM", alvo: "DSDM" },
+    { nome: "Ágeis IV — Crystal Clear", alvo: "Crystal Clear" },
+    { nome: "Ágeis V — ASD", alvo: "ASD" },
+    { nome: "Ágeis VI — XP", alvo: "XP" },
+    { nome: "Ágeis VII — Scrum: papéis e artefatos", alvo: "Scrum" },
+    { nome: "Ágeis VIII — Scrum: pilares e eventos" }
+  ]}
+];
+
 window.QUESTOES = [
 
 /* ============================ PRÁTICAS ============================ */
 
 {
-  id: "P01", tipo: "pratica", tema: "Reuso e SPL", alvo: "Desenvolvimento orientado a reuso",
+  id: "P01", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos III — entregas, formal e reuso", alvo: "Desenvolvimento orientado a reuso",
   bullets: [
     "O cliente tem urgência na conclusão do projeto;",
     "Todavia os requisitos não possuem uma grande complexidade;",
@@ -318,7 +345,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P02", tipo: "pratica", tema: "Reuso e SPL", alvo: "Desenvolvimento orientado a reuso",
+  id: "P02", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos III — entregas, formal e reuso", alvo: "Desenvolvimento orientado a reuso",
   bullets: [
     "A empresa precisa entregar um marketplace completo em três meses;",
     "Existem bibliotecas e componentes de código livre maduros para catálogo, carrinho, meio de pagamento e busca;",
@@ -335,7 +362,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P03", tipo: "pratica", tema: "Reuso e SPL", alvo: "Linha de produto de software (SPL)",
+  id: "P03", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos III — entregas, formal e reuso", alvo: "Linha de produto de software (SPL)",
   bullets: [
     "A empresa já entregou quatro sistemas de gestão para clínicas odontológicas diferentes;",
     "Cerca de 70% das funcionalidades se repetem de um sistema para outro;",
@@ -352,7 +379,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P04", tipo: "pratica", tema: "Reuso e SPL", alvo: "Linha de produto de software (SPL)",
+  id: "P04", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos III — entregas, formal e reuso", alvo: "Linha de produto de software (SPL)",
   bullets: [
     "Fabricante de máquinas agrícolas produz o firmware de cinco linhas de colheitadeiras;",
     "As linhas compartilham um núcleo de funcionalidades e diferem em sensores, potência e painéis;",
@@ -369,7 +396,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P05", tipo: "pratica", tema: "Cascata e variações", alvo: "Desenvolvimento formal de sistemas",
+  id: "P05", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos III — entregas, formal e reuso", alvo: "Desenvolvimento formal de sistemas",
   bullets: [
     "O software controla a dosagem de radiação emitida por um equipamento de radioterapia;",
     "Uma falha de cálculo pode causar a morte do paciente;",
@@ -389,7 +416,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P06", tipo: "pratica", tema: "Cascata e variações", alvo: "Desenvolvimento formal de sistemas",
+  id: "P06", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos III — entregas, formal e reuso", alvo: "Desenvolvimento formal de sistemas",
   bullets: [
     "Sistema de intertravamento de portas e sinalização de um trem metropolitano;",
     "Uma falha pode provocar acidente com vítimas;",
@@ -406,7 +433,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P07", tipo: "pratica", tema: "Espiral e riscos", alvo: "Modelo em espiral",
+  id: "P07", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos II — espiral e evolucionários", alvo: "Modelo em espiral",
   bullets: [
     "O sistema é de grande porte e usará uma tecnologia que a empresa nunca empregou;",
     "Não se sabe sequer se o que o cliente pede é tecnicamente viável;",
@@ -423,7 +450,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P08", tipo: "pratica", tema: "Espiral e riscos", alvo: "Modelo em espiral",
+  id: "P08", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos II — espiral e evolucionários", alvo: "Modelo em espiral",
   bullets: [
     "Projeto de pesquisa e desenvolvimento com verba liberada por etapas;",
     "A cada etapa concluída um comitê decide se libera a verba da etapa seguinte;",
@@ -443,7 +470,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P09", tipo: "pratica", tema: "Espiral e riscos", alvo: "Cascata com redução de risco",
+  id: "P09", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos II — espiral e evolucionários", alvo: "Cascata com redução de risco",
   bullets: [
     "Órgão público; o contrato prevê fases sequenciais com artefatos e marcos formais, e não pode ser alterado;",
     "Os usuários têm grande dificuldade de descrever o trabalho que realizam;",
@@ -460,7 +487,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P10", tipo: "pratica", tema: "Espiral e riscos", alvo: "Cascata com redução de risco",
+  id: "P10", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos II — espiral e evolucionários", alvo: "Cascata com redução de risco",
   bullets: [
     "Sistema para o chão de fábrica de uma indústria metalúrgica;",
     "O procedimento executado pelos operadores difere bastante do que está escrito no manual da empresa;",
@@ -476,7 +503,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P11", tipo: "pratica", tema: "V&V (modelos V e W)", alvo: "Modelo em W",
+  id: "P11", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos I — cascata e modelos V e W", alvo: "Modelo em W",
   bullets: [
     "Sistema bancário de médio porte, com requisitos bem definidos e estáveis por força de regulação;",
     "O contrato exige documentação e rastreabilidade entre requisitos e casos de teste;",
@@ -498,7 +525,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P12", tipo: "pratica", tema: "V&V (modelos V e W)", alvo: "Modelo em W",
+  id: "P12", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos I — cascata e modelos V e W", alvo: "Modelo em W",
   bullets: [
     "Operadora de telecomunicações; os requisitos são estáveis e vêm de regulamentação do setor;",
     "A empresa contratou especialistas em teste que estarão disponíveis desde a fase de requisitos;",
@@ -520,7 +547,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P13", tipo: "pratica", tema: "V&V (modelos V e W)", alvo: "Modelo em V",
+  id: "P13", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos I — cascata e modelos V e W", alvo: "Modelo em V",
   bullets: [
     "Sistema embarcado automotivo submetido a norma técnica;",
     "A norma exige que cada nível de projeto tenha um nível de teste correspondente e documentado;",
@@ -543,7 +570,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P14", tipo: "pratica", tema: "V&V (modelos V e W)", alvo: "Modelo em V",
+  id: "P14", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos I — cascata e modelos V e W", alvo: "Modelo em V",
   bullets: [
     "Software médico de classe regulada, submetido a certificação;",
     "O certificador exige matriz de rastreabilidade ligando requisitos, projeto arquitetural e projeto detalhado a seus respectivos níveis de teste;",
@@ -565,7 +592,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P15", tipo: "pratica", tema: "Cascata e variações", alvo: "Cascata com subprojetos",
+  id: "P15", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos I — cascata e modelos V e W", alvo: "Cascata com subprojetos",
   bullets: [
     "Sistema grande e claramente modularizável;",
     "A empresa tem quatro equipes disponíveis ao mesmo tempo;",
@@ -582,7 +609,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P16", tipo: "pratica", tema: "Cascata e variações", alvo: "Cascata com subprojetos",
+  id: "P16", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos I — cascata e modelos V e W", alvo: "Cascata com subprojetos",
   bullets: [
     "Sistema hospitalar com módulos bem separados: internação, farmácia, laboratório e faturamento;",
     "A arquitetura foi herdada de um projeto semelhante já concluído e é considerada adequada;",
@@ -599,7 +626,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P17", tipo: "pratica", tema: "Cascata e variações", alvo: "Cascata entrelaçado (sashimi)",
+  id: "P17", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos I — cascata e modelos V e W", alvo: "Cascata entrelaçado (sashimi)",
   bullets: [
     "Equipe pequena, experiente e trabalhando no mesmo espaço físico;",
     "Há conversa constante entre quem levanta requisitos, quem projeta e quem codifica;",
@@ -616,7 +643,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P18", tipo: "pratica", tema: "Cascata e variações", alvo: "Cascata entrelaçado (sashimi)",
+  id: "P18", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos I — cascata e modelos V e W", alvo: "Cascata entrelaçado (sashimi)",
   bullets: [
     "A empresa precisa adiantar o cronograma e avalia começar o projeto de arquitetura enquanto a especificação de requisitos ainda é finalizada;",
     "Analistas, arquitetos e programadores trabalham lado a lado e se consultam o tempo todo;",
@@ -633,7 +660,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P19", tipo: "pratica", tema: "Cascata e variações", alvo: "Modelo em cascata (clássico)",
+  id: "P19", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos I — cascata e modelos V e W", alvo: "Modelo em cascata (clássico)",
   bullets: [
     "Reimplementação de um sistema legado em nova plataforma, com comportamento idêntico ao atual;",
     "O sistema atual está completamente documentado e em produção há quinze anos;",
@@ -649,7 +676,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P20", tipo: "pratica", tema: "Cascata e variações", alvo: "Modelo em cascata (clássico)",
+  id: "P20", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos I — cascata e modelos V e W", alvo: "Modelo em cascata (clássico)",
   bullets: [
     "Sistema de folha de pagamento cujas regras vêm integralmente de legislação e convenção coletiva publicadas;",
     "Nenhum requisito depende de interpretação ou preferência do cliente;",
@@ -670,7 +697,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P21", tipo: "pratica", tema: "Cascata e variações", alvo: "Cascata dupla",
+  id: "P21", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos I — cascata e modelos V e W", alvo: "Cascata dupla",
   bullets: [
     "Projeto contratualmente obrigado a seguir fases sequenciais, sem entregas parciais;",
     "Os requisitos são razoavelmente conhecidos, mas o domínio é jurídico e há termos que geram interpretações divergentes;",
@@ -687,7 +714,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P22", tipo: "pratica", tema: "Cascata e variações", alvo: "Cascata dupla",
+  id: "P22", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos I — cascata e modelos V e W", alvo: "Cascata dupla",
   bullets: [
     "Empresa de pequeno porte, projeto sequencial, sem condições de manter equipes paralelas;",
     "Os requisitos foram levantados com o cliente e estão razoavelmente estáveis;",
@@ -709,7 +736,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P23", tipo: "pratica", tema: "Evolucionário e prototipação", alvo: "Desenvolvimento evolucionário exploratório",
+  id: "P23", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos II — espiral e evolucionários", alvo: "Desenvolvimento evolucionário exploratório",
   bullets: [
     "Sistema pequeno, sem contrato formal e sem exigência de documentação;",
     "O cliente está disponível diariamente e trabalha lado a lado com a equipe;",
@@ -726,7 +753,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P24", tipo: "pratica", tema: "Evolucionário e prototipação", alvo: "Desenvolvimento evolucionário exploratório",
+  id: "P24", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos II — espiral e evolucionários", alvo: "Desenvolvimento evolucionário exploratório",
   bullets: [
     "Ferramenta interna de pequeno porte para a própria equipe de marketing da empresa;",
     "O cliente é o colega da mesa ao lado, disponível o tempo todo;",
@@ -748,7 +775,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P25", tipo: "pratica", tema: "Evolucionário e prototipação", alvo: "Evolucionário com protótipos descartáveis",
+  id: "P25", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos II — espiral e evolucionários", alvo: "Evolucionário com protótipos descartáveis",
   bullets: [
     "Sistema de médio porte com cerca de 80% dos requisitos bem compreendidos e fechados;",
     "Três ou quatro requisitos são mal compreendidos e geram divergência entre os stakeholders;",
@@ -765,7 +792,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P26", tipo: "pratica", tema: "Evolucionário e prototipação", alvo: "Evolucionário com protótipos descartáveis",
+  id: "P26", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos II — espiral e evolucionários", alvo: "Evolucionário com protótipos descartáveis",
   bullets: [
     "O módulo de cálculo de comissões gera divergência aberta entre a diretoria comercial e a financeira;",
     "Todos os demais requisitos do sistema já estão fechados e validados;",
@@ -781,7 +808,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P27", tipo: "pratica", tema: "Evolucionário e prototipação", alvo: "Prototipação evolucionária",
+  id: "P27", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos II — espiral e evolucionários", alvo: "Prototipação evolucionária",
   bullets: [
     "Sistema pequeno de agendamento para uma clínica;",
     "O cliente domina o próprio trabalho, mas não consegue expressá-lo em forma de requisito;",
@@ -797,7 +824,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P28", tipo: "pratica", tema: "Evolucionário e prototipação", alvo: "Prototipação evolucionária",
+  id: "P28", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos II — espiral e evolucionários", alvo: "Prototipação evolucionária",
   bullets: [
     "Sistema pequeno para uma ONG, com orçamento e escopo modestos;",
     "A coordenadora muda de opinião a cada tela nova que vê, e é assim que os requisitos vão se esclarecendo;",
@@ -814,7 +841,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P29", tipo: "pratica", tema: "Entregas e cronograma", alvo: "Entregas em estágios",
+  id: "P29", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos III — entregas, formal e reuso", alvo: "Entregas em estágios",
   bullets: [
     "ERP para uma rede de lojas, com requisitos bem compreendidos e estáveis;",
     "O cliente quer começar a operar o módulo de vendas antes de o restante ficar pronto;",
@@ -831,7 +858,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P30", tipo: "pratica", tema: "Entregas e cronograma", alvo: "Entregas em estágios",
+  id: "P30", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos III — entregas, formal e reuso", alvo: "Entregas em estágios",
   bullets: [
     "Sistema acadêmico para uma universidade, substituindo processos já regulamentados e bem documentados;",
     "A reitoria quer usar o módulo de matrícula já no semestre seguinte, antes do sistema completo;",
@@ -853,7 +880,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P31", tipo: "pratica", tema: "Entregas e cronograma", alvo: "Modelo orientado a cronograma",
+  id: "P31", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos III — entregas, formal e reuso", alvo: "Modelo orientado a cronograma",
   bullets: [
     "O sistema apoiará um evento com data fixa e inadiável;",
     "Se não estiver pronto naquela data, o software perde completamente a utilidade;",
@@ -870,7 +897,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P32", tipo: "pratica", tema: "Entregas e cronograma", alvo: "Modelo orientado a cronograma",
+  id: "P32", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos III — entregas, formal e reuso", alvo: "Modelo orientado a cronograma",
   bullets: [
     "Sistema de apuração para uma eleição sindical cuja data está fixada em estatuto;",
     "Um dia de atraso inviabiliza o uso do sistema;",
@@ -886,7 +913,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P33", tipo: "pratica", tema: "Entregas e cronograma", alvo: "Entrega evolucionária",
+  id: "P33", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos III — entregas, formal e reuso", alvo: "Entrega evolucionária",
   bullets: [
     "O cliente quer opinar e sugerir mudanças a cada versão entregue;",
     "A empresa precisa manter previsibilidade de cronograma e de orçamento;",
@@ -905,7 +932,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P34", tipo: "pratica", tema: "Entregas e cronograma", alvo: "Entrega evolucionária",
+  id: "P34", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos III — entregas, formal e reuso", alvo: "Entrega evolucionária",
   bullets: [
     "Software de gestão desenvolvido para um cliente âncora que financia o produto;",
     "A cada versão entregue o cliente envia pareceres detalhados e quer influenciar o rumo do produto;",
@@ -921,7 +948,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P35", tipo: "pratica", tema: "Reuso e SPL", alvo: "Modelo orientado a ferramentas",
+  id: "P35", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos III — entregas, formal e reuso", alvo: "Modelo orientado a ferramentas",
   bullets: [
     "Sistema administrativo majoritariamente composto de cadastros, consultas e relatórios padronizados;",
     "Os requisitos são simples e repetitivos, e nenhum exige algoritmo incomum;",
@@ -938,7 +965,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P36", tipo: "pratica", tema: "Reuso e SPL", alvo: "Modelo orientado a ferramentas",
+  id: "P36", tipo: "pratica", unidade: "Prescritivos", tema: "Prescritivos III — entregas, formal e reuso", alvo: "Modelo orientado a ferramentas",
   bullets: [
     "Portal de formulários eletrônicos para uma secretaria municipal;",
     "São 40 formulários com validação, protocolo e relatório em formato padrão, sem exceções;",
@@ -955,7 +982,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P37", tipo: "pratica", tema: "Iterativo e incremental / UP", alvo: "Processo Unificado",
+  id: "P37", tipo: "pratica", unidade: "Prescritivos", tema: "Iterativos e incrementais — UP", alvo: "Processo Unificado",
   bullets: [
     "Sistema de grande porte e longa vida útil prevista;",
     "Os requisitos podem ser agrupados e alocados a ciclos distintos, sem forte interdependência;",
@@ -977,7 +1004,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "P38", tipo: "pratica", tema: "Iterativo e incremental / UP", alvo: "Processo Unificado",
+  id: "P38", tipo: "pratica", unidade: "Prescritivos", tema: "Iterativos e incrementais — UP", alvo: "Processo Unificado",
   bullets: [
     "Sistema logístico de grande porte, com anos de operação previstos e manutenção contínua;",
     "Três dos quarenta casos de uso concentram quase todo o risco técnico do projeto;",
@@ -995,7 +1022,7 @@ window.QUESTOES = [
 /* ============================ TEÓRICAS ============================ */
 
 {
-  id: "T01", tipo: "teorica", tema: "V&V (modelos V e W)", bullets: [],
+  id: "T01", tipo: "teorica", unidade: "Prescritivos", tema: "Prescritivos I — cascata e modelos V e W", bullets: [],
   pergunta: "Quais as vantagens do modelo de desenvolvimento em V? E as desvantagens?",
   resposta: `
     <p><strong>Vantagem:</strong> ênfase forte em <strong>verificação e validação</strong>. O modelo organiza o desenvolvimento em forma de “V”, associando a cada fase construtiva uma fase de teste correspondente:</p>
@@ -1014,7 +1041,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T02", tipo: "teorica", tema: "V&V (modelos V e W)", bullets: [],
+  id: "T02", tipo: "teorica", unidade: "Prescritivos", tema: "Prescritivos I — cascata e modelos V e W", bullets: [],
   pergunta: "Qual a diferença entre o modelo em V e o modelo em W, e por que o modelo em W é considerado o melhor dos prescritivos?",
   resposta: `
     <p><strong>Diferença:</strong> no modelo em V os testes são executados <em>depois</em> da construção, em níveis correspondentes às fases; no <strong>modelo em W os testes são preparados durante as próprias fases de construção</strong>, e não depois.</p>
@@ -1034,7 +1061,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T03", tipo: "teorica", tema: "Fundamentos", bullets: [],
+  id: "T03", tipo: "teorica", unidade: "Fundamentos", tema: "Fundamentos — conceitos de processo de software", bullets: [],
   pergunta: "O que é um processo de software? Apresente as definições dos autores estudados e o que elas têm em comum.",
   resposta: `
     <ul>
@@ -1047,7 +1074,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T04", tipo: "teorica", tema: "Fundamentos", bullets: [],
+  id: "T04", tipo: "teorica", unidade: "Prescritivos", tema: "Prescritivos I — cascata e modelos V e W", bullets: [],
   pergunta: "Diferencie projeto de software, processo de software e modelo de processo.",
   resposta: `
     <p><strong>Projeto de software</strong> — para Wazlawick, algo que ocorre em tempo determinado e consiste na execução concreta de um conjunto de atividades que visam criar um produto específico. Para Sommerville, a descrição da estrutura do software a ser implementado, dos modelos e estruturas de dados, das interfaces entre componentes e às vezes dos algoritmos. Para Pressman, a aplicação de princípios, conceitos e práticas que levam ao desenvolvimento de um sistema de alta qualidade.</p>
@@ -1057,7 +1084,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T05", tipo: "teorica", tema: "Fundamentos", bullets: [],
+  id: "T05", tipo: "teorica", unidade: "Fundamentos", tema: "Fundamentos — conceitos de processo de software", bullets: [],
   pergunta: "Como os processos são classificados quanto à divulgação e quanto à formalização?",
   resposta: `
     <p><strong>Quanto à divulgação:</strong></p>
@@ -1073,7 +1100,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T06", tipo: "teorica", tema: "Fundamentos", bullets: [],
+  id: "T06", tipo: "teorica", unidade: "Fundamentos", tema: "Fundamentos — conceitos de processo de software", bullets: [],
   pergunta: "O que é um artefato? Dê exemplos e explique por que a definição não se limita a código.",
   resposta: `
     <p><strong>Artefato é qualquer produto gerado durante o processo</strong> — não apenas código executável.</p>
@@ -1083,7 +1110,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T07", tipo: "teorica", tema: "Fundamentos", bullets: [],
+  id: "T07", tipo: "teorica", unidade: "Fundamentos", tema: "Fundamentos — conceitos de processo de software", bullets: [],
   pergunta: "Descreva a arquitetura básica de um processo: seus elementos principais e complementares.",
   resposta: `
     <p>A arquitetura de um processo é formada por <strong>três elementos principais — papéis, tarefas e produtos</strong> — apoiados por três elementos complementares: <strong>orientações, modelos e ferramentas</strong>.</p>
@@ -1102,7 +1129,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T08", tipo: "teorica", tema: "Fundamentos", bullets: [],
+  id: "T08", tipo: "teorica", unidade: "Fundamentos", tema: "Fundamentos — conceitos de processo de software", bullets: [],
   pergunta: "Quais são os quatro tipos de fluxo de processo? Descreva cada um e dê um exemplo.",
   resposta: `
     <p>As etapas de referência são comunicação, planejamento, modelagem, construção e entrega.</p>
@@ -1115,7 +1142,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T09", tipo: "teorica", tema: "Fundamentos", bullets: [],
+  id: "T09", tipo: "teorica", unidade: "Prescritivos", tema: "Prescritivos I — cascata e modelos V e W", bullets: [],
   pergunta: "Quais são os três grandes tipos de modelos de processo e o que distingue cada um?",
   resposta: `
     <ul>
@@ -1126,7 +1153,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T10", tipo: "teorica", tema: "Fundamentos", bullets: [],
+  id: "T10", tipo: "teorica", unidade: "Fundamentos", tema: "Fundamentos — conceitos de processo de software", bullets: [],
   pergunta: "Para que servem os processos de software e por que eles existem?",
   resposta: `
     <p><strong>Para que servem:</strong> desenvolver software novo, do zero; manter — alterar ou evoluir softwares já existentes; e customizar ou adaptar software desenvolvido por terceiros.</p>
@@ -1139,7 +1166,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T11", tipo: "teorica", tema: "Cascata e variações", bullets: [],
+  id: "T11", tipo: "teorica", unidade: "Prescritivos", tema: "Prescritivos I — cascata e modelos V e W", bullets: [],
   pergunta: "O que é o modelo “codificar e consertar” e quais problemas ele apresenta?",
   resposta: `
     <p>É a forma tradicional (e ainda comum) de desenvolver, em que <strong>não há processo definido</strong>. O desenvolvedor parte de um entendimento preliminar das necessidades do cliente e vai direto ao código — sem engenharia de requisitos e sem projeto. Implementa, testa ele mesmo, apresenta ao cliente e, se não for aprovado, volta a corrigir, repetindo o ciclo até uma versão “razoavelmente satisfatória”.</p>
@@ -1153,7 +1180,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T12", tipo: "teorica", tema: "Cascata e variações", bullets: [],
+  id: "T12", tipo: "teorica", unidade: "Prescritivos", tema: "Prescritivos I — cascata e modelos V e W", bullets: [],
   pergunta: "Quais são as fases do modelo em cascata e quais seus principais defeitos?",
   resposta: `
     <p><strong>Fases (versão de Wazlawick):</strong> levantamento de requisitos do sistema → levantamento de requisitos de software → análise de requisitos → projeto → codificação → testes → operação/implantação. As três primeiras equivalem à atual engenharia de requisitos; a análise busca ambiguidades, incompletudes e conflitos nos requisitos.</p>
@@ -1168,7 +1195,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T13", tipo: "teorica", tema: "Cascata e variações", bullets: [],
+  id: "T13", tipo: "teorica", unidade: "Prescritivos", tema: "Prescritivos I — cascata e modelos V e W", bullets: [],
   pergunta: "O que é a cascata dupla e quais melhorias Royce propôs ao modelo em cascata?",
   resposta: `
     <p><strong>Cascata dupla:</strong> evolução quase imediata do cascata clássico — permite <strong>retornar à fase anterior quando um erro é descoberto</strong> (da análise para o levantamento, do projeto para a análise etc.). Na prática, muitas vezes é preciso voltar várias fases: dos testes ao projeto, do projeto ao levantamento de requisitos. Melhorou a detecção precoce de erros, mas <strong>não resolveu o problema</strong>: o software final continua sendo entregue só no fim.</p>
@@ -1184,7 +1211,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T14", tipo: "teorica", tema: "Cascata e variações", bullets: [],
+  id: "T14", tipo: "teorica", unidade: "Prescritivos", tema: "Prescritivos I — cascata e modelos V e W", bullets: [],
   pergunta: "Descreva o modelo cascata entrelaçado (sashimi): suas fases, sua contribuição, vantagens e desvantagens.",
   resposta: `
     <p>Chamado assim porque o diagrama de fases sobrepostas lembra um prato japonês. <strong>Não é preciso encerrar totalmente uma fase para iniciar a seguinte</strong> — as fases se sobrepõem e podem correr em paralelo.</p>
@@ -1195,7 +1222,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T15", tipo: "teorica", tema: "Cascata e variações", bullets: [],
+  id: "T15", tipo: "teorica", unidade: "Prescritivos", tema: "Prescritivos I — cascata e modelos V e W", bullets: [],
   pergunta: "Descreva o modelo cascata com subprojetos: fluxo, vantagens e desvantagens. Por que ele é considerado uma ponte para os processos iterativos e incrementais?",
   resposta: `
     <p><strong>Fluxo:</strong> concepção do software (viabilidade + levantamento de requisitos) → análise de requisitos (com possibilidade de retorno à concepção) → projeto arquitetônico → <strong>divisão em vários subprojetos desenvolvidos em paralelo</strong> → integração → operação.</p>
@@ -1205,7 +1232,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T16", tipo: "teorica", tema: "Espiral e riscos", bullets: [],
+  id: "T16", tipo: "teorica", unidade: "Prescritivos", tema: "Prescritivos II — espiral e evolucionários", bullets: [],
   pergunta: "Descreva o modelo em espiral: seus ciclos típicos e as quatro etapas de cada ciclo.",
   resposta: `
     <p>Embora dividido em vários ciclos, <strong>continua sendo um modelo prescritivo</strong>. Seu foco central é <strong>analisar e mitigar riscos</strong>, e ele <strong>não define um único processo de desenvolvimento</strong>: a cada ciclo escolhe-se o processo mais adequado aos requisitos identificados.</p>
@@ -1226,7 +1253,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T17", tipo: "teorica", tema: "Espiral e riscos", bullets: [],
+  id: "T17", tipo: "teorica", unidade: "Prescritivos", tema: "Prescritivos II — espiral e evolucionários", bullets: [],
   pergunta: "Quais as vantagens e desvantagens do modelo em espiral? Em que tipo de projeto ele não é recomendado?",
   resposta: `
     <p><strong>Vantagens:</strong></p>
@@ -1246,7 +1273,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T18", tipo: "teorica", tema: "Espiral e riscos", bullets: [],
+  id: "T18", tipo: "teorica", unidade: "Prescritivos", tema: "Prescritivos II — espiral e evolucionários", bullets: [],
   pergunta: "O que é a cascata com redução de risco e que técnicas ela emprega?",
   resposta: `
     <p>É uma variação que <strong>aplica o conceito da espiral ao modelo em cascata</strong>. Insere-se uma <strong>fase de redução de riscos antes do início do processo</strong> — tipicamente antes do levantamento e análise de requisitos, mas possível antes de qualquer fase (análise, projeto, codificação ou testes). O objetivo é tornar os requisitos <strong>mais estáveis e bem definidos desde o começo</strong>.</p>
@@ -1261,7 +1288,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T19", tipo: "teorica", tema: "Evolucionário e prototipação", bullets: [],
+  id: "T19", tipo: "teorica", unidade: "Prescritivos", tema: "Prescritivos II — espiral e evolucionários", bullets: [],
   pergunta: "O que é o desenvolvimento evolucionário/incremental, quais suas variações e quais seus pontos positivos?",
   resposta: `
     <p>Parte de uma <strong>descrição em esboço</strong> do software e executa <strong>especificação, desenvolvimento e validação de forma concorrente</strong>, produzindo uma versão inicial, várias versões intermediárias e, por fim, a versão final. Cada implementação é exposta ao usuário e aprimorada conforme o retorno recebido. O risco é degenerar no clássico “desenvolver e corrigir”.</p>
@@ -1274,7 +1301,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T20", tipo: "teorica", tema: "Evolucionário e prototipação", bullets: [],
+  id: "T20", tipo: "teorica", unidade: "Prescritivos", tema: "Prescritivos II — espiral e evolucionários", bullets: [],
   pergunta: "Quais são os três problemas principais do desenvolvimento evolucionário e qual seu limite de aplicação conforme o porte do sistema?",
   resposta: `
     <p><strong>Três problemas principais:</strong></p>
@@ -1287,7 +1314,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T21", tipo: "teorica", tema: "Evolucionário e prototipação", bullets: [],
+  id: "T21", tipo: "teorica", unidade: "Prescritivos", tema: "Prescritivos II — espiral e evolucionários", bullets: [],
   pergunta: "O que é a prototipação evolucionária? Qual seu fluxo, quando é vantajosa e quais seus cuidados?",
   resposta: `
     <p>É a evolução do desenvolvimento evolucionário, baseada na <strong>prototipação cornerstone</strong>: protótipos desenvolvidos <strong>com seriedade, planejamento e cuidado, que passam a fazer parte do sistema final</strong>.</p>
@@ -1307,7 +1334,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T22", tipo: "teorica", tema: "Entregas e cronograma", bullets: [],
+  id: "T22", tipo: "teorica", unidade: "Prescritivos", tema: "Prescritivos III — entregas, formal e reuso", bullets: [],
   pergunta: "Descreva o modelo de entregas em estágios: fluxo, vantagens e desvantagens.",
   resposta: `
     <p>Modelo que <strong>entrega funcionalidades ao cliente ao final de cada iteração</strong>. É considerado precursor dos modelos iterativos e incrementais e também dos ágeis.</p>
@@ -1317,7 +1344,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T23", tipo: "teorica", tema: "Entregas e cronograma", bullets: [],
+  id: "T23", tipo: "teorica", unidade: "Prescritivos", tema: "Prescritivos III — entregas, formal e reuso", bullets: [],
   pergunta: "Qual a diferença entre o modelo orientado a cronograma e as entregas em estágios? Qual sua vantagem e qual perda ele assume?",
   resposta: `
     <p>Os dois têm o mesmo desenho geral (concepção → requisitos → projeto arquitetural → ciclos), mas no orientado a cronograma os ciclos são organizados em torno da <strong>priorização de requisitos</strong>: essenciais, desejáveis e opcionais — podendo-se usar uma técnica como o <strong>MoSCoW</strong>.</p>
@@ -1327,7 +1354,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T24", tipo: "teorica", tema: "Entregas e cronograma", bullets: [],
+  id: "T24", tipo: "teorica", unidade: "Prescritivos", tema: "Prescritivos III — entregas, formal e reuso", bullets: [],
   pergunta: "O que é a entrega evolucionária e o que determina seu comportamento?",
   resposta: `
     <p>É a <strong>combinação entre a prototipação evolucionária e as entregas em estágios</strong>. A equipe desenvolve uma versão, apresenta ao cliente e produz novas versões a partir dos pareceres recebidos.</p>
@@ -1340,7 +1367,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T25", tipo: "teorica", tema: "Reuso e SPL", bullets: [],
+  id: "T25", tipo: "teorica", unidade: "Prescritivos", tema: "Prescritivos III — entregas, formal e reuso", bullets: [],
   pergunta: "O que é o modelo orientado a ferramentas? Qual sua vantagem e qual sua limitação?",
   resposta: `
     <p>Apoia-se fortemente em <strong>ferramentas de prototipação e geração de código</strong>, permitindo produzir software rapidamente a partir de <strong>especificações de alto nível</strong>.</p>
@@ -1349,7 +1376,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T26", tipo: "teorica", tema: "Reuso e SPL", bullets: [],
+  id: "T26", tipo: "teorica", unidade: "Prescritivos", tema: "Prescritivos III — entregas, formal e reuso", bullets: [],
   pergunta: "O que é o desenvolvimento formal de sistemas e quais suas duas diferenças centrais em relação ao cascata?",
   resposta: `
     <p>Possui semelhanças com o Cascata, mas se baseia na <strong>transformação matemática formal da especificação em programas executáveis</strong>.</p>
@@ -1362,7 +1389,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T27", tipo: "teorica", tema: "Reuso e SPL", bullets: [],
+  id: "T27", tipo: "teorica", unidade: "Prescritivos", tema: "Prescritivos III — entregas, formal e reuso", bullets: [],
   pergunta: "Descreva o desenvolvimento orientado a reuso: condições necessárias, estágios, vantagens e desvantagens.",
   resposta: `
     <p>Abordagem que se tornou popular porque hoje existe muito código pronto disponível: bibliotecas, componentes e módulos de código livre na internet, além de software comercial vendido por empresas especializadas. É comum o termo <strong>COTS</strong> (<em>Commercial Off-The-Shelf</em>, “software de prateleira”) — produtos genéricos, ricos em funcionalidades, cujas capacidades precisam ser habilitadas ou desabilitadas conforme o uso.</p>
@@ -1380,7 +1407,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T28", tipo: "teorica", tema: "Reuso e SPL", bullets: [],
+  id: "T28", tipo: "teorica", unidade: "Prescritivos", tema: "Prescritivos III — entregas, formal e reuso", bullets: [],
   pergunta: "O que é uma Linha de Produto de Software (SPL)? Quando compensa, quando não compensa e que mudanças sua adoção exige?",
   resposta: `
     <p>É a <strong>evolução estratégica do reuso</strong>: um conjunto de sistemas que compartilham características comuns — uma <strong>família de softwares</strong> — gerenciada para atender às necessidades de um segmento específico de mercado e construída a partir de um <strong>núcleo comum reaproveitado de forma sistemática</strong>. Aqui o reuso deixa de ser oportunista e passa a ser incorporado ao próprio processo de desenvolvimento.</p>
@@ -1390,7 +1417,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T29", tipo: "teorica", tema: "Reuso e SPL", bullets: [],
+  id: "T29", tipo: "teorica", unidade: "Prescritivos", tema: "Prescritivos III — entregas, formal e reuso", bullets: [],
   pergunta: "Quais são as três atividades essenciais de uma Linha de Produto de Software?",
   resposta: `
     <ul>
@@ -1402,7 +1429,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T30", tipo: "teorica", tema: "Iterativo e incremental / UP", bullets: [],
+  id: "T30", tipo: "teorica", unidade: "Prescritivos", tema: "Iterativos e incrementais — UP", bullets: [],
   pergunta: "O que caracteriza um processo iterativo e incremental? Diferencie “iterativo” de “incremental”.",
   resposta: `
     <p>Caracterizam-se por serem compostos de <strong>vários ciclos de desenvolvimento</strong>. Isso os diferencia dos processos prescritivos tradicionais, que possuem um <strong>único ciclo</strong>, exigem que cada etapa esteja totalmente concluída para se passar à seguinte e só entregam o software ao final de todo o ciclo.</p>
@@ -1414,7 +1441,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T31", tipo: "teorica", tema: "Iterativo e incremental / UP", bullets: [],
+  id: "T31", tipo: "teorica", unidade: "Prescritivos", tema: "Iterativos e incrementais — UP", bullets: [],
   pergunta: "Como os requisitos são distribuídos entre os ciclos em um processo iterativo e incremental? Qual a condição de viabilidade da abordagem?",
   resposta: `
     <p>A cada ciclo se considera um conjunto de requisitos, agrupados por <strong>ordem de priorização</strong> segundo dois critérios:</p>
@@ -1427,7 +1454,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T32", tipo: "teorica", tema: "Iterativo e incremental / UP", bullets: [],
+  id: "T32", tipo: "teorica", unidade: "Prescritivos", tema: "Iterativos e incrementais — UP", bullets: [],
   pergunta: "Quais são as quatro fases do Processo Unificado e o objetivo de cada uma?",
   resposta: `
     <p>O UP é organizado em quatro fases, e cada fase é composta de diversos ciclos — <strong>com exceção da concepção</strong>, que normalmente se conclui em um único ciclo (embora nada impeça que seja dividida em mais de um).</p>
@@ -1440,7 +1467,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T33", tipo: "teorica", tema: "Iterativo e incremental / UP", bullets: [],
+  id: "T33", tipo: "teorica", unidade: "Prescritivos", tema: "Iterativos e incrementais — UP", bullets: [],
   pergunta: "Quais são as quatro características centrais do Processo Unificado? Explique cada uma.",
   resposta: `
     <ul>
@@ -1452,7 +1479,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T34", tipo: "teorica", tema: "Iterativo e incremental / UP", bullets: [],
+  id: "T34", tipo: "teorica", unidade: "Prescritivos", tema: "Iterativos e incrementais — UP", bullets: [],
   pergunta: "Quais são as disciplinas do Processo Unificado e como sua ênfase varia entre as fases?",
   resposta: `
     <p><strong>Disciplinas:</strong> modelagem de negócio, requisitos, análise e projeto, implementação, teste, implantação, gerenciamento de configuração e mudança, gerenciamento de projeto e ambiente.</p>
@@ -1466,7 +1493,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T35", tipo: "teorica", tema: "Iterativo e incremental / UP", bullets: [],
+  id: "T35", tipo: "teorica", unidade: "Prescritivos", tema: "Iterativos e incrementais — UP", bullets: [],
   pergunta: "Quais são as principais atividades da fase de concepção do Processo Unificado?",
   resposta: `
     <p>A concepção costuma ser rápida e normalmente tem um único ciclo. Determina a viabilidade do desenvolvimento, identifica os principais riscos e o escopo básico do software. Os requisitos são analisados de forma <strong>abrangente, mas não em profundidade</strong>.</p>
@@ -1483,7 +1510,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T36", tipo: "teorica", tema: "Iterativo e incremental / UP", bullets: [],
+  id: "T36", tipo: "teorica", unidade: "Prescritivos", tema: "Iterativos e incrementais — UP", bullets: [],
   pergunta: "Por que a elaboração é considerada a fase mais importante do Processo Unificado? O que acontece nela?",
   resposta: `
     <p>É onde realmente começam as iterações — em geral duas ou mais, de duas a seis semanas cada. Nessa fase:</p>
@@ -1498,7 +1525,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T37", tipo: "teorica", tema: "Iterativo e incremental / UP", bullets: [],
+  id: "T37", tipo: "teorica", unidade: "Prescritivos", tema: "Iterativos e incrementais — UP", bullets: [],
   pergunta: "Descreva a técnica MoSCoW de priorização de requisitos.",
   resposta: `
     <ul>
@@ -1511,7 +1538,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T38", tipo: "teorica", tema: "Iterativo e incremental / UP", bullets: [],
+  id: "T38", tipo: "teorica", unidade: "Prescritivos", tema: "Iterativos e incrementais — UP", bullets: [],
   pergunta: "O que acontece nas fases de construção e de transição do Processo Unificado?",
   resposta: `
     <p><strong>Construção:</strong> trabalha os requisitos que ainda faltam — de complexidade média a baixa, que normalmente <strong>não impactam a arquitetura</strong>. Tem, em geral, mais ciclos que a elaboração, mas é mais uma fase de trabalho do que uma fase difícil. O esforço de análise e projeto é bem menor, e a maior parte do trabalho se refere à <strong>implementação e ao teste</strong> dos componentes da arquitetura relacionados a esses casos de uso. Busca garantir que o software atenda às necessidades dos usuários e se encaixe no contexto da organização. Ao final, um <strong>produto completo e utilizável</strong> deve estar desenvolvido, testado e pronto para uso pelo usuário final.</p>
@@ -1526,7 +1553,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T39", tipo: "teorica", tema: "Cascata e variações", bullets: [],
+  id: "T39", tipo: "teorica", unidade: "Prescritivos", tema: "Prescritivos I — cascata e modelos V e W", bullets: [],
   pergunta: "Monte o quadro de evolução dos processos prescritivos, indicando o avanço que cada modelo trouxe.",
   resposta: `
     <ul>
@@ -1542,7 +1569,7 @@ window.QUESTOES = [
 },
 
 {
-  id: "T40", tipo: "teorica", tema: "Fundamentos", bullets: [],
+  id: "T40", tipo: "teorica", unidade: "Fundamentos", tema: "Fundamentos — conceitos de processo de software", bullets: [],
   pergunta: "Quais são as características gerais de um processo de software?",
   resposta: `
     <ul>
@@ -1552,7 +1579,28 @@ window.QUESTOES = [
       <li>As atividades têm <strong>critérios de entrada e saída</strong> bem definidos e uma organização lógica.</li>
       <li>Há <strong>diretrizes</strong> que justificam cada atividade, além de restrições e controles aplicados a atividades, recursos ou produtos.</li>
     </ul>`
-}
+},
+
+/* ============================== ÁGEIS ==============================
+   Uma âncora por aula. As questões de cada aula (práticas e teóricas)
+   entram logo abaixo da âncora dela, cada objeto terminando em vírgula,
+   para que as aulas sejam preenchidas em paralelo sem conflito. */
+
+/* --- Ágeis I — introdução e Manifesto --- */
+
+/* --- Ágeis II — FDD --- */
+
+/* --- Ágeis III — DSDM --- */
+
+/* --- Ágeis IV — Crystal Clear --- */
+
+/* --- Ágeis V — ASD --- */
+
+/* --- Ágeis VI — XP --- */
+
+/* --- Ágeis VII — Scrum: papéis e artefatos --- */
+
+/* --- Ágeis VIII — Scrum: pilares e eventos --- */
 
 ];
 
