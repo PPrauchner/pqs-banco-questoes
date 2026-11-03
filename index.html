@@ -1860,6 +1860,163 @@ window.QUESTOES = [
 
 /* --- Ágeis III — DSDM --- */
 
+{
+  id: "P43", tipo: "pratica", unidade: "Ágeis", tema: "Ágeis III — DSDM", alvo: "DSDM",
+  bullets: [
+    "Sistema de inscrição e credenciamento para um congresso médico que acontece daqui a quatro meses;",
+    "O orçamento foi fechado em contrato antes do início e não admite aditivos;",
+    "A comissão organizadora sabe com clareza o que quer e consegue dizer o que é indispensável e o que pode esperar;",
+    "Os requisitos se dividem naturalmente em módulos: inscrição, pagamento, emissão de crachás e certificados;",
+    "Organizadores, funcionários da secretaria que usarão o sistema e o gestor do contrato se reúnem com a equipe toda semana;",
+    "O projeto é de porte médio, sem grande complexidade, e não se esperam grandes mudanças de escopo."
+  ],
+  resposta: `
+    <p><strong>DSDM (Dynamic Systems Development Method).</strong></p>
+    <p>O DSDM foi criado para projetos com <strong>cronogramas curtos e orçamentos fixos</strong>, que não aceitam mudanças — ou ao menos não aceitam grandes mudanças —, com o objetivo de entregar dentro do prazo e do orçamento sem perder qualidade. É um método ágil <strong>baseado em contrato</strong>, assinado ainda no pré-projeto.</p>
+    <ul>
+      <li><strong>Afirmações 1 e 2</strong> — cronograma curto (a data do congresso) e orçamento fixo em contrato: exatamente o tipo de projeto para o qual o DSDM existe.</li>
+      <li><strong>Afirmação 3</strong> — condição do DSDM: <strong>definir claramente os requisitos e priorizá-los</strong>, estabelecendo a ordem de implementação.</li>
+      <li><strong>Afirmação 4</strong> — condição do DSDM: <strong>facilidade de decompor os requisitos em módulos</strong>.</li>
+      <li><strong>Afirmação 5</strong> — condição do DSDM: <strong>forte interação</strong> entre a equipe de desenvolvimento, os usuários finais e os gestores do projeto.</li>
+      <li><strong>Afirmação 6</strong> — afasta os casos em que o DSDM não é apropriado: projetos complexos, difíceis de decompor; e confirma que não haverá grandes mudanças.</li>
+    </ul>
+    <p><strong>Por que não o FDD:</strong> o FDD também é um ágil que planeja antes de construir, mas é voltado a <strong>projetos grandes, com muitas funcionalidades e certo grau de complexidade</strong>, trabalhados por equipes grandes e com bastante documentação e modelagem orientada a objetos. Aqui o projeto é de porte médio e sem grande complexidade, e o que domina é o prazo curto e o orçamento fixo em contrato — o terreno do DSDM.</p>`
+},
+
+{
+  id: "P44", tipo: "pratica", unidade: "Ágeis", tema: "Ágeis III — DSDM", alvo: "DSDM",
+  bullets: [
+    "Aplicativo de pedidos para uma rede regional de padarias;",
+    "Antes de qualquer desenvolvimento, os requisitos foram negociados, o orçamento definido e o contrato assinado;",
+    "Um estudo inicial produziu um relatório, um protótipo inicial, um plano de desenvolvimento e uma lista de riscos com a forma de mitigá-los;",
+    "Prazo e orçamento foram fixados previamente, e os requisitos foram classificados em essenciais, desejáveis, opcionais e fora do escopo;",
+    "Em cada ciclo, define-se o que será feito, acorda-se um plano de tarefas, constrói-se um protótipo e os usuários finais o avaliam;",
+    "Depois da entrega, a evolução do aplicativo será tratada como continuação do mesmo processo de desenvolvimento."
+  ],
+  resposta: `
+    <p><strong>DSDM.</strong></p>
+    <p>O Cenário descreve, como fato, a própria mecânica do processo:</p>
+    <ul>
+      <li><strong>Afirmação 2</strong> — o <strong>pré-projeto</strong>: identificação do projeto, negociação dos requisitos, definição do orçamento e <strong>assinatura do contrato</strong>. O DSDM é um ágil baseado em contrato.</li>
+      <li><strong>Afirmação 3</strong> — o <strong>estudo de viabilidade</strong>, primeiro estágio do ciclo de vida, com suas quatro saídas: relatório de viabilidade, protótipo inicial de viabilidade, plano de desenvolvimento e controle de risco.</li>
+      <li><strong>Afirmação 4</strong> — o <strong>estudo de negócio</strong>: <em>timeboxing</em> (prazo e orçamento fixados previamente) e <strong>MoSCoW</strong> (<em>Must</em>, <em>Should</em>, <em>Could</em>, <em>Would</em>).</li>
+      <li><strong>Afirmação 5</strong> — os estágios iterativos (modelo funcional, projeto e construção), cada um com quatro passos: <strong>identificar o protótipo → acordar plano de tarefas → criar protótipo → revisar protótipo</strong>, com avaliação do usuário final.</li>
+      <li><strong>Afirmação 6</strong> — o <strong>pós-projeto</strong>: no DSDM, a evolução do sistema é considerada continuação do processo de desenvolvimento.</li>
+    </ul>
+    <p><strong>Por que não o ASD:</strong> o ASD também fixa prazos com <em>timeboxing</em> e trabalha em ciclos, mas começa com uma oficina de poucos dias e repete ciclos de <strong>especular, colaborar e aprender</strong>, planejados por componentes e priorizando os requisitos de <strong>maior risco</strong>. Não há no ASD contrato no pré-projeto, estudo de viabilidade com essas saídas, MoSCoW nem os quatro passos de protótipo descritos aqui.</p>`
+},
+
+{
+  id: "P45", tipo: "pratica", unidade: "Ágeis", tema: "Ágeis III — DSDM", alvo: "DSDM",
+  bullets: [
+    "Sistema de controle de estoque e expedição para uma cooperativa agrícola, que precisa estar pronto antes da próxima safra;",
+    "Prazo e orçamento estão fixados, e o que não couber neles não será desenvolvido nesta versão;",
+    "A cooperativa aceita que funcionalidades desejáveis fiquem para uma segunda versão, desde que as essenciais — cerca de um quinto da lista, que respondem pela maior parte do uso — sejam entregues;",
+    "A diretoria aceita o custo de liberar um cooperado experiente para acompanhar a equipe durante todo o projeto;",
+    "Não há exigência especial de segurança que justifique rodadas extensas de testes, verificação e validação;",
+    "Os requisitos são claros e se dividem em módulos: recebimento, armazenagem e expedição."
+  ],
+  resposta: `
+    <p><strong>DSDM.</strong></p>
+    <p>O Cenário é dominado pelos limites que o projeto aceita para cumprir prazo e orçamento fixos:</p>
+    <ul>
+      <li><strong>Afirmação 2</strong> — o <strong><em>timeboxing</em></strong> do estudo de negócio: fixa-se previamente o prazo e o orçamento, e os requisitos menos importantes <strong>poderão não ser desenvolvidos</strong> — o preço do método.</li>
+      <li><strong>Afirmação 3</strong> — a <strong>MoSCoW</strong> (os <em>Should</em> deveriam ser feitos, mas podem ficar para uma 2ª versão) e o <strong>princípio de Pareto</strong>: 20% dos requisitos correspondem a 80% do software, então entregar os mais importantes já satisfaz razoavelmente o cliente com um produto minimamente viável.</li>
+      <li><strong>Afirmação 4</strong> — a filosofia do DSDM pede <strong>envolvimento do usuário durante todo o projeto</strong>. Ressalva do professor: nem sempre é viável, pois destacar um usuário-chave em tempo integral pode ser economicamente inviável — aqui a cooperativa aceita esse custo.</li>
+      <li><strong>Afirmação 5</strong> — afasta um dos casos em que o DSDM não é apropriado: ênfase muito grande em segurança exige testes, verificações e validações em vários níveis, o que colide com o objetivo de cumprir prazos e orçamentos.</li>
+      <li><strong>Afirmação 6</strong> — atende às condições de requisitos claros e decomponíveis em módulos.</li>
+    </ul>
+    <p><strong>Por que não o FDD:</strong> o FDD tem outros custos — demanda muitas tarefas, atividades e papéis, por isso não funciona bem com equipes pequenas; gera grande produção de documentação nas primeiras fases; e depende muito das decisões dos programadores líderes. É voltado a projetos grandes e complexos. O limite que este projeto aceita é outro: deixar requisitos de fora para caber no prazo e no orçamento fixados — o <em>timeboxing</em> do DSDM.</p>`
+},
+
+{
+  id: "P46", tipo: "pratica", unidade: "Ágeis", tema: "Ágeis III — DSDM", alvo: "DSDM",
+  bullets: [
+    "Plataforma de inscrição para o vestibular de uma faculdade, com data de abertura já divulgada;",
+    "O prazo final e o de cada ciclo foram fixados antes do início, com base nos requisitos levantados;",
+    "A secretaria acadêmica sabe exatamente o que precisa e não pretende alterar o escopo ao longo do projeto;",
+    "A ordem de implementação segue a importância de cada requisito para o negócio, e não o risco técnico;",
+    "Usuários da secretaria acompanham a equipe e avaliam cada protótipo produzido;",
+    "Ao fim de cada implantação, avalia-se o impacto do sistema sobre os objetivos do negócio para decidir se se passa a um novo ciclo ou se refina o mesmo."
+  ],
+  resposta: `
+    <p><strong>DSDM.</strong></p>
+    <ul>
+      <li><strong>Afirmação 2</strong> — prazos pré-fixados por <em>timeboxing</em>. Este sinal sozinho não decide: o ASD também usa <em>timeboxing</em>.</li>
+      <li><strong>Afirmação 3</strong> — o DSDM exige <strong>requisitos claramente definidos</strong> e serve a projetos que <strong>não aceitam grandes mudanças</strong>.</li>
+      <li><strong>Afirmação 4</strong> — a priorização do estudo de negócio (MoSCoW): a ordem de implementação vem da importância de cada requisito; as primeiras entregas se concentram nos requisitos mais importantes, logo são mais eficazes para o negócio.</li>
+      <li><strong>Afirmação 5</strong> — o passo de revisar o protótipo, com <strong>avaliação do usuário final</strong>, e o parecer dos usuários o mais constante possível.</li>
+      <li><strong>Afirmação 6</strong> — o último passo da implementação, <strong>revisar aspectos do negócio</strong>: avalia-se o impacto do sistema sobre os objetivos de negócio e, conforme o resultado, passa-se a um novo ciclo ou reinicia-se o mesmo para refinar os resultados.</li>
+    </ul>
+    <p><strong>Por que não o ASD (o Par próximo):</strong> os dois fixam prazos com <em>timeboxing</em> e envolvem o usuário em cada ciclo — as afirmações 2 e 5 servem aos dois. O que separa está nas afirmações 3 e 4. O ASD é <strong>tolerante à mudança e à adaptação</strong> e assume que, no início, as partes interessadas <strong>não sabem exatamente o que desejam</strong> — por isso "especulam", e muitos requisitos são descobertos no caminho; e desenvolve primeiro os requisitos de <strong>maior risco</strong>. Aqui a secretaria sabe o que quer, não vai mudar o escopo e prioriza por importância para o negócio — o que aponta para o DSDM.</p>`
+},
+
+{
+  id: "T51", tipo: "teorica", unidade: "Ágeis", tema: "Ágeis III — DSDM", bullets: [],
+  pergunta: "Quando o DSDM não é apropriado? Justifique cada caso.",
+  resposta: `
+    <p>O DSDM serve a projetos de cronograma curto e orçamento fixo, e para isso exige forte interação entre equipe, usuários finais e gestores; requisitos claros e priorizáveis; e requisitos decomponíveis em módulos. Os casos em que não é apropriado são justamente os que quebram essas condições ou o objetivo de cumprir prazo e orçamento:</p>
+    <ul>
+      <li><strong>Projetos complexos</strong> — são difíceis ou impossíveis de decompor, e a decomposição dos requisitos em módulos é condição para o sucesso do DSDM.</li>
+      <li><strong>Requisitos pouco claros ou que não possam ser organizados em uma ordem de preferência</strong> — sem essa ordem, o projeto tende a ultrapassar o prazo e o orçamento estipulados.</li>
+      <li><strong>Ênfase muito grande no requisito não funcional de segurança</strong> — satisfazê-lo exige testes, verificações e validações em vários níveis; essa fase intensiva colide com o objetivo do DSDM de cumprir prazos e orçamentos.</li>
+    </ul>`
+},
+
+{
+  id: "T52", tipo: "teorica", unidade: "Ágeis", tema: "Ágeis III — DSDM", bullets: [],
+  pergunta: "Quais são as fases do DSDM? Descreva os estágios do ciclo de vida do projeto.",
+  resposta: `
+    <p>O DSDM tem <strong>três fases</strong>:</p>
+    <ul>
+      <li><strong>Pré-projeto</strong> — identificação inicial do projeto, negociação dos requisitos, definição do orçamento e <strong>assinatura do contrato</strong>.</li>
+      <li><strong>Ciclo de vida do projeto</strong> — o processo propriamente dito, a parte mais importante do DSDM.</li>
+      <li><strong>Pós-projeto</strong> — o software passa a ser utilizado plenamente, ocorrem manutenções e já se pensa na evolução, que no DSDM é considerada <strong>continuação do processo de desenvolvimento</strong>.</li>
+    </ul>
+    <p>O ciclo de vida tem <strong>cinco estágios</strong>:</p>
+    <ol>
+      <li><strong>Estudo de viabilidade</strong> — determina se é viável desenvolver o software; se não for, o projeto é encerrado. Saídas: relatório de viabilidade, protótipo inicial de viabilidade, plano de desenvolvimento e controle de risco.</li>
+      <li><strong>Estudo de negócio</strong> — estuda a organização a que o software se destina e as tecnologias mais adequadas; produz a priorização dos requisitos e a arquitetura inicial (<em>timeboxing</em>, MoSCoW, princípio de Pareto).</li>
+      <li><strong>Iteração do modelo funcional</strong> — identificar o protótipo funcional, acordar plano de tarefas, criar e revisar o protótipo funcional (com avaliação do usuário final).</li>
+      <li><strong>Iteração de projeto e construção</strong> — identificar os requisitos funcionais e não funcionais do sistema final, acordar plano de tarefas, criar um protótipo de projeto já utilizável e testável, e revisá-lo, gerando a documentação para usuário e as evidências de que os testes foram aprovados.</li>
+      <li><strong>Implementação</strong> — aprovação do usuário e diretrizes, treinamento dos usuários, implementar (sistema entregue) e revisar aspectos do negócio.</li>
+    </ol>
+    <p>Os três últimos estágios são <strong>conjuntos de iterações</strong>, cada um com quatro passos que podem se repetir muitas vezes. Se necessário, volta-se da implementação ao estudo de negócio ou à iteração do modelo funcional; se o software for considerado concluído, passa-se ao pós-projeto.</p>`
+},
+
+{
+  id: "T53", tipo: "teorica", unidade: "Ágeis", tema: "Ágeis III — DSDM", bullets: [],
+  pergunta: "Quais são os papéis do DSDM e as responsabilidades de cada um?",
+  resposta: `
+    <ul>
+      <li><strong>Campeão do projeto</strong> — equivale a um gerente executivo: pessoa com capacidade de administrar prazos e tomar decisões; garante que o software será entregue no prazo.</li>
+      <li><strong>Visionário</strong> — determina se os requisitos iniciais são adequados para que o projeto inicie; age como uma espécie de <strong>engenheiro do processo</strong>, mantendo as atividades de acordo com a filosofia do DSDM.</li>
+      <li><strong>Intermediador</strong> — interface da equipe de desenvolvimento com clientes, usuários e especialistas de domínio.</li>
+      <li><strong>Anunciante</strong> — papel <strong>opcional</strong>, mas importante: qualquer usuário que traga um ponto de vista ou informações úteis ao projeto, preferencialmente de forma diária.</li>
+      <li><strong>Gerente de projeto</strong> — gerencia as atividades do projeto, cumprindo prazos e mantendo orçamento e qualidade.</li>
+      <li><strong>Coordenador técnico</strong> — responsável pelo projeto da arquitetura do sistema e seus aspectos técnicos; a arquitetura é o "esqueleto" do software.</li>
+      <li><strong>Líder de equipe</strong> — desenvolvedor com a função especial de manter a equipe motivada e em harmonia.</li>
+      <li><strong>Desenvolvedor</strong> — transforma os requisitos e modelos em código.</li>
+      <li><strong>Testador</strong> — responsável pelos testes do sistema.</li>
+      <li><strong>Escrivão</strong> — registra os requisitos identificados e as decisões tomadas ao longo do projeto.</li>
+      <li><strong>Facilitador</strong> — garante um ambiente de trabalho adequado e avalia o progresso das equipes.</li>
+    </ul>`
+},
+
+{
+  id: "T54", tipo: "teorica", unidade: "Ágeis", tema: "Ágeis III — DSDM", bullets: [],
+  pergunta: "Como o DSDM garante o prazo e o orçamento fixos no estudo de negócio, e que preço o projeto paga por isso?",
+  resposta: `
+    <p>No <strong>estudo de negócio</strong>, o DSDM produz a priorização dos requisitos com três técnicas:</p>
+    <ul>
+      <li><strong><em>Timeboxing</em></strong> — fixa previamente o prazo e o orçamento.</li>
+      <li><strong>MoSCoW</strong> — <em>Must</em>: essenciais, devem ser desenvolvidos; <em>Should</em>: desejáveis, deveriam ser feitos, mas podem ficar para uma 2ª versão; <em>Could</em>: opcionais, o impacto de não desenvolvê-los é pequeno; <em>Would</em>: fora do escopo, não deverão ser desenvolvidos.</li>
+      <li><strong>Princípio de Pareto</strong> — 20% dos requisitos correspondem a 80% do software; desenvolvendo os mais importantes já se satisfaz razoavelmente o cliente, com um produto minimamente viável.</li>
+    </ul>
+    <p><strong>O preço:</strong> com prazo e orçamento fixos, <strong>requisitos menos importantes poderão não ser desenvolvidos</strong> — daí a importância da priorização. Sem requisitos claros e priorizáveis, o projeto tende a ultrapassar o prazo e o orçamento.</p>
+    <p><strong>Outro custo, apontado pelo professor:</strong> a filosofia do DSDM pede envolvimento do usuário durante todo o projeto, mas isso nem sempre é viável — destacar um usuário-chave em tempo integral pode ser economicamente inviável para a empresa.</p>`
+},
+
 /* --- Ágeis IV — Crystal Clear --- */
 
 /* --- Ágeis V — ASD --- */
