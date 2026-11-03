@@ -24,24 +24,27 @@ prototipação evolucionária).
 
 ## Processos cobertos
 
-**Cascata e variações** — cascata clássico · cascata dupla · cascata entrelaçado
-(sashimi) · cascata com subprojetos · cascata com redução de risco
+Cada questão pertence a uma **Unidade** do curso, e o tema é a **aula** de onde ela
+sai. A Prova 1 cobra Fundamentos e Prescritivos; a Prova 2, Ágeis.
 
-**Verificação e validação** — modelo em V · modelo em W
+**Fundamentos — conceitos de processo de software** — definições, classificações,
+características, arquitetura e tipos de fluxo
 
-**Risco** — modelo em espiral
+**Prescritivos I — cascata e modelos V e W** — codificar e consertar · cascata
+clássico · cascata dupla · cascata entrelaçado (sashimi) · modelo em V · modelo em W ·
+cascata com subprojetos
 
-**Evolucionário e prototipação** — evolucionário exploratório · evolucionário com
-protótipos descartáveis · prototipação evolucionária
+**Prescritivos II — espiral e evolucionários** — modelo em espiral · cascata com
+redução de risco · evolucionário exploratório · evolucionário com protótipos
+descartáveis · prototipação evolucionária
 
-**Entregas e cronograma** — entregas em estágios · modelo orientado a cronograma ·
-entrega evolucionária
+**Prescritivos III — entregas, formal e reuso** — entregas em estágios · modelo
+orientado a cronograma · entrega evolucionária · modelo orientado a ferramentas ·
+desenvolvimento formal de sistemas · desenvolvimento orientado a reuso · linhas de
+produto de software (SPL)
 
-**Reuso e ferramentas** — modelo orientado a ferramentas · desenvolvimento formal de
-sistemas · desenvolvimento orientado a reuso · linhas de produto de software (SPL)
-
-**Iterativo e incremental** — Processo Unificado (fases, disciplinas, as quatro
-características centrais e MoSCoW)
+**Iterativos e incrementais — UP** — Processo Unificado (fases, disciplinas, as
+quatro características centrais e MoSCoW)
 
 ## Recursos da página
 
@@ -54,6 +57,21 @@ características centrais e MoSCoW)
 
 O tema da questão só aparece depois de revelar a resposta, para não entregar
 metade do raciocínio antes da hora.
+
+## Checagem dos dados
+
+Ao editar questões, rode na raiz do repositório (precisa só do Node, sem instalar
+nada):
+
+```sh
+node scripts/checar-dados.js
+```
+
+O script lê os dados do `index.html` e confere IDs (únicos, no padrão `P##`/`T##`,
+com `P01`–`P38` e `T01`–`T40` preservados), Unidade e Tema de cada questão, o
+mapeamento Unidade → Prova, os campos obrigatórios de cada tipo e o número de
+práticas por Processo-alvo (2 nos prescritivos, 4 nos ágeis). Sai com código 1 e
+uma linha por problema quando algo falha; com `ok: …` quando está tudo certo.
 
 ## Fonte
 
