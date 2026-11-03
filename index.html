@@ -2343,6 +2343,185 @@ window.QUESTOES = [
 
 /* --- Ágeis VI — XP --- */
 
+{
+  id: "P55", tipo: "pratica", unidade: "Ágeis", tema: "Ágeis VI — XP", alvo: "XP",
+  bullets: [
+    "Sistema de agendamento e prontuário para uma rede de clínicas veterinárias, de porte pequeno a médio;",
+    "Os veterinários ainda não sabem exatamente o que querem, e as prioridades devem mudar várias vezes ao longo do projeto;",
+    "Um veterinário-chefe, especialista no domínio, foi liberado pela rede para acompanhar a equipe durante todo o projeto, escrever e priorizar os requisitos e tomar as decisões de negócio;",
+    "A rede quer ver funcionalidades prontas toda semana ou, no máximo, a cada duas semanas, e decidir ela mesma quais entram em operação;",
+    "A equipe é pequena, experiente e autogerenciável, gosta de trabalhar de forma colaborativa e ocupa um espaço aberto e dedicado ao projeto;",
+    "Se houver atraso, o essencial — o produto mínimo viável — precisa estar pronto, e o restante pode ficar para uma segunda versão."
+  ],
+  resposta: `
+    <p><strong>XP (eXtreme Programming).</strong></p>
+    <p><strong>Cada afirmação corresponde a uma característica do processo:</strong></p>
+    <ul>
+      <li><strong>Afirmações 1 e 2</strong> — princípios <strong>abraçar mudanças</strong> e <strong>mudanças incrementais</strong>, e a vantagem da <strong>adaptabilidade às mudanças</strong> de requisitos e prioridades; o valor <strong>coragem</strong> manda encarar as mudanças inevitáveis o mais rápido possível, sem ignorá-las.</li>
+      <li><strong>Afirmação 3</strong> — o papel dos <strong>clientes</strong> no XP: usuários-chave com conhecimento profundo do setor, com alto engajamento, que criam as histórias de usuário, dão pareceres contínuos e tomam as decisões de negócio. É também a regra <strong>cliente sempre disponível</strong>, especialista no domínio, que escreve, prioriza e negocia as histórias. A liberação resolve o problema prático apontado na aula: usuários-chave são caros e difíceis de dispensar.</li>
+      <li><strong>Afirmação 4</strong> — regra das <strong>entregas pequenas e frequentes</strong>: semanais ou, no máximo, a cada duas semanas, e é o cliente quem decide se a entrega entra em operação.</li>
+      <li><strong>Afirmação 5</strong> — o XP exige <strong>equipe experiente e autogerenciável</strong> (sem isso, pode não funcionar; quem não gosta de colaborar não se adequa a uma equipe XP), e prevê <strong>espaço de trabalho aberto e dedicado</strong> e <strong>equipe coesa</strong>.</li>
+      <li><strong>Afirmação 6</strong> — princípio da <strong>priorização de funcionalidades</strong> (garantir o produto mínimo viável mesmo se ocorrerem problemas) e regra da <strong>jornada sustentável</strong>: se o projeto atrasar, replaneja-se e, em último caso, entrega-se o produto mínimo viável e planeja-se uma segunda versão.</li>
+    </ul>
+    <p><strong>Por que não o Crystal Clear:</strong> também serve a equipes pequenas e colaborativas, com acesso fácil a especialistas e entregas frequentes — mas as entregas do Crystal Clear ocorrem a cada <strong>dois meses, no máximo</strong>, e ele é indicado justamente a equipes com <strong>experiência ágil limitada</strong>, por ser leve e fácil de entender. Aqui a rede quer versões semanais ou quinzenais — o ciclo do XP, mais curto que o da maioria dos métodos ágeis — e a equipe já é experiente e autogerenciável.</p>`
+},
+
+{
+  id: "P56", tipo: "pratica", unidade: "Ágeis", tema: "Ágeis VI — XP", alvo: "XP",
+  bullets: [
+    "Sistema de controle de estoque e de validade de medicamentos para uma rede de farmácias;",
+    "Os requisitos são escritos pelos próprios farmacêuticos em cartões, no formato “Eu, como farmacêutico, desejo que o sistema… para que…”, e cada um é estimado em uma, duas ou três semanas — os maiores são divididos e os muito curtos, combinados com outros;",
+    "Nas reuniões de projeto, cada desenvolvedor segura cartões que representam objetos de diferentes classes e simula-se uma operação, anotando as responsabilidades à esquerda e as colaborações à direita;",
+    "Antes de programar qualquer unidade, escreve-se o teste que ela deverá passar; se não se consegue imaginar o teste, o requisito volta para ser revisto;",
+    "O código é escrito por duas pessoas num mesmo computador, segue um padrão único e não tem dono: qualquer um pode alterá-lo, desde que os testes de unidade continuem passando;",
+    "Só uma dupla integra por vez, num computador reservado para isso; se a integração falha nos testes ou demora demais, volta-se à última versão estável."
+  ],
+  resposta: `
+    <p><strong>XP (eXtreme Programming).</strong></p>
+    <p><strong>O Cenário descreve, sem nomeá-las, as regras de planejamento, projeto, codificação e teste do XP:</strong></p>
+    <ul>
+      <li><strong>Afirmação 2</strong> — <strong>histórias de usuário</strong> escritas pelos usuários em cartões, no formato “Eu, como [papel], desejo que o software faça [tal coisa] para que eu obtenha [tal benefício]”. A equipe estima se cabem em 1, 2 ou 3 semanas: mais que isso é história épica, a ser dividida; menos de uma semana, combina-se com outras.</li>
+      <li><strong>Afirmação 3</strong> — <strong>cartões CRC</strong> (Classe-Responsabilidade-Colaboração) nas reuniões de projeto: cada membro recebe cartões que representam instâncias de classes, simula-se uma atividade e anotam-se responsabilidades à esquerda e colaborações à direita. É um dos poucos artefatos obrigatórios do XP.</li>
+      <li><strong>Afirmação 4</strong> — <strong>TDD</strong> (desenvolvimento dirigido a testes): antes de programar uma unidade, define-se e implementa-se o teste; se não é possível testar, o requisito precisa ser revisto.</li>
+      <li><strong>Afirmação 5</strong> — <strong>programação em pares</strong>, <strong>padrões de codificação</strong> (todos codificam como se fosse uma só pessoa) e <strong>posse coletiva</strong> (ninguém pede permissão para modificar o código, sempre com testes de unidade) — três práticas que andam juntas.</li>
+      <li><strong>Afirmação 6</strong> — regras <strong>só um par integra por vez</strong>, para evitar incompatibilidades e comportamento emergente, e <strong>computador exclusivo para integração</strong>: o resultado precisa passar nos testes de unidade; se falhar ou demorar demais, aborta-se e volta-se à última versão estável.</li>
+    </ul>
+    <p><strong>Por que não o Scrum:</strong> o Scrum também trabalha com histórias de usuário, a exemplo do XP, e com iterações; mas ele se organiza em torno de papéis (Product Owner, Scrum Master), artefatos (Product Backlog, Sprint Backlog, Incremento) e eventos — nada disso aparece no Cenário. O que ele descreve são as regras de projeto, codificação e teste próprias do XP: cartões CRC, teste escrito antes do código, código em duplas e integração de um par por vez em computador exclusivo.</p>`
+},
+
+{
+  id: "P57", tipo: "pratica", unidade: "Ágeis", tema: "Ágeis VI — XP", alvo: "XP",
+  bullets: [
+    "Plataforma de aulas online para uma escola de idiomas, com requisitos que mudam a cada semestre letivo;",
+    "A escola aceitou o custo de liberar uma coordenadora pedagógica — usuária-chave difícil de dispensar — para ficar disponível à equipe durante todo o projeto;",
+    "A diretoria, acostumada a contratos com escopo fechado e cronograma completo desde o início, terá de aceitar um planejamento refeito com a equipe a cada ciclo, e por isso receberá resultados tangíveis desde as primeiras semanas;",
+    "A equipe sabe que, concentrada nas demandas de cada semana, pode sacrificar a qualidade e a manutenibilidade, e por isso mantém metas de longo prazo e uma visão clara do produto final;",
+    "Só entram na equipe desenvolvedores experientes, com autonomia e dispostos a colaborar; quem prefere trabalhar sozinho foi realocado para outro projeto;",
+    "Não haverá dono do produto nem facilitador dedicado: a coordenadora escreve e prioriza os requisitos, e um dos programadores acompanha o progresso e organiza as reuniões."
+  ],
+  resposta: `
+    <p><strong>XP (eXtreme Programming).</strong></p>
+    <p><strong>O Cenário lista as desvantagens do XP — e o que o projeto faz para aceitá-las:</strong></p>
+    <ul>
+      <li><strong>Afirmação 1</strong> — a vantagem da <strong>adaptabilidade às mudanças</strong> de requisitos e prioridades, que justifica pagar os custos abaixo.</li>
+      <li><strong>Afirmação 2</strong> — <strong>necessidade de comunicação eficiente</strong> e alto engajamento do cliente: as partes interessadas muitas vezes estão indisponíveis, e o próprio professor aponta o problema prático de que usuários-chave são caros e muitas vezes imprescindíveis para a empresa. A regra <strong>cliente sempre disponível</strong> é cumprida pagando esse custo.</li>
+      <li><strong>Afirmação 3</strong> — <strong>resistência à mudança</strong> de quem está acostumado a modelos prescritivos tradicionais; o <strong>jogo de planejamento</strong> é um modelo adaptativo, em oposição a contratos rígidos. A mitigação prevista é a do resumo: mostrar resultados tangíveis desde o início.</li>
+      <li><strong>Afirmação 4</strong> — <strong>foco excessivo no curto prazo</strong>, que pode sacrificar qualidade e manutenibilidade; mitiga-se com planejamento estratégico, metas de longo prazo e visão clara do produto final.</li>
+      <li><strong>Afirmação 5</strong> — exigência de <strong>equipe experiente e autogerenciável</strong>: sem conhecimento técnico e autonomia, o XP pode não funcionar, e quem não gosta de colaborar não se adequa a uma equipe XP.</li>
+      <li><strong>Afirmação 6</strong> — os <strong>papéis do XP</strong>: o cliente cria as histórias de usuário e toma as decisões de negócio; o <strong>rastreador (Tracker)</strong> é útil, mas não obrigatório, e pode ser assumido por um desenvolvedor, que acompanha o progresso, facilita a comunicação e organiza reuniões.</li>
+    </ul>
+    <p><strong>Por que não o Scrum:</strong> também é iterativo, usa histórias de usuário e tem reunião diária, mas a Equipe Scrum <strong>consiste</strong> de um Product Owner, que decide e prioriza o Product Backlog, de um Scrum Master, facilitador que estabelece o Scrum, e dos desenvolvedores. A sexta afirmação descarta exatamente esses dois papéis: as decisões de negócio ficam com o cliente e o acompanhamento com um programador — a distribuição de papéis do XP.</p>`
+},
+
+{
+  id: "P58", tipo: "pratica", unidade: "Ágeis", tema: "Ágeis VI — XP", alvo: "XP",
+  bullets: [
+    "Aplicativo de atendimento aos associados de uma cooperativa de crédito, desenvolvido por seis pessoas que trabalham numa única sala;",
+    "O gerente de produto da cooperativa, especialista no negócio, está disponível para a equipe o tempo todo;",
+    "Há testes automatizados, controle de versões e integração frequente do código;",
+    "A cooperativa quer uma versão nova toda semana — esperar até dois meses por uma entrega está fora de questão;",
+    "Todo o código de produção é escrito em duplas, e o teste de unidade é sempre escrito antes do código;",
+    "A equipe já trabalha com métodos ágeis há anos e não procura um método leve para começar: quer seguir um conjunto explícito de valores, princípios, práticas e regras."
+  ],
+  resposta: `
+    <p><strong>XP (eXtreme Programming).</strong></p>
+    <p><strong>As três primeiras afirmações servem tanto ao XP quanto ao Crystal Clear:</strong> equipe pequena numa única sala (no Crystal, a comunicação osmótica; no XP, o espaço aberto e dedicado), especialista do negócio disponível (acesso fácil a especialistas; no XP, cliente sempre disponível) e testes automatizados com integração frequente (ambiente tecnologicamente rico; no XP, integração contínua e testes automatizados com regressão).</p>
+    <p><strong>As três últimas decidem:</strong></p>
+    <ul>
+      <li><strong>Afirmação 4</strong> — no XP as <strong>entregas pequenas e frequentes</strong> são semanais ou, no máximo, a cada duas semanas, um ciclo mais curto que o da maioria dos métodos ágeis. No Crystal Clear, as entregas ocorrem a cada <strong>dois meses, no máximo</strong> — o prazo que a cooperativa recusa.</li>
+      <li><strong>Afirmação 5</strong> — são regras de codificação do XP: <strong>código produzido em duplas</strong> e <strong>escrever o teste de unidade primeiro</strong> (TDD). Os pilares do Crystal Clear pedem ambiente tecnologicamente rico, mas não trazem essas regras.</li>
+      <li><strong>Afirmação 6</strong> — o XP é um método ágil baseado em <strong>valores, princípios, práticas e regras</strong> e exige equipe experiente e autogerenciável. O Crystal Clear é ultraleve e indicado justamente a <strong>equipes com experiência ágil limitada</strong>, como alternativa leve e fácil de entender para começar.</li>
+    </ul>
+    <p><strong>Por que não o Crystal Clear:</strong> ele cobre bem o contexto das três primeiras afirmações, mas não o ciclo semanal, nem as regras de duplas e TDD, nem uma equipe experiente que quer um conjunto explícito de regras — as três características que separam o XP do Crystal Clear.</p>`
+},
+
+{
+  id: "T64", tipo: "teorica", unidade: "Ágeis", tema: "Ágeis VI — XP", bullets: [],
+  pergunta: "Quais são os principais valores do XP? Explique cada um.",
+  resposta: `
+    <p>O XP é um método ágil baseado em um conjunto de <strong>valores, princípios, práticas e regras</strong>. Seus principais valores:</p>
+    <ul>
+      <li><strong>Simplicidade</strong> — fazer código e projeto o mais simples possível; desenvolver só o necessário, não o que talvez seja preciso no futuro.</li>
+      <li><strong>Respeito</strong> — entre os membros da equipe e entre equipe e cliente; sem respeito, a comunicação falha, e o projeto também.</li>
+      <li><strong>Comunicação</strong> — essencial para que o cliente e as partes interessadas expressem o que realmente precisam; deve ser de qualidade e preferencialmente presencial.</li>
+      <li><strong>Feedback (parecer)</strong> — obter pareceres das partes interessadas constantemente e o mais rápido possível, para evitar falhas de compreensão, que devem ser corrigidas cedo para diminuir o custo de correção.</li>
+      <li><strong>Coragem</strong> — encarar as mudanças inevitáveis o mais rápido possível, sem ignorá-las por estarem fora do contrato ou serem difíceis.</li>
+    </ul>
+    <p><strong>Princípios básicos que decorrem deles:</strong> feedback rápido, presumir simplicidade, mudanças incrementais, abraçar mudanças, trabalho de alta qualidade (seguir padrões e refatorar) e priorização de funcionalidades (garantir o produto mínimo viável mesmo se ocorrerem problemas).</p>`
+},
+
+{
+  id: "T65", tipo: "teorica", unidade: "Ágeis", tema: "Ágeis VI — XP", bullets: [],
+  pergunta: "Quais são as principais práticas do XP?",
+  resposta: `
+    <ul>
+      <li><strong>Jogo de planejamento</strong> — reunião semanal com o cliente para priorizar funcionalidades: o cliente identifica as necessidades e a equipe estima o que cabe no ciclo; modelo adaptativo, em oposição a contratos rígidos.</li>
+      <li><strong>Metáfora</strong> — comunicar-se com o cliente na linguagem dele, compreendendo o vocabulário da área do software.</li>
+      <li><strong>Equipe coesa</strong> — o cliente faz parte da equipe; respeito, comunicação e ajuda mútua.</li>
+      <li><strong>Reuniões em pé</strong> — mais rápidas e objetivas.</li>
+      <li><strong>Projeto simples</strong> — atender ao solicitado sem sofisticação. Projeto simples <strong>não é projeto fácil</strong>: um projeto fácil pode não atender às necessidades ou gerar problemas de arquitetura.</li>
+      <li><strong>Versões pequenas</strong> — entregas constantes, permitindo ao cliente testar continuamente.</li>
+      <li><strong>Ritmo sustentável</strong> — número razoável de horas; horas extras constantes reduzem a produção.</li>
+      <li><strong>Posse coletiva</strong> — o código não tem dono; ninguém precisa pedir permissão para modificá-lo.</li>
+      <li><strong>Padrões de codificação</strong> — todos codificam do mesmo jeito, como se o código fosse escrito por uma só pessoa.</li>
+      <li><strong>Programação em pares</strong> — duas pessoas por computador; o código é verificado por ao menos duas pessoas.</li>
+      <li><strong>Testes de aceitação</strong> — planejados e conduzidos pela equipe com o cliente, a partir das histórias de usuário.</li>
+      <li><strong>TDD</strong> — antes de programar uma unidade, define-se e implementa-se o teste; se não é possível testar, o requisito precisa ser revisto.</li>
+      <li><strong>Refatoração</strong> — constante, em projeto e código; mantém a complexidade gerenciável, um investimento com retorno a médio e longo prazo.</li>
+      <li><strong>Integração contínua</strong> — a funcionalidade concluída é integrada ao produto, um par por vez, para evitar conflitos e comportamento emergente.</li>
+    </ul>
+    <p>Programação em pares, posse coletiva e padrões de codificação <strong>andam juntos</strong>.</p>`
+},
+
+{
+  id: "T66", tipo: "teorica", unidade: "Ágeis", tema: "Ágeis VI — XP", bullets: [],
+  pergunta: "Quais são as regras de planejamento e de gerenciamento do XP?",
+  resposta: `
+    <p><strong>Regras de planejamento:</strong></p>
+    <ul>
+      <li><strong>Escrever histórias de usuário</strong> — escritas pelos usuários, servem de base para os testes de aceitação; a equipe estima se cabem em 1, 2 ou 3 semanas (mais que isso, história épica a ser dividida; menos de uma semana, combinar com outras).</li>
+      <li><strong>O planejamento de entregas cria o cronograma</strong> — técnicos tomam as decisões técnicas e administradores, as de negócio; cada história é estimada em semanas ideais de programação, e priorizam-se as mais importantes para garantir o produto mínimo viável.</li>
+      <li><strong>Entregas pequenas e frequentes</strong> — semanais ou, no máximo, a cada duas semanas; o cliente decide se a entrega entra em operação.</li>
+      <li><strong>O projeto é dividido em iterações</strong> — de 1 a 2 semanas, planejadas pouco antes de começar; é proibido implementar funcionalidades de outras iterações; prazos devem ser cumpridos (se não for possível, reunião extra para repassar funcionalidades a outros ciclos); nada fica inacabado.</li>
+      <li><strong>O planejamento da iteração inicia cada iteração</strong> — selecionam-se as histórias mais prioritárias e as que falharam nos testes, divididas em tarefas de programação escritas em cartões e estimadas.</li>
+    </ul>
+    <p><strong>Regras de gerenciamento:</strong></p>
+    <ul>
+      <li><strong>Espaço de trabalho aberto e dedicado</strong> — sem barreiras físicas, com área para reuniões em pé.</li>
+      <li><strong>Jornada sustentável</strong> — se o projeto atrasar, replanejar (em último caso, entregar o produto mínimo viável e planejar uma segunda versão); descobrir a velocidade ideal da equipe, sem compará-la com equipes mais experientes.</li>
+      <li><strong>Iniciar cada dia com reunião em pé</strong> — breve; cada membro diz o que fez, o que pretende fazer e quais dificuldades enfrenta (o Tracker ajuda a superá-las).</li>
+      <li><strong>A velocidade do projeto é medida</strong> — em pontos de histórias ou de tarefas por iteração; o total selecionado deve ficar próximo da velocidade estimada.</li>
+      <li><strong>Mover as pessoas</strong> — assumir papéis e áreas diversas para compartilhar conhecimento e não depender de pessoas específicas.</li>
+      <li><strong>Consertar o XP quando inadequado</strong> — as regras são seguidas até que se perceba que precisam ser adaptadas à equipe ou à organização.</li>
+    </ul>`
+},
+
+{
+  id: "T67", tipo: "teorica", unidade: "Ágeis", tema: "Ágeis VI — XP", bullets: [],
+  pergunta: "Quais são as desvantagens do XP e como cada uma pode ser mitigada?",
+  resposta: `
+    <ul>
+      <li><strong>Resistência à mudança</strong> — equipe e cliente acostumados a modelos prescritivos tradicionais. <em>Mitigação:</em> educar sobre as vantagens da abordagem ágil e mostrar resultados tangíveis desde o início.</li>
+      <li><strong>Necessidade de comunicação eficiente</strong> — as partes interessadas muitas vezes estão indisponíveis, e mal-entendidos atrasam o projeto e inserem erros. <em>Mitigação:</em> reuniões diárias, requisitos claros, pareceres constantes e falar na linguagem do cliente.</li>
+      <li><strong>Foco excessivo no curto prazo</strong> — concentrar-se nas demandas imediatas pode sacrificar a qualidade e a manutenibilidade. <em>Mitigação:</em> planejamento estratégico, metas de longo prazo e visão clara do produto final.</li>
+      <li><strong>Exige equipe experiente e autogerenciável</strong> — sem conhecimento técnico e autonomia, o XP pode não funcionar. <em>Mitigação:</em> treinamento, capacitação e incentivo à troca de conhecimento; quem não gosta de colaborar não se adequa a uma equipe XP.</li>
+    </ul>
+    <p><strong>Problema prático apontado pelo professor:</strong> o alto engajamento do cliente, prescrito pela maioria dos processos ágeis, é difícil de obter — usuários-chave são caros e muitas vezes imprescindíveis para a empresa, que não pode dispensá-los por muito tempo.</p>`
+},
+
+{
+  id: "T68", tipo: "teorica", unidade: "Ágeis", tema: "Ágeis VI — XP", bullets: [],
+  pergunta: "Em que situações o XP não é indicado?",
+  resposta: `
+    <p>As contraindicações decorrem das exigências e das desvantagens do próprio processo:</p>
+    <ul>
+      <li><strong>Equipe sem experiência técnica ou sem autonomia</strong> — o XP exige equipe experiente e autogerenciável; sem isso, pode não funcionar. Também não se adequa a quem não gosta de colaborar, já que o código é produzido em duplas e tem posse coletiva.</li>
+      <li><strong>Cliente indisponível</strong> — o XP prescreve cliente sempre disponível, especialista no domínio, que escreve, prioriza e negocia as histórias e toma as decisões de negócio. Se a empresa não pode liberar seus usuários-chave, caros e muitas vezes imprescindíveis, faltam a comunicação e os pareceres de que o processo depende.</li>
+      <li><strong>Equipe e cliente presos a modelos prescritivos</strong> — a resistência à mudança é uma desvantagem do XP; o jogo de planejamento é adaptativo, em oposição a contratos rígidos, e só se sustenta se educação e resultados tangíveis vencerem essa resistência.</li>
+      <li><strong>Projeto que não pode correr o risco do foco no curto prazo</strong> — concentrar-se nas demandas de cada iteração pode sacrificar qualidade e manutenibilidade; sem planejamento estratégico, metas de longo prazo e visão clara do produto final, o risco não é mitigado.</li>
+    </ul>`
+},
+
 /* --- Ágeis VII — Scrum: papéis e artefatos --- */
 
 /* --- Ágeis VIII — Scrum: pilares e eventos --- */
