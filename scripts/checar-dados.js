@@ -3,7 +3,8 @@
  *
  * Runs with plain Node, no dependencies: `node scripts/checar-dados.js`.
  * Loads the data <script> of index.html (window.QUESTOES and window.UNIDADES)
- * in an isolated context and validates it against the rules of CONTEXT.md.
+ * in an isolated context and validates it against the rules of CONTEXT.md and
+ * against the counts README.md declares.
  * Exits with code 1 and one line per problem when any rule fails.
  */
 "use strict";
@@ -14,8 +15,8 @@ const vm = require("vm");
 
 const ID_PATTERN = /^([PT])(\d{2})$/;
 const PREFIXO_POR_TIPO = { pratica: "P", teorica: "T" };
-const TOTAL_PRATICAS_ORIGINAIS = 38;
-const TOTAL_TEORICAS_ORIGINAIS = 40;
+const NOME_DA_COLUNA = { processos: "processos", praticas: "práticas", teoricas: "teóricas" };
+const ROTULO_TOTAL = "Total";
 
 /**
  * @typedef {Object} Questao
@@ -72,13 +73,15 @@ function textoPreenchido(valor) {
 }
 
 /**
- * Checks ids: unique, P##/T## matching the tipo, original ranges kept.
+ * Checks ids: unique, P##/T## matching the tipo, and contiguous from 01 to
+ * the highest number of each prefix — a gap means a renumbered or lost id.
  *
  * @param {Questao[]} questoes
  * @param {string[]} erros - Receives one message per problem.
  */
 function checarIds(questoes, erros) {
   const vistos = {};
+  const maior = { P: 0, T: 0 };
   questoes.forEach(function (q, i) {
     const m = ID_PATTERN.exec(q.id || "");
     if (!m) {
@@ -87,14 +90,16 @@ function checarIds(questoes, erros) {
     }
     if (vistos[q.id]) erros.push(q.id + ": id duplicado");
     vistos[q.id] = true;
+    maior[m[1]] = Math.max(maior[m[1]], Number(m[2]));
     if (PREFIXO_POR_TIPO[q.tipo] && PREFIXO_POR_TIPO[q.tipo] !== m[1]) {
       erros.push(q.id + ": prefixo do id não corresponde ao tipo \"" + q.tipo + "\"");
     }
   });
-  [["P", TOTAL_PRATICAS_ORIGINAIS], ["T", TOTAL_TEORICAS_ORIGINAIS]].forEach(function (faixa) {
-    for (let n = 1; n <= faixa[1]; n++) {
-      const id = faixa[0] + (n < 10 ? "0" : "") + n;
-      if (!vistos[id]) erros.push(id + ": id original ausente (as Marcas salvas dependem dele)");
+  Object.keys(maior).forEach(function (prefixo) {
+    const ultimo = prefixo + (maior[prefixo] < 10 ? "0" : "") + maior[prefixo];
+    for (let n = 1; n < maior[prefixo]; n++) {
+      const id = prefixo + (n < 10 ? "0" : "") + n;
+      if (!vistos[id]) erros.push(id + ": buraco na sequência de ids " + prefixo + "01–" + ultimo + " (ids nunca são renumerados)");
     }
   });
 }
@@ -176,13 +181,115 @@ function checarPraticasPorAlvo(questoes, unidadePorNome, erros) {
 }
 
 /**
+ * @typedef {Object} Contagem
+ * @property {number} processos - Distinct Processos-alvo.
+ * @property {number} praticas
+ * @property {number} teoricas
+ */
+
+/**
+ * Counts the bank per Unidade and in total.
+ *
+ * @param {Questao[]} questoes
+ * @returns {Object<string, Contagem>} Keyed by Unidade name, plus ROTULO_TOTAL.
+ */
+function contarPorUnidade(questoes) {
+  const contagens = {};
+  const alvos = {};
+  function somar(chave, q) {
+    const c = contagens[chave] || (contagens[chave] = { processos: 0, praticas: 0, teoricas: 0 });
+    alvos[chave] = alvos[chave] || {};
+    if (q.tipo === "pratica") {
+      c.praticas++;
+      if (textoPreenchido(q.alvo) && !alvos[chave][q.alvo]) {
+        alvos[chave][q.alvo] = true;
+        c.processos++;
+      }
+    } else if (q.tipo === "teorica") {
+      c.teoricas++;
+    }
+  }
+  questoes.forEach(function (q) {
+    somar(q.unidade, q);
+    somar(ROTULO_TOTAL, q);
+  });
+  return contagens;
+}
+
+/**
+ * Reads the per-Unidade count table of the README: the rows whose first cell
+ * is a Unidade name or "Total", with columns
+ * Unidade | Prova | Processos | Práticas | Teóricas. A Processos cell counts
+ * by its leading number ("19 processos × 2 cenários"); "—" counts as zero.
+ *
+ * @param {string} readme - README.md content.
+ * @param {string[]} rotulos - Accepted first-cell labels.
+ * @returns {Object<string, Contagem>} The declared counts, keyed by label.
+ */
+function lerTabelaDoReadme(readme, rotulos) {
+  const declarado = {};
+  readme.split(/\r?\n/).forEach(function (linha) {
+    const celulas = linha.split("|").slice(1, -1).map(function (c) {
+      return c.replace(/\*\*/g, "").trim();
+    });
+    if (celulas.length !== 5 || rotulos.indexOf(celulas[0]) === -1) return;
+    function numero(texto) {
+      const m = /^\d+/.exec(texto);
+      return m ? Number(m[0]) : 0;
+    }
+    declarado[celulas[0]] = {
+      processos: numero(celulas[2]),
+      praticas: numero(celulas[3]),
+      teoricas: numero(celulas[4])
+    };
+  });
+  return declarado;
+}
+
+/**
+ * Checks the counts the README declares — the headline "**N questões**" and
+ * the per-Unidade table — against the data.
+ *
+ * @param {Questao[]} questoes
+ * @param {Unidade[]} unidades
+ * @param {string} readme - README.md content.
+ * @param {string[]} erros
+ */
+function checarReadme(questoes, unidades, readme, erros) {
+  const manchete = /\*\*(\d+) questões\*\*/.exec(readme);
+  if (!manchete) erros.push("README: sem a manchete \"**N questões**\"");
+  else if (Number(manchete[1]) !== questoes.length) {
+    erros.push("README: declara " + manchete[1] + " questões, os dados têm " + questoes.length);
+  }
+
+  const contado = contarPorUnidade(questoes);
+  const rotulos = unidades.map(function (u) { return u.nome; }).concat(ROTULO_TOTAL);
+  const declarado = lerTabelaDoReadme(readme, rotulos);
+  rotulos.forEach(function (rotulo) {
+    const real = contado[rotulo] || { processos: 0, praticas: 0, teoricas: 0 };
+    const linha = declarado[rotulo];
+    if (!linha) {
+      if (contado[rotulo]) erros.push("README: tabela por Unidade sem a linha " + rotulo);
+      return;
+    }
+    Object.keys(NOME_DA_COLUNA).forEach(function (campo) {
+      if (linha[campo] !== real[campo]) {
+        erros.push("README: " + rotulo + " declara " + linha[campo] + " " + NOME_DA_COLUNA[campo]
+          + ", os dados têm " + real[campo]);
+      }
+    });
+  });
+}
+
+/**
  * Validates the question bank against the data rules.
  *
  * @param {Questao[]} questoes - The questions, as declared in window.QUESTOES.
  * @param {Unidade[]} unidades - The Unidades, as declared in window.UNIDADES.
+ * @param {string} [readme] - README.md content; its counts are checked when given.
  * @returns {string[]} One message per problem; empty when the data is valid.
  */
-function checar(questoes, unidades) {
+function checar(questoes, unidades, readme) {
   const erros = [];
   const unidadePorNome = {};
   unidades.forEach(function (u) { unidadePorNome[u.nome] = u; });
@@ -200,6 +307,7 @@ function checar(questoes, unidades) {
   });
 
   checarPraticasPorAlvo(questoes, unidadePorNome, erros);
+  if (readme !== undefined) checarReadme(questoes, unidades, readme, erros);
   return erros;
 }
 
@@ -207,10 +315,11 @@ module.exports = { carregarDados: carregarDados, checar: checar };
 
 if (require.main === module) {
   const htmlPath = path.join(__dirname, "..", "index.html");
+  const readme = fs.readFileSync(path.join(__dirname, "..", "README.md"), "utf8");
   const dados = carregarDados(htmlPath);
-  const erros = checar(dados.questoes, dados.unidades);
+  const erros = checar(dados.questoes, dados.unidades, readme);
   if (erros.length) {
-    console.error(erros.length + " problema(s) nos dados de index.html:");
+    console.error(erros.length + " problema(s) nos dados de index.html e README.md:");
     erros.forEach(function (e) { console.error("  - " + e); });
     process.exit(1);
   }
