@@ -1750,12 +1750,16 @@ window.QUESTOES = [
   });
 
   var selTema = document.getElementById("selTema");
+  // Aulas na ordem do curso (window.UNIDADES), só as que já têm questões.
+  var temasComQuestoes = [];
   (function(){
-    var temas = [];
-    Q.forEach(function(q){ if(temas.indexOf(q.tema) === -1) temas.push(q.tema); });
-    temas.sort();
+    var usados = {};
+    Q.forEach(function(q){ usados[q.tema] = true; });
+    (window.UNIDADES || []).forEach(function(u){
+      u.temas.forEach(function(t){ if(usados[t.nome]) temasComQuestoes.push(t.nome); });
+    });
     var opts = '<option value="todos">Todos os temas</option>';
-    temas.forEach(function(t){ opts += '<option value="' + t + '">' + t + '</option>'; });
+    temasComQuestoes.forEach(function(t){ opts += '<option value="' + t + '">' + t + '</option>'; });
     selTema.innerHTML = opts;
   })();
   selTema.addEventListener("change", function(){
@@ -1801,6 +1805,8 @@ window.QUESTOES = [
   Array.prototype.forEach.call(segTipo.querySelectorAll("button"), function(x){
     x.setAttribute("aria-pressed", String(x.getAttribute("data-t") === estado.tipo));
   });
+  // Um tema salvo que deixou de existir (ex.: os nomes anteriores às aulas) volta a "todos".
+  if(estado.tema !== "todos" && temasComQuestoes.indexOf(estado.tema) === -1) estado.tema = "todos";
   selTema.value = estado.tema;
   montarOrdem();
   render();
