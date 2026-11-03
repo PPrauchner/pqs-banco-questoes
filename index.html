@@ -2825,6 +2825,23 @@ window.QUESTOES = [
     return a;
   }
 
+  // Como a prova nomeia a Unidade na pergunta da Questão prática: o adjetivo
+  // fecha o conjunto de candidatos. Fundamentos não tem práticas.
+  var PROCESSO_POR_UNIDADE = { "Prescritivos": "prescritivo", "Ágeis": "ágil" };
+
+  /**
+   * Pergunta exibida para uma questão: a teórica traz a própria; a prática
+   * tem a frase montada a partir da Unidade.
+   *
+   * @param {{tipo: string, unidade: string, pergunta: (string|undefined)}} q
+   * @returns {string} A pergunta, em HTML.
+   */
+  function perguntaDa(q){
+    if(q.pergunta) return q.pergunta;
+    var adjetivo = PROCESSO_POR_UNIDADE[q.unidade];
+    return "Qual o processo " + (adjetivo ? adjetivo + " " : "") + "mais adequado a este projeto e por quê?";
+  }
+
   function filtrar(){
     return Q.filter(function(q){
       if(estado.tipo === "revisar"){ if(estado.marcas[q.id] !== "revisar") return false; }
@@ -2881,8 +2898,7 @@ window.QUESTOES = [
       for(var k=0;k<q.bullets.length;k++){ html += '<li>' + q.bullets[k] + '</li>'; }
       html += '</ul>';
     }
-    var perg = q.pergunta || "Qual o processo mais adequado a este projeto e por quê?";
-    html += '<p class="pergunta">' + perg + '</p>';
+    html += '<p class="pergunta">' + perguntaDa(q) + '</p>';
 
     html += '<div class="acoes">';
     html += '<button type="button" class="btn-rev" id="btnRevelar">' + (estado.revelada ? "Ocultar resposta" : "Mostrar resposta") + '</button>';
