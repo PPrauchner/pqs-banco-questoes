@@ -42,3 +42,17 @@ Formato de uma questão:
 ## Commits
 
 Conventional Commits em pt-BR (`feat:`, `fix:`, `docs:` …).
+
+## Agent skills
+
+### Issue tracker
+
+Issues no GitHub Issues de `PPrauchner/pqs-banco-questoes`, via `gh`. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Os cinco papéis canônicos com o próprio nome (`needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`). See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context: `CONTEXT.md` e `docs/adr/` na raiz. See `docs/agents/domain.md`.
