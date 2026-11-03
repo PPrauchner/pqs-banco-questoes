@@ -114,6 +114,7 @@ function checarCampos(q, erros) {
     if (bullets && (!bullets.length || !bullets.every(textoPreenchido))) {
       erros.push(q.id + ": prática com Cenário vazio");
     }
+    if (q.pergunta !== undefined) erros.push(q.id + ": prática não grava pergunta (a frase é montada a partir da Unidade)");
   } else if (q.tipo === "teorica") {
     if (!textoPreenchido(q.pergunta)) erros.push(q.id + ": teórica sem pergunta");
     if (bullets && bullets.length) erros.push(q.id + ": teórica com Cenário (bullets deve ser vazio)");
