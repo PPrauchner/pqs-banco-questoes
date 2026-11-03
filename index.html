@@ -1688,6 +1688,176 @@ window.QUESTOES = [
 
 /* --- Ágeis II — FDD --- */
 
+{
+  id: "P39", tipo: "pratica", unidade: "Ágeis", tema: "Ágeis II — FDD", alvo: "FDD",
+  bullets: [
+    "Sistema de gestão para uma rede varejista com lojas em todo o país, com uma quantidade de funcionalidades bem maior que o normal e alto grau de complexidade;",
+    "A empresa dispõe de uma equipe grande, e a diretoria quer várias equipes trabalhando ao mesmo tempo para reduzir o tempo de execução do projeto;",
+    "Os gerentes de compras, estoque e financeiro conhecem profundamente os processos de seus setores e estão disponíveis para apresentá-los à equipe;",
+    "A diretoria exige um projeto bem estruturado desde o início, apoiado em modelagem orientada a objetos do domínio;",
+    "A auditoria interna quer saber, para cada requisito, quem o pediu, por que e quando, e quais artefatos serão alterados se ele mudar;",
+    "A empresa conta com programadores experientes para liderar as equipes de desenvolvimento."
+  ],
+  resposta: `
+    <p><strong>FDD (Feature Driven Development — Desenvolvimento Dirigido a Funcionalidades)</strong> — processo ágil voltado principalmente a <strong>projetos grandes</strong>, com quantidade de funcionalidades maior que o normal e certo grau de complexidade.</p>
+    <ul>
+      <li><strong>Afirmação 1</strong> — é a definição do processo: projeto grande, com muitas funcionalidades e complexo.</li>
+      <li><strong>Afirmação 2</strong> — o FDD trabalha com <strong>equipes grandes</strong> e permite que <strong>várias equipes trabalhem simultaneamente</strong>, reduzindo o tempo de execução do projeto.</li>
+      <li><strong>Afirmação 3</strong> — os gerentes são os <strong>especialistas em domínio</strong> (usuários-chave), que mais fornecem insumos para a elicitação e a compreensão dos requisitos; no DMA, eles apresentam à equipe o conhecimento da sua área no <em>domain walkthrough</em>.</li>
+      <li><strong>Afirmação 4</strong> — o FDD produz <strong>projetos bem estruturados desde a primeira fase</strong> e trabalha intensamente com <strong>modelagem orientada a objetos do domínio</strong>, uma de suas boas práticas.</li>
+      <li><strong>Afirmação 5</strong> — o processo é <strong>altamente documentado</strong> e por isso muito <strong>rastreável</strong>: rastreabilidade <em>para trás</em> (quem pediu o requisito, por que e quando) e <em>para a frente</em> (que artefatos uma mudança altera).</li>
+      <li><strong>Afirmação 6</strong> — neutraliza uma desvantagem do processo: o projeto <strong>depende muito das decisões dos programadores líderes</strong>, que precisam ter bastante experiência.</li>
+    </ul>
+    <p><strong>Por que não o Crystal Clear:</strong> ele foi projetado para equipes de <strong>até 8 desenvolvedores</strong> e projetos de risco relativamente pequeno, é <strong>ultraleve</strong> (reduz a papelada) e não é adequado a projetos grandes e complexos; aqui há uma equipe grande, várias equipes em paralelo e exigência de documentação rastreável — o contexto do FDD.</p>`
+},
+
+{
+  id: "P40", tipo: "pratica", unidade: "Ágeis", tema: "Ágeis II — FDD", alvo: "FDD",
+  bullets: [
+    "Sistema de arrecadação e fiscalização tributária para a prefeitura de uma capital, de grande porte;",
+    "Antes de construir, fiscais experientes apresentam à equipe o conhecimento da área, e grupos de no máximo três pessoas criam modelos candidatos que depois são unidos em um modelo único;",
+    "A partir das áreas de negócio identificadas, a equipe lista as atividades de cada área e os passos de negócio que compõem cada atividade;",
+    "O planejamento fixa prazos por atividade e por área de negócio, prioriza o que é mais complexo e arriscado e atribui cada classe a um desenvolvedor responsável por ela;",
+    "A construção acontece em ciclos de uma a duas semanas: projeta-se em detalhe um pacote de funcionalidades e depois ele é implementado, inspecionado e testado;",
+    "Ao final de cada ciclo, as classes aprovadas nos testes de unidade e de integração são promovidas ao build."
+  ],
+  resposta: `
+    <p><strong>FDD.</strong> O enunciado descreve o próprio processo, subprocesso por subprocesso.</p>
+    <ul>
+      <li><strong>Afirmação 1</strong> — projeto grande, o tipo de projeto a que o FDD se destina.</li>
+      <li><strong>Afirmação 2</strong> — é o <strong>DMA (Desenvolver Modelo Abrangente)</strong>: os especialistas de domínio fazem o estudo dirigido (<em>domain walkthrough</em>); grupos de <strong>no máximo três pessoas</strong> criam <strong>modelos candidatos</strong>, que são apresentados, refinados e unidos em um <strong>modelo único</strong>.</li>
+      <li><strong>Afirmação 3</strong> — é o <strong>CLF (Construir Lista de Funcionalidades)</strong>: <strong>Área de Negócio → Atividade de Negócio → Passo de Negócio</strong> (a funcionalidade), ligados por agregação.</li>
+      <li><strong>Afirmação 4</strong> — é o <strong>PPF (Planejar Por Funcionalidade)</strong>: prazos por atividade e por área de negócio, priorização das atividades mais complexas ou de risco alto e atribuição da <strong>propriedade das classes</strong> (a boa prática da classe proprietária).</li>
+      <li><strong>Afirmação 5</strong> — é a fase de <strong>Construção</strong>, iterativa, em ciclos de <strong>uma a duas semanas</strong>: <strong>DPF (Detalhar Por Funcionalidade)</strong>, que projeta o pacote de funcionalidades da iteração, e <strong>CPF (Construir Por Funcionalidade)</strong>: implementar → inspecionar o código → teste de unidade.</li>
+      <li><strong>Afirmação 6</strong> — é a última atividade do CPF: o programador líder <strong>promove a versão atual ao build</strong>, depois dos testes de integração.</li>
+    </ul>
+    <p>As afirmações 2 a 4 formam a fase de <strong>Concepção e Planejamento</strong> (DMA → CLF → PPF), que produz o modelo de classes e o plano de desenvolvimento que alimentam a Construção (DPF → CPF).</p>
+    <p><strong>Por que não o Crystal Clear:</strong> ele também é iterativo, mas organiza o ciclo de vida em projeto → entregas → iterações, cada iteração com estimação → desenvolvimento → celebração, e não prevê modelo abrangente, lista de funcionalidades nem propriedade de classes; além disso, foi projetado para equipes de até 8 pessoas, não para um projeto de grande porte.</p>`
+},
+
+{
+  id: "P41", tipo: "pratica", unidade: "Ágeis", tema: "Ágeis II — FDD", alvo: "FDD",
+  bullets: [
+    "Sistema integrado para uma rede de hospitais, grande, complexo e com muitas funcionalidades;",
+    "O cliente aceita que as primeiras fases do projeto produzam uma grande quantidade de documentação escrita antes que o código ganhe volume;",
+    "O processo escolhido demanda a execução de muitas tarefas, atividades e papéis, e por isso a empresa montou uma equipe grande, com gerente de projeto, arquiteto chefe, gerente de desenvolvimento, programadores líderes e testadores;",
+    "A direção sabe que o projeto dependerá muito das decisões dos programadores líderes e aceita esse risco, pois eles têm bastante experiência;",
+    "Cada desenvolvedor responde individualmente pelas classes que lhe forem atribuídas, com prazo de cerca de duas semanas para suas tarefas."
+  ],
+  resposta: `
+    <p><strong>FDD.</strong> O enunciado lista as três desvantagens do processo como condições que o projeto aceita ou neutraliza.</p>
+    <ul>
+      <li><strong>Afirmação 1</strong> — projeto grande e complexo, o contexto a que o FDD se destina.</li>
+      <li><strong>Afirmação 2</strong> — desvantagem aceita: o FDD gera uma <strong>grande produção de documentação escrita nas primeiras fases</strong>. Na opinião do professor, isso <strong>não é necessariamente uma desvantagem</strong>, mas reforça a necessidade de uma equipe grande.</li>
+      <li><strong>Afirmação 3</strong> — desvantagem neutralizada: o FDD <strong>não funciona bem com equipes pequenas</strong>, porque demanda muitas tarefas, atividades e papéis. Os papéis citados são os do processo: <strong>gerente de projeto, arquiteto chefe, gerente de desenvolvimento, programador líder</strong> e outros membros, como testadores.</li>
+      <li><strong>Afirmação 4</strong> — desvantagem aceita: o projeto <strong>depende muito das decisões dos programadores líderes</strong>, que precisam ter bastante experiência.</li>
+      <li><strong>Afirmação 5</strong> — é o papel do <strong>proprietário de classe</strong>: desenvolvedor a quem são atribuídas uma ou mais classes, com prazo relativamente curto (<strong>cerca de duas semanas</strong>); a classe é atribuída individualmente, evitando conflitos na equipe.</li>
+    </ul>
+    <p><strong>Por que não o XP:</strong> o XP segue o princípio KIS — projeto o mais simples possível, com poucos artefatos obrigatórios, como os cartões CRC — e adota a <strong>posse coletiva do código</strong>, em que o código não tem dono; aqui o cliente aceita documentação abundante nas primeiras fases e cada classe tem um responsável individual.</p>`
+},
+
+{
+  id: "P42", tipo: "pratica", unidade: "Ágeis", tema: "Ágeis II — FDD", alvo: "FDD",
+  bullets: [
+    "Sistema de gestão de apólices e sinistros para uma seguradora, grande e com muitas funcionalidades;",
+    "O desenvolvimento acontece em ciclos de uma a duas semanas, com testes de unidade e integração contínua;",
+    "Cada classe tem um desenvolvedor responsável, e só ele a codifica, para evitar conflitos na equipe;",
+    "A qualidade do código é verificada por inspeções, de preferência feitas por analistas externos, e não pela codificação em duplas;",
+    "Os requisitos não são escritos pelos usuários em cartões: são organizados em áreas, atividades e passos de negócio;",
+    "Um modelo de classes do domínio é construído antes da primeira iteração e, a cada ciclo, é refinado e ganha métodos."
+  ],
+  resposta: `
+    <p><strong>FDD.</strong> As afirmações 1 e 2 serviriam a mais de um processo ágil; as afirmações 3 a 6 são as que só o FDD atende.</p>
+    <ul>
+      <li><strong>Afirmação 1</strong> — projeto grande, com muitas funcionalidades: o contexto do FDD.</li>
+      <li><strong>Afirmação 2</strong> — a fase de Construção do FDD é iterativa, em ciclos de <strong>uma a duas semanas</strong>; o CPF inclui teste de unidade, e a <strong>integração contínua</strong> é uma de suas boas práticas.</li>
+      <li><strong>Afirmação 3</strong> — é a boa prática da <strong>classe proprietária</strong>: a unidade é atribuída individualmente, evitando conflitos na equipe; os proprietários das classes as codificam no CPF.</li>
+      <li><strong>Afirmação 4</strong> — é a atividade <strong>inspecionar o código</strong> do CPF, muito importante: verifica padrões de codificação, legibilidade, flexibilidade a mudanças, maus cheiros e refatoração, e o mais recomendável é que seja feita por <strong>analistas externos</strong>.</li>
+      <li><strong>Afirmação 5</strong> — é a saída do <strong>CLF</strong>: lista de áreas de negócio, de atividades de cada área e de passos (funcionalidades) de cada atividade.</li>
+      <li><strong>Afirmação 6</strong> — o <strong>DMA</strong> produz o modelo conceitual (classes de entidade, sem métodos) na fase de Concepção e Planejamento; no <strong>DPF</strong>, a cada iteração, ele é refinado incluindo métodos e passa a ser modelo de domínio.</li>
+    </ul>
+    <p><strong>Por que não o XP:</strong> ele também atende à afirmação 2 — iterações de 1 a 2 semanas, testes de unidade e integração contínua —, mas contradiz as demais: adota a <strong>posse coletiva do código</strong> (o código não tem dono e ninguém precisa pedir permissão para modificá-lo), verifica o código pela <strong>programação em pares</strong>, tem os requisitos escritos pelos clientes como <strong>histórias de usuário em cartões</strong> e mantém o projeto o mais simples possível, com cartões CRC, em vez de um modelo abrangente construído antes de começar.</p>`
+},
+
+{
+  id: "T46", tipo: "teorica", unidade: "Ágeis", tema: "Ágeis II — FDD", bullets: [],
+  pergunta: "Quais são as desvantagens do FDD?",
+  resposta: `
+    <ul>
+      <li><strong>Não funciona bem com equipes pequenas</strong> — o FDD demanda a execução de muitas tarefas, atividades e papéis.</li>
+      <li><strong>Grande produção de documentação escrita nas primeiras fases</strong> do projeto. Na opinião do professor, isso <strong>não é necessariamente uma desvantagem</strong>, mas reforça a necessidade de uma equipe grande.</li>
+      <li><strong>O projeto depende muito das decisões dos programadores líderes</strong>, que precisam ter bastante experiência para desempenhar esse papel.</li>
+    </ul>`
+},
+
+{
+  id: "T47", tipo: "teorica", unidade: "Ágeis", tema: "Ágeis II — FDD", bullets: [],
+  pergunta: "Para que tipo de projeto o FDD é indicado e quando não se deve usá-lo? Justifique com as vantagens e desvantagens do processo.",
+  resposta: `
+    <p><strong>Indicado</strong> para <strong>projetos grandes</strong>, com quantidade de funcionalidades maior que o normal e certo grau de complexidade, desenvolvidos por <strong>equipes grandes</strong>. As vantagens explicam por quê:</p>
+    <ul>
+      <li>É adequado para trabalhar com equipes grandes em projetos grandes;</li>
+      <li>Produz projetos bem estruturados desde a primeira fase;</li>
+      <li>Permite que várias equipes trabalhem simultaneamente, reduzindo o tempo de execução do projeto;</li>
+      <li>É altamente documentado e, por isso, muito rastreável — para trás (quem pediu o requisito, por que e quando) e para a frente (que artefatos serão alterados por uma mudança);</li>
+      <li>A documentação abundante facilita identificar lacunas e corrigi-las;</li>
+      <li>As equipes trabalham as etapas de desenvolvimento com bastante agilidade.</li>
+    </ul>
+    <p><strong>Não usar</strong> quando a <strong>equipe é pequena</strong> — o processo demanda muitas tarefas, atividades e papéis — nem quando não há <strong>programadores líderes experientes</strong>, porque o projeto depende muito das decisões deles. A grande produção de documentação escrita nas primeiras fases também exige equipe grande (para o professor, não é necessariamente uma desvantagem).</p>`
+},
+
+{
+  id: "T48", tipo: "teorica", unidade: "Ágeis", tema: "Ágeis II — FDD", bullets: [],
+  pergunta: "Quais são as fases do FDD e os subprocessos de cada uma? Descreva o que cada subprocesso produz.",
+  resposta: `
+    <p>O FDD tem <strong>duas fases</strong>. A <strong>Concepção e Planejamento</strong> (principalmente engenharia de requisitos; entrada: os requisitos) parte da premissa de que se deve <strong>pensar antes de começar a construir</strong>. A <strong>Construção</strong> (principalmente projeto e codificação) é a fase <strong>iterativa</strong>, em ciclos de uma a duas semanas.</p>
+    <ul>
+      <li><strong>DMA — Desenvolver Modelo Abrangente</strong> — estudo dirigido do domínio com os especialistas; grupos de no máximo três pessoas criam modelos candidatos, unidos em um modelo único. Produz o <strong>modelo conceitual</strong> (classes de entidade, sem métodos), eventualmente métodos e atributos, diagramas de sequência ou de máquina de estados e comentários sobre o modelo.</li>
+      <li><strong>CLF — Construir Lista de Funcionalidades</strong> — produz a lista de <strong>áreas de negócio</strong>, de <strong>atividades</strong> de cada área e de <strong>passos (funcionalidades)</strong> de cada atividade; pode-se aplicar decomposição funcional.</li>
+      <li><strong>PPF — Planejar Por Funcionalidade</strong> — produz os prazos de cada atividade e de cada área de negócio, a atribuição dos programadores líderes às atividades e a lista de desenvolvedores com as classes de que são proprietários, priorizando o mais complexo e arriscado.</li>
+      <li><strong>DPF — Detalhar Por Funcionalidade</strong> — projeto orientado a objetos do pacote de funcionalidades da iteração. Produz a capa com comentários do pacote, os diagramas de sequência e projetos alternativos, o modelo de classes atualizado (que ganha métodos e vira modelo de domínio), as interfaces de classe e a lista de tarefas dos desenvolvedores.</li>
+      <li><strong>CPF — Construir Por Funcionalidade</strong> — implementar classes e métodos → inspecionar o código → teste de unidade → promover a versão atual ao build (após os testes de integração). Produz as classes promovidas e um conjunto de funcionalidades com valor agregado que o cliente já pode usar.</li>
+    </ul>
+    <p>A Concepção e Planejamento produz o <strong>modelo de classes</strong> e o <strong>plano de desenvolvimento</strong> que alimentam a Construção. Se o software não estiver concluído ao fim do CPF, volta-se ao DPF com um novo pacote de funcionalidades.</p>`
+},
+
+{
+  id: "T49", tipo: "teorica", unidade: "Ágeis", tema: "Ágeis II — FDD", bullets: [],
+  pergunta: "Quais são os papéis do FDD e as responsabilidades de cada um?",
+  resposta: `
+    <ul>
+      <li><strong>Gerente de projeto</strong> — aspectos administrativos; gestão de tarefas e prazos (cumprimento do cronograma); operação do centro de controle; contato com o cliente; divulgação do status do projeto.</li>
+      <li><strong>Arquiteto chefe</strong> — desenvolve a <strong>arquitetura do software</strong>, o "esqueleto" que estabelece como os módulos se organizam; responde por grande parte da modelagem e gerencia os demais arquitetos.</li>
+      <li><strong>Programador líder</strong> — lidera a equipe de programadores; pode haver mais de um.</li>
+      <li><strong>Gerente de desenvolvimento</strong> — gerencia a equipe de desenvolvedores e os prazos das iterações; coordena entregas e relatórios com o arquiteto chefe e o programador líder.</li>
+      <li><strong>Proprietário de classe</strong> — desenvolvedor a quem são atribuídas uma ou mais classes pelas quais se responsabiliza, com prazo relativamente curto (cerca de duas semanas) para suas tarefas.</li>
+      <li><strong>Especialista em domínio</strong> — usuário-chave, que conhece profundamente um departamento, setor ou processo da empresa; é quem mais fornece insumos para a elicitação e a compreensão dos requisitos.</li>
+      <li><strong>Outros membros</strong> — testadores, escritores técnicos (especificação de requisitos e outros documentos), administradores de sistema (hardware e software de apoio) e gestores de ferramentas.</li>
+    </ul>
+    <p>Por trabalhar com tantos papéis, o FDD exige <strong>equipes grandes</strong> — e não funciona bem com equipes pequenas.</p>`
+},
+
+{
+  id: "T50", tipo: "teorica", unidade: "Ágeis", tema: "Ágeis II — FDD", bullets: [],
+  pergunta: "Compare o FDD com o Processo Unificado (UP): o que os aproxima e o que os diferencia?",
+  resposta: `
+    <p><strong>O que os aproxima:</strong></p>
+    <ul>
+      <li>Ambos são <strong>iterativos</strong>: o UP desenvolve em vários ciclos, e a Construção do FDD é uma fase iterativa, em ciclos de uma a duas semanas.</li>
+      <li>Ambos produzem <strong>bastante modelagem e documentação</strong>: o FDD trabalha intensamente com modelagem orientada a objetos; o UP foi criado em conjunto com a UML e produz modelos de projeto, de classes e de interação a cada ciclo.</li>
+      <li>Ambos atacam primeiro o mais difícil: o PPF do FDD prioriza as atividades mais complexas ou de risco alto; o UP é <strong>focado em riscos</strong> e enfoca nos primeiros ciclos os casos de uso mais críticos, arriscados, complexos ou instáveis.</li>
+      <li>Ambos dão peso à estrutura do sistema: no FDD, o arquiteto chefe desenvolve a arquitetura, o "esqueleto" do software; o UP é <strong>centrado na arquitetura</strong>.</li>
+    </ul>
+    <p><strong>O que os diferencia:</strong></p>
+    <ul>
+      <li><strong>Família</strong> — o FDD é um processo <strong>ágil</strong>, que não aceita documentação burocrática ou inútil; o UP é estudado entre os prescritivos, como processo iterativo e incremental.</li>
+      <li><strong>Unidade de organização</strong> — o FDD é <strong>dirigido a funcionalidades</strong>, organizadas em áreas, atividades e passos de negócio; o UP é <strong>dirigido por casos de uso</strong>.</li>
+      <li><strong>Fases</strong> — o FDD tem <strong>duas</strong>: Concepção e Planejamento (DMA → CLF → PPF), que modela e planeja o projeto inteiro antes de construir, e Construção (DPF → CPF), a única iterativa. O UP tem <strong>quatro</strong> — Concepção, Elaboração, Construção e Transição —, cada uma composta de ciclos (a concepção, normalmente, de um só), e trata os requisitos na concepção de forma abrangente, mas não em profundidade.</li>
+      <li><strong>Divisão do trabalho</strong> — o FDD atribui cada classe a um <strong>proprietário de classe</strong> e cada atividade de negócio a um programador líder; o UP aloca grupos de casos de uso a cada ciclo, por valor de negócio e por risco.</li>
+    </ul>`
+},
+
+
 /* --- Ágeis III — DSDM --- */
 
 /* --- Ágeis IV — Crystal Clear --- */
