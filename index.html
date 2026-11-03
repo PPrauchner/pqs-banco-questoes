@@ -2524,6 +2524,172 @@ window.QUESTOES = [
 
 /* --- Ágeis VII — Scrum: papéis e artefatos --- */
 
+{
+  id: "P59", tipo: "pratica", unidade: "Ágeis", tema: "Ágeis VII — Scrum: papéis e artefatos", alvo: "Scrum",
+  bullets: [
+    "Uma rede de clínicas quer uma plataforma de telemedicina — agenda, prontuário, videochamada e integração com convênios —, problema que a própria rede considera complexo;",
+    "Os requisitos ainda estão sendo descobertos e devem mudar à medida que médicos e pacientes usarem as primeiras versões;",
+    "A equipe tem oito pessoas experientes, que juntas dominam análise, projeto, programação e testes e estão acostumadas a decidir entre si quem faz o quê, quando e como;",
+    "Todos os membros trabalharão exclusivamente neste produto, sem dividir tempo com outros projetos;",
+    "A diretoria indicou uma gestora que conhece bem as necessidades das clínicas para decidir o que é mais valioso e priorizar o que será feito em cada ciclo;",
+    "A rede não exige uma data de conclusão fixa: quer ver, ao fim de cada ciclo de no máximo um mês, uma parte utilizável da plataforma e opinar sobre ela."
+  ],
+  pergunta: "Qual o processo ágil mais adequado a este projeto e por quê?",
+  resposta: `
+    <p><strong>Scrum.</strong></p>
+    <ul>
+      <li><em>Problema complexo</em> — o Scrum é um framework leve para gerar valor por meio de soluções adaptáveis para <strong>problemas complexos</strong>; para um problema simples ele pode não ser adequado.</li>
+      <li><em>Requisitos em descoberta</em> — o <strong>Product Backlog</strong> é uma lista emergente e ordenada: recebe itens novos e tem itens alterados ao longo do projeto, e o refinamento os torna menores e mais precisos.</li>
+      <li><em>Oito pessoas que dominam todas as habilidades e se organizam sozinhas</em> — a Equipe Scrum recomendada tem de 6 a 10 pessoas, é <strong>multifuncional</strong> (todas as habilidades para agregar valor a cada Sprint, sem papéis fixos de analista, projetista ou programador) e <strong>autogerenciável</strong> (decide quem faz o quê, quando e como).</li>
+      <li><em>Dedicação exclusiva a um produto</em> — a equipe é uma unidade coesa focada em um objetivo por vez (o Product Goal) e trabalha em um produto por vez; o Scrum requer comprometimento total de cada membro durante o Sprint.</li>
+      <li><em>Gestora que decide o valor e prioriza</em> — é o <strong>Product Owner</strong>: conhece as necessidades do cliente, ordena o Product Backlog, dá a palavra final sobre o que entra em cada Sprint e maximiza o valor do produto.</li>
+      <li><em>Parte utilizável a cada ciclo de até um mês, sem data final fixa</em> — cada <strong>Sprint</strong> dura de poucas semanas a um mês e termina com um <strong>Incremento</strong> utilizável, inspecionado com as partes interessadas na Revisão do Sprint. A dificuldade de definir prazos rígidos é uma desvantagem do Scrum que a rede aceita.</li>
+    </ul>
+    <p><strong>Por que não o Crystal Clear:</strong> a equipe de oito pessoas caberia nele, mas o Crystal Clear é indicado para projetos menores e mais simples, ou complexos com <em>escopo bem definido</em>, e geralmente trabalha com contrato de preço fixo e timeboxing. Aqui o problema é complexo, o escopo ainda está sendo descoberto e não há prazo fixo — além de as entregas do Crystal Clear poderem chegar a dois meses, e não a um ciclo de no máximo um mês.</p>`
+},
+
+{
+  id: "P60", tipo: "pratica", unidade: "Ágeis", tema: "Ágeis VII — Scrum: papéis e artefatos", alvo: "Scrum",
+  bullets: [
+    "A secretaria municipal de educação contratou um sistema de matrícula, frequência e boletim para as escolas da rede;",
+    "Uma servidora da secretaria mantém uma lista ordenada de tudo o que o sistema deve ter, que recebe itens novos ao longo do projeto e é construída em torno de um estado futuro esperado para o produto;",
+    "Cada ciclo dura no máximo um mês e começa com uma reunião de até oito horas, na qual se fixa um único objetivo para o ciclo e a servidora dá a palavra final sobre os itens selecionados;",
+    "Todos os dias, no mesmo horário e local, os desenvolvedores se reúnem em pé por 5 a 15 minutos e cada um diz o que fez, o que fará e que dificuldades enfrenta;",
+    "Um integrante da equipe não gerencia ninguém: conhece bem o processo, remove impedimentos e treina a secretaria nessa forma de trabalhar;",
+    "Um item que não atende à descrição formal de qualidade combinada não é apresentado no fim do ciclo e volta para a lista."
+  ],
+  pergunta: "Qual o processo ágil mais adequado a este projeto e por quê?",
+  resposta: `
+    <p><strong>Scrum.</strong> O Cenário descreve a mecânica do framework sem nomear seus elementos:</p>
+    <ul>
+      <li><em>Servidora que mantém a lista ordenada</em> — é o <strong>Product Owner</strong> gerenciando o <strong>Product Backlog</strong>, lista emergente e ordenada, fonte única do trabalho da equipe.</li>
+      <li><em>Estado futuro esperado do produto</em> — é o <strong>Objetivo do Produto (Product Goal)</strong>, compromisso do Product Backlog: todo o restante da lista é criado em torno dele.</li>
+      <li><em>Ciclo de até um mês aberto por reunião de até oito horas, com objetivo único e palavra final da servidora</em> — é o <strong>Sprint</strong> e seu <strong>Sprint Planning</strong>, que dura no máximo 8 horas para um Sprint de um mês; nele se define o <strong>Objetivo do Sprint</strong> (um só por Sprint), e a palavra final sobre os itens do Sprint Backlog é do Product Owner.</li>
+      <li><em>Reunião diária em pé, de 5 a 15 minutos</em> — é o <strong>Daily Scrum</strong>: mesmo horário e local, o que fiz, o que farei e quais dificuldades enfrento.</li>
+      <li><em>Integrante que não gerencia, remove impedimentos e treina a organização</em> — é o <strong>Scrum Master</strong>: não é gerente nem líder no sentido clássico; é facilitador e serve à equipe, ao Product Owner e à organização.</li>
+      <li><em>Item fora da descrição formal de qualidade volta para a lista</em> — é a <strong>Definição de Pronto</strong>, compromisso do Incremento: o item que não a atende não pode ser apresentado na Revisão do Sprint e retorna ao Product Backlog.</li>
+    </ul>
+    <p><strong>Por que não o XP:</strong> o XP também tem reunião diária em pé e histórias de usuário, mas suas iterações duram de 1 a 2 semanas, com entregas semanais ou no máximo a cada duas semanas, e no jogo de planejamento são os clientes que escolhem as histórias da iteração — não uma única pessoa com a palavra final. O Cenário também não traz nenhuma das práticas de engenharia que definem o XP (TDD, programação em pares, integração contínua), e o Objetivo do Sprint único, a Definição de Pronto e o papel do Scrum Master são elementos próprios do Scrum.</p>`
+},
+
+{
+  id: "P61", tipo: "pratica", unidade: "Ágeis", tema: "Ágeis VII — Scrum: papéis e artefatos", alvo: "Scrum",
+  bullets: [
+    "Uma rede de supermercados quer um aplicativo de fidelidade cujas regras de pontuação e de ofertas ainda serão descobertas com o uso;",
+    "A rede aceita não receber uma data exata de conclusão, pois sabe que vai sugerir funcionalidades novas ao longo do projeto;",
+    "Os sete desenvolvedores foram retirados de todos os outros projetos e ficarão dedicados a este durante cada ciclo, mesmo que outras áreas da empresa percam ajuda;",
+    "A empresa sabe que, sem uma equipe madura, capaz de decidir sozinha quem faz o quê, quando e como, haveria atrasos e problemas de qualidade — por isso escalou só profissionais experientes;",
+    "Como entregar incrementos de alta qualidade em ciclos curtos pressiona a equipe, combinou-se selecionar menos itens por ciclo para manter um ritmo sustentável;",
+    "A equipe trabalhará no mesmo local e horário, já que o processo depende de colaboração e comunicação intensas entre todos."
+  ],
+  pergunta: "Qual o processo ágil mais adequado a este projeto e por quê?",
+  resposta: `
+    <p><strong>Scrum.</strong> Quase todas as afirmações são desvantagens do Scrum que o projeto aceita e contorna:</p>
+    <ul>
+      <li><em>Regras descobertas com o uso</em> — o Scrum é flexível e permite autoadaptação e resposta às mudanças durante o projeto, útil para requisitos em constante evolução.</li>
+      <li><em>Sem data exata de conclusão</em> — <strong>definição de prazos</strong>: como o Scrum aceita mudanças e incentiva o cliente a sugerir requisitos ao longo do projeto, é difícil estimar com exatidão quando ele termina.</li>
+      <li><em>Desenvolvedores retirados de outros projetos</em> — <strong>requer comprometimento total</strong>: todo membro precisa estar disponível e dedicado durante todo o Sprint e não pode trabalhar em mais de um projeto.</li>
+      <li><em>Só profissionais experientes que se organizam sozinhos</em> — <strong>exige equipe altamente autogerenciável</strong>: decidir quem faz o quê, quando e como exige maturidade e experiência; a falta de autogerenciamento leva a atrasos e problemas de qualidade.</li>
+      <li><em>Menos itens por ciclo</em> — <strong>risco de sobrecarga de trabalho</strong>: Sprints curtos com incrementos de alta qualidade podem esgotar a equipe; a mitigação indicada é montar Sprints com menos itens no Sprint Backlog.</li>
+      <li><em>Mesmo local e horário</em> — <strong>necessidade de colaboração intensa</strong>: equipes distribuídas, com horários diferentes ou com dificuldade de comunicação prejudicam a produtividade.</li>
+    </ul>
+    <p><strong>Por que não o DSDM:</strong> o DSDM é feito para cronogramas curtos e orçamentos fixos que não aceitam grandes mudanças, com contrato assinado já no pré-projeto e requisitos claros e priorizáveis. Aqui a rede abre mão de uma data de conclusão justamente porque vai mudar e acrescentar funcionalidades — o oposto da previsibilidade de prazo e orçamento que o DSDM garante.</p>`
+},
+
+{
+  id: "P62", tipo: "pratica", unidade: "Ágeis", tema: "Ágeis VII — Scrum: papéis e artefatos", alvo: "Scrum",
+  bullets: [
+    "Uma cooperativa agrícola precisa de um sistema de rastreamento da produção, do plantio à venda — problema complexo, com requisitos que mudam a cada safra;",
+    "Os produtores não precisam de versões novas toda semana: preferem ciclos de algumas semanas a um mês, desde que cada ciclo termine com uma parte utilizável;",
+    "Os associados não podem ficar à disposição da equipe o tempo todo; a cooperativa indicou um único representante com autoridade para ordenar a lista de requisitos e dar a palavra final sobre o que entra em cada ciclo;",
+    "Ao fim de cada ciclo, a equipe e associados com bastante conhecimento do setor trabalham juntos sobre o resultado e ajustam a lista de requisitos — não é apenas uma apresentação;",
+    "A cooperativa quer um arcabouço de papéis, eventos e artefatos e deixa a cargo da equipe as técnicas de codificação e de teste;",
+    "Uma pessoa que conhece bem o processo vai facilitar o trabalho, remover impedimentos e treinar a cooperativa na adoção dele."
+  ],
+  pergunta: "Qual o processo ágil mais adequado a este projeto e por quê?",
+  resposta: `
+    <p><strong>Scrum.</strong></p>
+    <ul>
+      <li><em>Problema complexo com requisitos que mudam</em> — o Scrum foi projetado para problemas complexos, e o Product Backlog é emergente: recebe e altera itens ao longo do projeto.</li>
+      <li><em>Ciclos de algumas semanas a um mês, cada um com uma parte utilizável</em> — é o <strong>Sprint</strong>, de poucas semanas a um mês, cujo resultado é um <strong>Incremento</strong> utilizável pelo cliente.</li>
+      <li><em>Um único representante que ordena a lista e dá a palavra final</em> — é o <strong>Product Owner</strong>: ordena e prioriza o Product Backlog e tem a palavra final sobre os itens do Sprint Backlog.</li>
+      <li><em>Trabalho conjunto sobre o resultado ao fim do ciclo</em> — é a <strong>Revisão do Sprint</strong>: a equipe apresenta o incremento às partes interessadas chave, discute o progresso, o Product Backlog pode ser ajustado, e a revisão deve ser uma sessão de trabalho, não uma apresentação.</li>
+      <li><em>Arcabouço de papéis, eventos e artefatos</em> — o Scrum não é exatamente uma metodologia, e sim um <strong>framework</strong> (arcabouço) leve: três papéis, cinco eventos e três artefatos com seus compromissos.</li>
+      <li><em>Pessoa que facilita, remove impedimentos e treina a organização</em> — é o <strong>Scrum Master</strong>, que serve à equipe, ao Product Owner e à organização.</li>
+    </ul>
+    <p><strong>Por que não o XP, o par mais próximo:</strong> os dois usam histórias de usuário, reunião diária em pé e ritmo sustentável, mas três afirmações excluem o XP. (1) O XP faz entregas semanais ou no máximo a cada duas semanas — é o processo indicado quando há <em>pressão por entregas muito rápidas</em>, e os produtores dispensam isso. (2) O XP exige o <em>cliente sempre disponível</em>, especialista no domínio e parte da equipe, escrevendo e priorizando as histórias; aqui os associados não ficam à disposição, e quem ordena os requisitos é um único representante — o Product Owner. (3) O XP prescreve as técnicas de engenharia (TDD, programação em pares, integração contínua, padrões de codificação), que a cooperativa deixou a cargo da equipe.</p>`
+},
+
+{
+  id: "T69", tipo: "teorica", unidade: "Ágeis", tema: "Ágeis VII — Scrum: papéis e artefatos", bullets: [],
+  pergunta: "Quais os papéis da Equipe Scrum, e quais as características que essa equipe deve ter?",
+  resposta: `
+    <p>A Equipe Scrum (recomenda-se de 6 a 10 pessoas) tem três papéis:</p>
+    <ul>
+      <li><strong>Developers (desenvolvedores)</strong> — produzem realmente o produto. São sempre responsáveis por criar o plano do Sprint (o Sprint Backlog, junto com o Product Owner), incutir qualidade aderente à Definição de Pronto, adaptar o plano para atingir o Objetivo do Sprint e responsabilizar-se mutuamente como profissionais.</li>
+      <li><strong>Product Owner (dono do produto)</strong> — o responsável pelo projeto: conhece as necessidades do cliente (visão do negócio), decide e prioriza o que entra em cada Sprint, maximiza o valor do produto e gere o ROI. Gerencia o Product Backlog: desenvolve e comunica o Objetivo do Produto, cria, ordena e mantém os itens transparentes e compreendidos.</li>
+      <li><strong>Scrum Master</strong> — facilitador que conhece bem o Scrum, ajuda todos a compreendê-lo e responde pela eficácia da equipe.</li>
+    </ul>
+    <p><strong>Características da equipe:</strong></p>
+    <ul>
+      <li><strong>Coesa</strong> — focada em um objetivo por vez, o Product Goal.</li>
+      <li><strong>Multifuncional</strong> — tem todas as habilidades para agregar valor a cada Sprint; não há papéis fixos de analista, projetista ou programador, e a cada Sprint a equipe decide quem fará o quê.</li>
+      <li><strong>Autogerenciável</strong> — decide internamente quem faz o quê, quando e como, sem interferência externa.</li>
+      <li><strong>Tamanho adequado</strong> — pequena para continuar ágil, grande para concluir trabalho de valor em um Sprint. Equipes grandes devem se reorganizar em várias equipes coesas que compartilham o mesmo Product Goal, o mesmo Product Backlog e o mesmo produto.</li>
+    </ul>
+    <p>A equipe trabalha em Sprints a um <strong>ritmo sustentável</strong> e é responsável por criar a cada Sprint um incremento útil e valioso que o cliente possa utilizar.</p>`
+},
+
+{
+  id: "T70", tipo: "teorica", unidade: "Ágeis", tema: "Ágeis VII — Scrum: papéis e artefatos", bullets: [],
+  pergunta: "O Scrum Master é o gerente do projeto? A quem ele serve e de que forma?",
+  resposta: `
+    <p><strong>Não.</strong> O Scrum Master não é um gerente no sentido dos modelos prescritivos nem um líder no sentido clássico — as equipes são auto-organizadas. É um <strong>facilitador</strong> que conhece bem o Scrum, responsável por estabelecê-lo (ajudar todos a compreender sua teoria e prática), pela eficácia da equipe e por incentivá-la a melhorar continuamente a cada Sprint.</p>
+    <ul>
+      <li><strong>À Equipe Scrum</strong> — treinando os membros em autogerenciamento e multifuncionalidade; ajudando-os a criar incrementos de alta qualidade que atendam à Definição de Pronto; removendo impedimentos; garantindo que todos os eventos ocorram, sejam produtivos e mantenham o cronograma.</li>
+      <li><strong>Ao Product Owner</strong> — ajudando a encontrar técnicas para definir o Objetivo do Produto e gerenciar o Product Backlog (elicitação, análise e priorização de requisitos); ajudando a equipe a entender a necessidade de itens claros e concisos; facilitando a colaboração das partes interessadas.</li>
+      <li><strong>À organização</strong> — liderando e treinando a adoção do Scrum; planejando e aconselhando implementações (verificando onde são adequadas); removendo barreiras de comunicação entre as partes interessadas e a equipe.</li>
+    </ul>
+    <p>No Daily Scrum, é dever do Scrum Master ajudar cada desenvolvedor a superar as dificuldades relatadas.</p>`
+},
+
+{
+  id: "T71", tipo: "teorica", unidade: "Ágeis", tema: "Ágeis VII — Scrum: papéis e artefatos", bullets: [],
+  pergunta: "Quais os artefatos do Scrum e qual o compromisso associado a cada um?",
+  resposta: `
+    <ul>
+      <li><strong>Product Backlog</strong> — listagem das funcionalidades que o software deverá suportar. Compromisso: <strong>Objetivo do Produto (Product Goal)</strong> — o que se espera do produto como um todo.</li>
+      <li><strong>Sprint Backlog</strong> — funcionalidades selecionadas para serem implementadas em um Sprint. Compromisso: <strong>Objetivo do Sprint (Sprint Goal)</strong> — o que se espera do incremento do Sprint.</li>
+      <li><strong>Incremento</strong> — resultado do Sprint: funcionalidades operacionais agregadas ao produto. Compromisso: <strong>Definição de Pronto (Definition of Done)</strong> — estabelece quando um item foi desenvolvido e atinge o nível de qualidade adequado.</li>
+    </ul>
+    <p><strong>Por que artefatos e compromissos:</strong> os artefatos representam trabalho ou valor e devem maximizar a <strong>transparência</strong> — fáceis de ler, entender, acompanhar e inspecionar —, de modo que qualquer um que os inspecione tenha a mesma base para a adaptação. Cada compromisso garante que o artefato forneça informações que melhorem a transparência e o foco da equipe, o que ajuda a medir o progresso.</p>`
+},
+
+{
+  id: "T72", tipo: "teorica", unidade: "Ágeis", tema: "Ágeis VII — Scrum: papéis e artefatos", bullets: [],
+  pergunta: "O que é o Product Backlog, o que é o seu refinamento e qual o papel do Objetivo do Produto?",
+  resposta: `
+    <p><strong>Product Backlog</strong> é a lista <strong>emergente e ordenada</strong> do que é necessário fazer ou melhorar no produto e a <strong>fonte única</strong> do trabalho da Equipe Scrum. Não é rígida: pode (e muitas vezes deve) receber itens novos ou alterados ao longo do projeto. Os itens que a equipe consegue fazer dentro de um Sprint estão prontos para seleção no Planejamento do Sprint.</p>
+    <p><strong>Refinamento</strong> é o ato contínuo de dividir, redefinir e melhorar os itens, tornando-os menores, mais detalhados e mais precisos, com descrição, tamanho, prioridade, importância ou complexidade. No exemplo de Wazlawick, cada item tem ID, nome, importância (dada pelo Product Owner — não implica complexidade), complexidade estimada, como demonstrar que foi concluído e notas.</p>
+    <p><strong>Objetivo do Produto (Product Goal)</strong> é o compromisso do Product Backlog: descreve um estado futuro esperado para o produto e serve de meta para a equipe se planejar. Está contido no Product Backlog, e todo o restante da lista é criado em torno dele, para definir como será cumprido. O produto é um veículo para entregar valor, com limite claro, partes interessadas conhecidas e usuários ou clientes bem definidos.</p>
+    <p><strong>Observação do professor:</strong> uma nota do exemplo pede um diagrama de sequência UML — sinal de que ágil não é “codificar e testar”. O Scrum tem engenharia de requisitos, projeto, modelagem e testes; os métodos ágeis combatem apenas a documentação inútil e burocrática.</p>`
+},
+
+{
+  id: "T73", tipo: "teorica", unidade: "Ágeis", tema: "Ágeis VII — Scrum: papéis e artefatos", bullets: [],
+  pergunta: "O que são o Objetivo do Sprint e a Definição de Pronto? O que acontece com um item que não atende à Definição de Pronto?",
+  resposta: `
+    <p><strong>Objetivo do Sprint (Sprint Goal)</strong> — compromisso do Sprint Backlog (que é formado pelo Objetivo do Sprint, pelos itens selecionados e pelo plano para entregar o incremento):</p>
+    <ul>
+      <li>é <strong>único</strong> — não pode haver mais de um por Sprint;</li>
+      <li>descreve o que a equipe almeja alcançar e dá flexibilidade quanto ao trabalho exato para atingi-lo;</li>
+      <li>cria coerência e foco, levando a equipe a trabalhar em conjunto, e não em iniciativas separadas;</li>
+      <li>é criado no Planejamento do Sprint e mantido em mente o Sprint inteiro; se o trabalho for diferente do esperado, o escopo do Sprint Backlog é negociado com o Product Owner <em>sem afetar</em> o Objetivo do Sprint.</li>
+    </ul>
+    <p><strong>Definição de Pronto (Definition of Done)</strong> — compromisso do Incremento: descrição formal do estado esperado do incremento, que deve atender às medidas de qualidade requeridas para o produto. Quando um item atende à Definição de Pronto, um incremento é produzido. Ela cria transparência, pois dá uma compreensão compartilhada do trabalho concluído.</p>
+    <p><strong>Item que não a atende:</strong> não faz parte do incremento, não pode ser entregue nem apresentado na Revisão do Sprint e <strong>retorna ao Product Backlog</strong> para ser abordado em um novo Sprint.</p>`
+},
+
 /* --- Ágeis VIII — Scrum: pilares e eventos --- */
 
 ];
