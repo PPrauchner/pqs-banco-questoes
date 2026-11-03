@@ -282,7 +282,16 @@ ul.cenario li::before{
       <button type="button" data-t="teorica" aria-pressed="false">Teóricas</button>
       <button type="button" data-t="revisar" aria-pressed="false">Revisar</button>
     </div>
-    <select id="selTema" aria-label="Filtrar por tema"></select>
+    <div class="filtros">
+      <div class="filtro">
+        <label class="filtro__rotulo" for="selProva">Prova</label>
+        <select id="selProva"></select>
+      </div>
+      <div class="filtro">
+        <label class="filtro__rotulo" for="selEscopo">Escopo</label>
+        <select id="selEscopo"></select>
+      </div>
+    </div>
     <button type="button" class="ico" id="btnShuffle" title="Sortear nova ordem">↺ Sortear</button>
     <button type="button" class="ico" id="btnTema" title="Alternar tema claro/escuro">◐</button>
   </div>
@@ -2809,8 +2818,11 @@ window.QUESTOES = [
   "use strict";
   var Q = window.QUESTOES || [];
   var CHAVE = "pqs-processos-v1";
+  // Valores do Escopo: "todos", "unidade:<nome>" ou "tema:<nome da aula>".
+  var PREFIXO_UNIDADE = "unidade:";
+  var PREFIXO_TEMA = "tema:";
 
-  var estado = { tipo:"todas", tema:"todos", i:0, ordem:[], revelada:false, marcas:{} };
+  var estado = { tipo:"todas", prova:"todas", escopo:"todos", i:0, ordem:[], revelada:false, marcas:{} };
 
   function ler(){
     try{
@@ -2820,14 +2832,15 @@ window.QUESTOES = [
         if(o && typeof o === "object"){
           estado.marcas = o.marcas || {};
           if(o.tipo) estado.tipo = o.tipo;
-          if(o.tema) estado.tema = o.tema;
+          if(o.prova) estado.prova = o.prova;
+          if(o.escopo) estado.escopo = o.escopo;
         }
       }
     }catch(e){ /* armazenamento indisponível */ }
   }
   function salvar(){
     try{
-      localStorage.setItem(CHAVE, JSON.stringify({marcas:estado.marcas, tipo:estado.tipo, tema:estado.tema}));
+      localStorage.setItem(CHAVE, JSON.stringify({marcas:estado.marcas, tipo:estado.tipo, prova:estado.prova, escopo:estado.escopo}));
     }catch(e){ /* sem persistência: a sessão continua funcionando */ }
   }
 
@@ -2860,7 +2873,9 @@ window.QUESTOES = [
     return Q.filter(function(q){
       if(estado.tipo === "revisar"){ if(estado.marcas[q.id] !== "revisar") return false; }
       else if(estado.tipo !== "todas" && q.tipo !== estado.tipo) return false;
-      if(estado.tema !== "todos" && q.tema !== estado.tema) return false;
+      if(estado.prova !== "todas" && provaDaUnidade[q.unidade] !== estado.prova) return false;
+      if(estado.escopo.indexOf(PREFIXO_UNIDADE) === 0 && q.unidade !== estado.escopo.slice(PREFIXO_UNIDADE.length)) return false;
+      if(estado.escopo.indexOf(PREFIXO_TEMA) === 0 && q.tema !== estado.escopo.slice(PREFIXO_TEMA.length)) return false;
       return true;
     });
   }
@@ -2889,7 +2904,7 @@ window.QUESTOES = [
     barra.style.width = total ? (((estado.i+1)/total)*100).toFixed(2) + "%" : "0%";
 
     if(!total){
-      palco.innerHTML = '<div class="vazio">Nenhuma questão com estes filtros.<br>Troque o tipo ou o tema na barra acima.</div>';
+      palco.innerHTML = '<div class="vazio">Nenhuma questão com estes filtros.<br>Troque o tipo, a prova ou o escopo na barra acima.</div>';
       rodape.textContent = "";
       return;
     }
@@ -2964,21 +2979,61 @@ window.QUESTOES = [
     salvar(); montarOrdem(); render();
   });
 
-  var selTema = document.getElementById("selTema");
-  // Aulas na ordem do curso (window.UNIDADES), só as que já têm questões.
-  var temasComQuestoes = [];
+  var selProva = document.getElementById("selProva");
+  var selEscopo = document.getElementById("selEscopo");
+
+  // Unidades e aulas na ordem do curso (window.UNIDADES), só as aulas que já têm
+  // questões: assim nenhuma opção do Escopo leva a uma tela vazia.
+  var provaDaUnidade = {};
+  var unidades = [];
+  var provas = [];
   (function(){
     var usados = {};
     Q.forEach(function(q){ usados[q.tema] = true; });
+    var vistas = {};
     (window.UNIDADES || []).forEach(function(u){
-      u.temas.forEach(function(t){ if(usados[t.nome]) temasComQuestoes.push(t.nome); });
+      provaDaUnidade[u.nome] = u.prova;
+      var temas = [];
+      u.temas.forEach(function(t){ if(usados[t.nome]) temas.push(t.nome); });
+      unidades.push({ nome:u.nome, prova:u.prova, temas:temas });
+      if(!vistas[u.prova]){ vistas[u.prova] = { nome:u.prova, temQuestoes:false }; provas.push(vistas[u.prova]); }
+      if(temas.length) vistas[u.prova].temQuestoes = true;
     });
-    var opts = '<option value="todos">Todos os temas</option>';
-    temasComQuestoes.forEach(function(t){ opts += '<option value="' + t + '">' + t + '</option>'; });
-    selTema.innerHTML = opts;
+    // Prova ainda sem questões aparece, mas desabilitada.
+    var opts = '<option value="todas">Todas</option>';
+    provas.forEach(function(p){
+      opts += '<option value="' + p.nome + '"' + (p.temQuestoes ? '' : ' disabled') + '>' + p.nome + '</option>';
+    });
+    selProva.innerHTML = opts;
   })();
-  selTema.addEventListener("change", function(){
-    estado.tema = selTema.value; salvar(); montarOrdem(); render();
+
+  // Refaz o Escopo com as Unidades da Prova escolhida; um escopo que não cabe
+  // nela volta a "todos".
+  function montarEscopo(){
+    var validos = ["todos"];
+    var opts = '<option value="todos">' + (estado.prova === "todas" ? "Todos" : "Toda a prova") + '</option>';
+    unidades.forEach(function(u){
+      if(!u.temas.length) return;
+      if(estado.prova !== "todas" && u.prova !== estado.prova) return;
+      opts += '<optgroup label="' + u.nome + '">';
+      opts += '<option value="' + PREFIXO_UNIDADE + u.nome + '">Toda a unidade ' + u.nome + '</option>';
+      validos.push(PREFIXO_UNIDADE + u.nome);
+      u.temas.forEach(function(t){
+        opts += '<option value="' + PREFIXO_TEMA + t + '">' + t + '</option>';
+        validos.push(PREFIXO_TEMA + t);
+      });
+      opts += '</optgroup>';
+    });
+    selEscopo.innerHTML = opts;
+    if(validos.indexOf(estado.escopo) === -1) estado.escopo = "todos";
+    selEscopo.value = estado.escopo;
+  }
+
+  selProva.addEventListener("change", function(){
+    estado.prova = selProva.value; montarEscopo(); salvar(); montarOrdem(); render();
+  });
+  selEscopo.addEventListener("change", function(){
+    estado.escopo = selEscopo.value; salvar(); montarOrdem(); render();
   });
 
   document.getElementById("btnShuffle").addEventListener("click", function(){
@@ -3020,9 +3075,12 @@ window.QUESTOES = [
   Array.prototype.forEach.call(segTipo.querySelectorAll("button"), function(x){
     x.setAttribute("aria-pressed", String(x.getAttribute("data-t") === estado.tipo));
   });
-  // Um tema salvo que deixou de existir (ex.: os nomes anteriores às aulas) volta a "todos".
-  if(estado.tema !== "todos" && temasComQuestoes.indexOf(estado.tema) === -1) estado.tema = "todos";
-  selTema.value = estado.tema;
+  // Um filtro salvo que deixou de existir (ex.: um tema antigo, como "Cascata e
+  // variações") volta a "todos" em vez de deixar a tela vazia.
+  var provaValida = provas.some(function(p){ return p.nome === estado.prova && p.temQuestoes; });
+  if(!provaValida) estado.prova = "todas";
+  selProva.value = estado.prova;
+  montarEscopo();
   montarOrdem();
   render();
 })();
