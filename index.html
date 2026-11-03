@@ -2952,6 +2952,26 @@ window.QUESTOES = [
     contar();
   }
 
+  // Contagem por Unidade, na ordem do curso; não muda durante a sessão.
+  // Ex.: "Prescritivos: 19 processos × 2 cenários, 33 teóricas".
+  var RESUMO_POR_UNIDADE = (function(){
+    var linhas = [];
+    (window.UNIDADES || []).forEach(function(u){
+      var nP = 0, nT = 0, nAlvos = 0, alvos = {};
+      Q.forEach(function(q){
+        if(q.unidade !== u.nome) return;
+        if(q.tipo !== "pratica"){ nT++; return; }
+        nP++;
+        if(!alvos[q.alvo]){ alvos[q.alvo] = true; nAlvos++; }
+      });
+      var partes = [];
+      if(nP) partes.push(nAlvos + " processos × " + u.praticasPorAlvo + " cenários");
+      if(nT) partes.push(nT + " teóricas");
+      if(partes.length) linhas.push(u.nome + ": " + partes.join(", "));
+    });
+    return linhas.join("<br>");
+  })();
+
   function contar(){
     var nP = 0, nT = 0, nR = 0, nS = 0;
     Q.forEach(function(q){
@@ -2960,8 +2980,10 @@ window.QUESTOES = [
       if(estado.marcas[q.id] === "sabe") nS++;
     });
     rodape.innerHTML = nP + " práticas · " + nT + " teóricas · " + Q.length + " no total<br>"
+      + RESUMO_POR_UNIDADE + "<br>"
       + "marcadas: " + nS + " como sabidas, " + nR + " para revisar<br>"
-      + "Base: resumos das aulas de Processos de Desenvolvimento de Software (Wazlawick, Sommerville, Pressman).";
+      + "Base: resumos das aulas de Processos de Desenvolvimento de Software (Wazlawick, Sommerville, Pressman); "
+      + "nos Ágeis, também Manifesto Ágil, Scrum Guide e Cockburn.";
   }
 
   /* ---------- controles ---------- */
