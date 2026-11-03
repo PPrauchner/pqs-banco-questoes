@@ -8,19 +8,27 @@ dependências: abre no navegador, no celular ou direto do disco.
 
 ## O que tem
 
-**78 questões**, sorteadas em nova ordem a cada abertura, com resposta revelável
+**142 questões**, sorteadas em nova ordem a cada abertura, com resposta revelável
 questão a questão.
 
-| Tipo | Quantidade | Formato |
-|---|---|---|
-| Práticas | 38 | Cenário em tópicos + *"Qual o processo mais adequado a este projeto e por quê?"* |
-| Teóricas | 40 | Definições, fases, vantagens, desvantagens e quadros comparativos |
+| Tipo | Formato |
+|---|---|
+| Práticas | Cenário em tópicos + *"Qual o processo prescritivo/ágil mais adequado a este projeto e por quê?"* |
+| Teóricas | Definições, fases, vantagens, desvantagens e quadros comparativos |
 
-As práticas cobrem **19 processos, com dois cenários cada**. Cada resposta liga
-afirmação por afirmação ao modelo escolhido e diz qual concorrente foi descartado
-e por quê — porque o que costuma derrubar em prova é o par próximo (V × W,
-entregas em estágios × orientado a cronograma, protótipo descartável ×
-prototipação evolucionária).
+Contagem por **Unidade**:
+
+| Unidade | Prova | Processos | Práticas | Teóricas |
+|---|---|---|---|---|
+| Fundamentos | Prova 1 | — | 0 | 7 |
+| Prescritivos | Prova 1 | 19 processos × 2 cenários | 38 | 33 |
+| Ágeis | Prova 2 | 6 processos × 4 cenários | 24 | 40 |
+| **Total** | | **25 processos** | **62** | **80** |
+
+Cada resposta de prática liga afirmação por afirmação ao processo escolhido e diz
+qual concorrente foi descartado e por quê — porque o que costuma derrubar em prova
+é o par próximo (V × W, entregas em estágios × orientado a cronograma, protótipo
+descartável × prototipação evolucionária, XP × Scrum, DSDM × ASD).
 
 ## Processos cobertos
 
@@ -46,6 +54,12 @@ produto de software (SPL)
 **Iterativos e incrementais — UP** — Processo Unificado (fases, disciplinas, as
 quatro características centrais e MoSCoW)
 
+**Ágeis I — introdução e Manifesto** — valores e princípios do Manifesto Ágil,
+ágeis × prescritivos
+
+**Ágeis II a VIII — os processos ágeis** — FDD · DSDM · Crystal Clear · ASD · XP ·
+Scrum (papéis, artefatos, pilares e eventos)
+
 ## Recursos da página
 
 - Sorteio aleatório a cada abertura, e botão para re-sortear a qualquer momento
@@ -68,16 +82,18 @@ node scripts/checar-dados.js
 ```
 
 O script lê os dados do `index.html` e confere IDs (únicos, no padrão `P##`/`T##`,
-com `P01`–`P38` e `T01`–`T40` preservados), Unidade e Tema de cada questão, o
-mapeamento Unidade → Prova, os campos obrigatórios de cada tipo e o número de
-práticas por Processo-alvo (2 nos prescritivos, 4 nos ágeis). Sai com código 1 e
+contíguos a partir de `P01` e `T01`, sem buracos), Unidade e Tema de cada questão,
+o mapeamento Unidade → Prova, os campos obrigatórios de cada tipo, o número de
+práticas por Processo-alvo (2 nos prescritivos, 4 nos ágeis) e se a tabela de
+contagem por Unidade deste README bate com os dados. Sai com código 1 e
 uma linha por problema quando algo falha; com `ok: …` quando está tudo certo.
 
 ## Fonte
 
 Elaborado a partir dos resumos das videoaulas de Processos de Desenvolvimento de
 Software do Prof. Dr. Gilleanes Thorwald Araujo Guedes, com base bibliográfica em
-Wazlawick (2013), Sommerville (2011) e Pressman.
+Wazlawick (2013), Sommerville (2011) e Pressman; nos Ágeis, também o Manifesto
+Ágil, o Scrum Guide e Cockburn (Crystal Clear).
 
 Material de estudo, sem vínculo oficial com a disciplina. Correções e sugestões são
 bem-vindas via issue.
