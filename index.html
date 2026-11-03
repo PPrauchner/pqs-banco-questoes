@@ -2193,6 +2193,154 @@ window.QUESTOES = [
 
 /* --- Ágeis V — ASD --- */
 
+{
+  id: "P51", tipo: "pratica", unidade: "Ágeis", tema: "Ágeis V — ASD", alvo: "ASD",
+  bullets: [
+    "Uma rede de escolas quer uma plataforma de ensino a distância, um produto que nunca teve e que nenhum dos envolvidos sabe descrever com exatidão;",
+    "Coordenadores, professores e a equipe de TI admitem que boa parte do que a plataforma precisa fazer só vai aparecer à medida que o trabalho avançar;",
+    "O ambiente é instável: a organização das turmas, as tecnologias disponíveis e o próprio modo de trabalhar devem mudar ao longo do projeto;",
+    "A direção da rede patrocina o projeto e garante os recursos, e a coordenação pedagógica se compromete a acompanhar e avaliar o produto de perto, do início ao fim;",
+    "A equipe de desenvolvimento ficará dedicada só a este projeto, que não envolve vidas humanas nem grandes perdas financeiras."
+  ],
+  resposta: `
+    <p><strong>ASD (Adaptive Software Development).</strong></p>
+    <p>O ASD vê o desenvolvimento como um <strong>sistema adaptativo complexo</strong>, apoiado na teoria do caos — e o cenário é justamente esse sistema:</p>
+    <ul>
+      <li><em>Ninguém sabe descrever o produto; os requisitos vão aparecer no caminho</em> — é a premissa da fase <strong>especular</strong>: no início, o mais provável é que as partes interessadas não saibam exatamente o que desejam, por isso elas “especulam”, e muitos requisitos são descobertos nessa fase.</li>
+      <li><em>Ambiente instável (turmas, tecnologias, modo de trabalhar)</em> — são os três <strong>ambientes</strong> do ASD: organizacional, tecnológico e de processo. O processo é <strong>tolerante à mudança e à adaptação</strong> e flexível a adaptações do planejamento em qualquer estágio.</li>
+      <li><em>Direção patrocina e garante recursos</em> — é o papel do <strong>patrocinador executivo</strong>.</li>
+      <li><em>Coordenação acompanha e avalia de perto</em> — o <strong>cliente sempre presente</strong>, exigido pela fase aprender (revisões de qualidade e testes de aceitação com o cliente e especialistas do domínio); o ASD é útil em projetos que precisam de <strong>constante monitoria e avaliação dos clientes</strong>.</li>
+      <li><em>Equipe dedicada; projeto sem alto risco</em> — o ASD <strong>funciona melhor com equipes focadas em um único projeto</strong> e pode não ser útil para projetos de alto risco; nenhuma das duas desvantagens pesa aqui.</li>
+    </ul>
+    <p><strong>Por que não o Crystal Clear:</strong> ele também é adaptável e quer cliente e especialistas acessíveis, mas se encaixa em projetos com <strong>objetivos claros e escopo bem definido</strong>, e começa “na medida” a partir do que se supõe necessário. Aqui não há objetivo claro nem escopo definido — o produto precisa ser descoberto, que é exatamente o que a fase especular do ASD pressupõe.</p>`
+},
+
+{
+  id: "P52", tipo: "pratica", unidade: "Ágeis", tema: "Ágeis V — ASD", alvo: "ASD",
+  bullets: [
+    "Uma transportadora encomendou um sistema de gestão de frota e rotas de entrega;",
+    "O trabalho começou com uma oficina de três dias em que a equipe fixou os objetivos do projeto e levantou requisitos iniciais, restrições, riscos e as primeiras estimativas de esforço;",
+    "O projeto foi dividido em ciclos de seis semanas com prazos fixados de antemão; cada ciclo começa definindo um grande objetivo, os componentes de software a construir nele e a tecnologia necessária;",
+    "Durante o ciclo, vários componentes são construídos ao mesmo tempo, e a equipe equilibra o esforço entre as tarefas previsíveis e as mais incertas;",
+    "No fim de cada ciclo, os despachantes tentam usar o produto numa oficina e dão pareceres, código e artefatos passam por inspeção, e a equipe avalia o que fez e, se preciso, muda seu modo de trabalhar;",
+    "Os componentes de maior risco são atacados nos primeiros ciclos; ao final, testes finais determinam a qualidade antes da implantação."
+  ],
+  resposta: `
+    <p><strong>ASD (Adaptive Software Development).</strong></p>
+    <p>O cenário descreve, na ordem, a estrutura do ASD: <strong>iniciação → iterações (especular → colaborar → aprender) → encerramento</strong>.</p>
+    <ul>
+      <li><em>Oficina de três dias com objetivos, requisitos iniciais, restrições, riscos e estimativas</em> — <strong>iniciação de projeto</strong>: uma oficina de poucos dias que prepara os ciclos.</li>
+      <li><em>Ciclos de seis semanas com prazo fixado; objetivo, componentes e tecnologia de cada ciclo</em> — ciclos de <strong>4 a 8 semanas</strong> com <strong>timeboxing</strong>, e a fase <strong>especular</strong> (planejamento adaptativo de ciclo, baseado em componentes): descrever um grande objetivo por ciclo, definir os componentes de cada ciclo e a tecnologia e o suporte necessários.</li>
+      <li><em>Vários componentes ao mesmo tempo, equilibrando previsível e incerto</em> — fase <strong>colaborar</strong>: engenharia concorrente de componentes.</li>
+      <li><em>Oficina com usuários, inspeção, avaliação do modo de trabalhar</em> — fase <strong>aprender</strong> (revisão de qualidade) e suas três atividades recomendadas: <strong>grupos de revisão com foco no usuário</strong>, <strong>inspeções de software</strong> e <strong>postmortems</strong>.</li>
+      <li><em>Maior risco primeiro; testes finais e implantação</em> — o ASD é orientado a desenvolver primeiro os <strong>requisitos de maior risco</strong>; o <strong>encerramento</strong> faz os testes finais e implanta o software.</li>
+    </ul>
+    <p><strong>Por que não o DSDM:</strong> ele também usa timeboxing e ciclos iterativos, mas seu ciclo de vida é outro — estudo de viabilidade → estudo de negócio → iteração do modelo funcional → iteração de projeto e construção → implementação, cada iteração com os passos identificar → acordar plano de tarefas → criar protótipo → revisar protótipo. Nenhum desses estágios aparece; o que aparece é a sequência especular, colaborar e aprender, com grupos de revisão, inspeções e postmortems.</p>`
+},
+
+{
+  id: "P53", tipo: "pratica", unidade: "Ágeis", tema: "Ágeis V — ASD", alvo: "ASD",
+  bullets: [
+    "Um hospital veterinário quer um aplicativo de agendamento e acompanhamento de consultas para os tutores dos animais;",
+    "As necessidades mudam a cada temporada e o planejamento terá de ser ajustado em vários momentos do projeto;",
+    "A diretoria aceita que o projeto custe mais por causa dos muitos testes e das revisões de qualidade repetidas a cada ciclo;",
+    "O hospital libera recepcionistas e veterinários para participarem das revisões e dos testes de aceitação em todos os ciclos, mesmo sabendo que isso pesa no orçamento e na escala de trabalho;",
+    "A gerência sabe que a repetição constante de ciclos pode cansar a equipe, que será dedicada só a este aplicativo;",
+    "Uma falha do aplicativo causa transtorno, mas não põe vidas nem grandes valores em risco."
+  ],
+  resposta: `
+    <p><strong>ASD (Adaptive Software Development).</strong></p>
+    <p>O cenário é quase a lista de <strong>desvantagens do ASD</strong>, aceitas uma a uma pelo projeto:</p>
+    <ul>
+      <li><em>Custo maior pelos muitos testes e revisões a cada ciclo</em> — o ASD <strong>executa muitos testes</strong>, o que pode aumentar o custo; a fase aprender exige repetidas revisões de qualidade e testes de aceitação.</li>
+      <li><em>Recepcionistas e veterinários liberados para todos os ciclos, mesmo pesando no orçamento</em> — o ASD <strong>exige alto grau de envolvimento do usuário</strong>, o que nem sempre é fácil e pode ser economicamente inviável para o cliente; aqui o cliente arca com isso.</li>
+      <li><em>Repetição de ciclos pode cansar a equipe</em> — o ASD <strong>enfatiza muitas repetições</strong>, o que pode causar <strong>fadiga na equipe</strong>.</li>
+      <li><em>Equipe dedicada só ao aplicativo</em> — o ASD <strong>funciona melhor com equipes focadas em um único projeto</strong>.</li>
+      <li><em>Falha sem risco a vidas ou grandes valores</em> — o ASD <strong>pode não ser útil para projetos de alto risco</strong>; este não é um deles.</li>
+    </ul>
+    <p>Em troca, o projeto colhe as vantagens que precisa: flexibilidade a adaptações do planejamento em qualquer estágio (segunda afirmação), foco no usuário, que gera software mais intuitivo, e qualidade geral maior do produto final.</p>
+    <p><strong>Por que não o Crystal Clear:</strong> ele é <strong>ultraleve</strong> — reduz burocracia e sobrecarga — e pratica “a arte de maximizar o que não precisa ser feito”, começando menor do que se supõe necessário. O projeto aqui aceita conscientemente o contrário: mais custo com testes e revisões repetidas a cada ciclo. E as desvantagens que o Crystal Clear traz — mudança cultural, requisitos rígidos, falta de adesão da liderança — não são as que o cenário descreve.</p>`
+},
+
+{
+  id: "P54", tipo: "pratica", unidade: "Ágeis", tema: "Ágeis V — ASD", alvo: "ASD",
+  bullets: [
+    "Uma cooperativa agrícola quer um sistema para monitorar lavouras com sensores de umidade e clima;",
+    "Os prazos de cada ciclo são fixados de antemão, e um facilitador conduz as reuniões enquanto um escriba registra requisitos e decisões;",
+    "A cooperativa não consegue, no início, definir com clareza nem priorizar os requisitos: os cooperados esperam descobri-los ao longo do projeto;",
+    "Não há contrato com escopo fechado, e a cooperativa espera mudanças grandes no que foi pedido;",
+    "O plano de cada ciclo é organizado em componentes, desenvolvidos ao mesmo tempo;",
+    "A ordem de desenvolvimento é guiada pelo risco: a integração com os sensores, que ninguém sabe se vai funcionar, vem primeiro, antes das funcionalidades mais pedidas."
+  ],
+  resposta: `
+    <p><strong>ASD (Adaptive Software Development).</strong></p>
+    <p>A segunda afirmação serve tanto ao ASD quanto ao DSDM — os dois fixam prazos com <strong>timeboxing</strong> e os dois têm facilitador e escriba (no DSDM, escrivão). As demais decidem:</p>
+    <ul>
+      <li><em>Requisitos que não podem ser definidos nem priorizados no início</em> — no ASD, as partes interessadas <strong>especulam</strong> e muitos requisitos são descobertos durante a fase especular.</li>
+      <li><em>Sem contrato fechado, mudanças grandes esperadas</em> — o ASD é <strong>tolerante à mudança e à adaptação</strong> e flexível a adaptações do planejamento em qualquer estágio.</li>
+      <li><em>Plano em componentes, desenvolvidos ao mesmo tempo</em> — plano de desenvolvimento <strong>baseado em componentes</strong> (especular) e <strong>engenharia concorrente de componentes</strong> (colaborar).</li>
+      <li><em>Ordem guiada pelo risco</em> — o ASD desenvolve primeiro os <strong>requisitos de maior risco</strong>.</li>
+    </ul>
+    <p><strong>Por que não o DSDM:</strong> o DSDM é um método ágil <strong>baseado em contrato</strong>, assinado no pré-projeto, para projetos que não aceitam grandes mudanças; exige <strong>requisitos claros e priorizáveis</strong> — e não é apropriado quando eles são pouco claros ou não podem ser ordenados, pois o projeto tende a estourar prazo e orçamento. Além disso, o DSDM ordena o trabalho pela <strong>importância</strong> (MoSCoW, Pareto: os requisitos mais importantes primeiro), enquanto a última afirmação coloca o <strong>risco</strong> à frente das funcionalidades mais pedidas — critério do ASD.</p>`
+},
+
+{
+  id: "T60", tipo: "teorica", unidade: "Ágeis", tema: "Ágeis V — ASD", bullets: [],
+  pergunta: "Quais as desvantagens do ASD (Adaptive Software Development)?",
+  resposta: `
+    <ul>
+      <li><strong>Executa muitos testes</strong>, o que pode aumentar o custo do projeto — a fase aprender exige repetidas revisões de qualidade e testes de aceitação a cada ciclo.</li>
+      <li><strong>Exige alto grau de envolvimento do usuário</strong>, o que nem sempre é fácil de conseguir e pode ser economicamente inviável para o cliente. Ao apresentar o papel do cliente, que deve estar sempre presente, o professor observa que isso é difícil, mas é característica geral dos processos ágeis.</li>
+      <li><strong>Enfatiza muitas repetições</strong>, o que pode causar <strong>fadiga na equipe</strong>.</li>
+      <li><strong>Funciona melhor com equipes focadas em um único projeto</strong>.</li>
+      <li><strong>Pode não ser útil para projetos de alto risco</strong> — é mais difícil implementar o desenvolvimento adaptativo nesse tipo de projeto.</li>
+    </ul>`
+},
+
+{
+  id: "T61", tipo: "teorica", unidade: "Ágeis", tema: "Ágeis V — ASD", bullets: [],
+  pergunta: "Quando o ASD não é indicado, e em que tipo de projeto ele se encaixa?",
+  resposta: `
+    <p><strong>Não é indicado</strong> — as situações decorrem das desvantagens do processo:</p>
+    <ul>
+      <li><strong>Projetos de alto risco</strong>: é mais difícil implementar o desenvolvimento adaptativo neles.</li>
+      <li><strong>Cliente que não pode se envolver o tempo todo</strong>: o ASD exige alto envolvimento do usuário (cliente sempre presente, revisões e testes de aceitação com cliente e especialistas do domínio), o que pode ser economicamente inviável.</li>
+      <li><strong>Orçamento sem margem para muitos testes</strong>: os testes e revisões repetidos a cada ciclo podem encarecer o projeto.</li>
+      <li><strong>Equipe dividida entre vários projetos</strong>: o ASD funciona melhor com equipes focadas em um único projeto — e as muitas repetições podem causar fadiga.</li>
+    </ul>
+    <p><strong>Se encaixa</strong> em projetos que precisam de <strong>constante monitoria e avaliação dos clientes</strong>, em que as partes interessadas não sabem exatamente o que desejam no início e o planejamento terá de se adaptar em qualquer estágio — o ASD é tolerante à mudança e trata o desenvolvimento como um sistema adaptativo complexo, apoiado na teoria do caos.</p>`
+},
+
+{
+  id: "T62", tipo: "teorica", unidade: "Ágeis", tema: "Ágeis V — ASD", bullets: [],
+  pergunta: "Quais são as fases do ASD e o que acontece em cada uma?",
+  resposta: `
+    <p>Estrutura (Wazlawick, 2013): <strong>iniciação → iterações (especular → colaborar → aprender) → encerramento</strong>, com ciclos de 4 a 8 semanas e prazos pré-fixados (timeboxing).</p>
+    <ul>
+      <li><strong>Iniciação de projeto</strong> — preparação dos ciclos: uma <strong>oficina de poucos dias</strong> em que se estabelecem as missões ou objetivos do projeto, se levantam requisitos iniciais, restrições e riscos e se fazem as estimativas iniciais de esforço.</li>
+      <li><strong>Especular</strong> — <strong>planejamento adaptativo de ciclo</strong>. Parte da premissa de que as partes interessadas não sabem exatamente o que desejam; muitos requisitos são descobertos aqui. Ainda assim, fixam-se objetivos e prazos, e o plano é baseado em componentes: determinar a duração do projeto, o número e a duração dos ciclos; descrever um grande objetivo por ciclo; definir os componentes de cada ciclo; definir tecnologia e suporte; desenvolver a lista de tarefas.</li>
+      <li><strong>Colaborar</strong> — <strong>engenharia concorrente de componentes</strong>: vários componentes são produzidos ao mesmo tempo, equilibrando o esforço entre as atividades mais previsíveis e as mais incertas.</li>
+      <li><strong>Aprender</strong> — <strong>revisão de qualidade</strong>, em pequenas iterações de projeto, codificação e teste. Os desenvolvedores aprendem com pequenos erros baseados em hipóteses incorretas; exige revisões repetidas e testes de aceitação com o cliente e especialistas do domínio. Atividades recomendadas: <strong>grupos de revisão com foco no usuário</strong>, <strong>inspeções de software</strong> e <strong>postmortems</strong>.</li>
+      <li><strong>Encerramento</strong> — garantia de qualidade e disponibilização: testes finais determinam a qualidade do software, que então é implantado para o usuário.</li>
+    </ul>
+    <p><strong>Observação do professor:</strong> métodos ágeis não se resumem a “codificar e testar” — evita-se documentação inútil e burocrática, mas há engenharia de requisitos, projeto, modelagem e produção de documentação.</p>`
+},
+
+{
+  id: "T63", tipo: "teorica", unidade: "Ágeis", tema: "Ágeis V — ASD", bullets: [],
+  pergunta: "Quais são os papéis do ASD e a responsabilidade de cada um?",
+  resposta: `
+    <ul>
+      <li><strong>Patrocinador executivo</strong> — age como patrocinador do projeto, gerenciando e fornecendo recursos para o desenvolvimento.</li>
+      <li><strong>Facilitador</strong> — lidera e planeja as reuniões da equipe e a auxilia nas dificuldades.</li>
+      <li><strong>Escriba</strong> — toma notas das reuniões: requisitos identificados, decisões de projeto etc.</li>
+      <li><strong>Cliente</strong> — quem pede o software; deve estar <strong>sempre presente</strong>. O professor observa que isso é difícil, mas é característica geral dos processos ágeis.</li>
+      <li><strong>Gerente de projeto</strong> — coordena o desenvolvimento e os desenvolvedores, mantém prazos e custos e gerencia riscos.</li>
+      <li><strong>Desenvolvedores</strong> — responsáveis pela implementação propriamente dita.</li>
+    </ul>
+    <p>Esses papéis são os <strong>agentes</strong> do sistema adaptativo complexo que o ASD enxerga no desenvolvimento — ao lado dos <strong>ambientes</strong> (organizacional, tecnológico e de processo) e das <strong>saídas emergentes</strong> (os artefatos produzidos).</p>`
+},
+
 /* --- Ágeis VI — XP --- */
 
 /* --- Ágeis VII — Scrum: papéis e artefatos --- */
